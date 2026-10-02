@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>Maqueta B · Hoja de revisión · Daniel Padilla</title>
+<link rel="preload" href="fuentes/bricolage-titulares.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+/* Maqueta de la dirección B (Fase 1). Solo la primera pantalla de la portada.
+   No es la web: sirve para elegir dirección. */
+@font-face{font-family:"Bricolage";src:url(fuentes/bricolage-titulares.woff2) format("woff2");font-weight:500 800;font-display:swap}
+@font-face{font-family:"Atkinson";src:url(fuentes/atkinson.woff2) format("woff2");font-weight:200 800;font-display:swap}
+@font-face{font-family:"Atkinson";src:url(fuentes/atkinson-italic.woff2) format("woff2");font-weight:200 800;font-style:italic;font-display:swap}
+
+:root{
+  --hoja:#FCFCFD;       /* la hoja de trabajo */
+  --mesa:#E4E8ED;       /* lo que hay debajo de la hoja */
+  --tinta:#16191F;      /* 17,17:1 sobre hoja */
+  --gris:#5B6470;       /* 5,85:1 sobre hoja */
+  --boli:#1F3BD6;       /* bolígrafo azul: anotaciones y acciones · 7,71:1 sobre hoja */
+  --boli-hondo:#152BA0;
+  --marcador:#FFE24A;   /* solo como trazo detrás del texto (tinta encima: 13,60:1) */
+  --linea:#CDD3DB;
+  --display:"Bricolage",system-ui,sans-serif;
+  --texto:"Atkinson",system-ui,sans-serif;
+  --ease-out:cubic-bezier(.23,1,.32,1);
+  --margen:16px;
+  --barra:64px;
+  /* trazo de marcador dibujado a mano (bordes irregulares) */
+  --trazo:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 40' preserveAspectRatio='none'%3E%3Cpath d='M3 9 C40 5 90 7 140 5 C165 4 185 6 197 8 L198 31 C170 35 120 33 70 35 C45 36 20 34 2 33 Z' fill='%23FFE24A'/%3E%3C/svg%3E");
+}
+*{box-sizing:border-box;min-width:0}
+html{-webkit-text-size-adjust:100%;caret-color:var(--boli)}
+body{margin:0;background:var(--hoja);color:var(--tinta);font:400 17px/1.55 var(--texto);
+     -webkit-font-smoothing:antialiased;padding-bottom:calc(var(--barra) + env(safe-area-inset-bottom))}
+::selection{background:var(--marcador);color:var(--tinta)}
+h1,h2,p{margin:0}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--boli);outline-offset:3px}
+
+/* ---------- Cabecera ---------- */
+.cab{display:flex;align-items:center;justify-content:space-between;gap:16px;
+     padding:6px max(var(--margen),env(safe-area-inset-right)) 6px max(var(--margen),env(safe-area-inset-left))}
+.logo{display:inline-flex;align-items:baseline;gap:8px;min-height:44px;align-items:center;font:700 21px/1 var(--display);letter-spacing:-.02em;text-decoration:none}
+.menu-boton{display:inline-flex;align-items:center;gap:10px;min-height:44px;padding:0 14px;border:1.5px solid var(--tinta);
+      border-radius:6px;background:transparent;font:700 16px var(--texto);color:var(--tinta)}
+.menu-boton span{display:block;width:18px;height:2px;background:currentColor;box-shadow:0 6px 0 currentColor;transform:translateY(-3px)}
+.nav{display:none}
+
+/* ---------- Portada ---------- */
+.portada{padding:14px var(--margen) 0}
+h1{font:700 clamp(35px,9.4vw,64px)/1.04 var(--display);letter-spacing:-.03em;text-wrap:balance;max-width:17ch}
+.marcado{background-image:var(--trazo);background-repeat:no-repeat;background-size:100% 74%;background-position:0 82%;
+         -webkit-box-decoration-break:clone;box-decoration-break:clone;padding:0 .06em}
+.bajada{margin-top:14px;font-size:18px;line-height:1.5;color:var(--gris);max-width:36ch;text-wrap:pretty}
+.acciones{margin-top:18px;display:flex;flex-wrap:wrap;align-items:center;gap:8px 18px}
+.boton{display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:0 22px;border-radius:6px;
+       background:var(--boli);color:#fff;font:700 17px var(--texto);text-decoration:none;white-space:nowrap;
+       transition:transform .16s var(--ease-out),background-color .15s var(--ease-out)}
+.boton:hover{background:var(--boli-hondo)}
+.boton:active{transform:scale(.97)}
+.enlace{display:inline-flex;align-items:center;min-height:50px;font:700 17px var(--texto);color:var(--boli);
+        text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:5px}
+
+/* ---------- Antes / después ---------- */
+.captura{position:relative;margin:22px 0 0}
+.rotulos{display:flex;justify-content:space-between;margin-bottom:6px;font:italic 700 15px/1 var(--texto);color:var(--boli)}
+.marco{position:relative;border:1.5px solid var(--tinta);border-radius:8px;overflow:hidden;background:#fff;
+       box-shadow:0 18px 30px -22px rgba(22,25,31,.45);height:318px;touch-action:pan-y}
+.mini{position:absolute;inset:0;font-size:13px;line-height:1.35}
+.mini p{margin:0}
+/* la web rota: Times por defecto, todo pegado al borde, botón invisible */
+.antes{background:#fff;color:#222;font-family:"Times New Roman",Times,serif;clip-path:inset(0 calc(100% - var(--pos,64%)) 0 0)}
+.antes .m-cab{display:flex;justify-content:space-between;align-items:baseline;gap:10px;padding:9px 0;border-bottom:1px solid #ddd;font-size:14px}
+.antes .m-cab b{letter-spacing:.06em}
+.antes .m-cab span{color:#00e;text-decoration:underline;font-size:13px;white-space:nowrap}
+.antes .m-h{margin-top:16px;font-size:20px;font-weight:700;line-height:1.15}
+.antes .m-txt{font-size:14px}
+.antes .m-hor{margin-top:10px;font-size:14px}
+.antes .m-fila{display:flex;align-items:center;gap:10px;margin-top:10px}
+.antes .m-btn{position:relative;display:inline-block;padding:7px 16px;background:#EFEFEF;color:#D4D4D4;font:700 13px Arial,sans-serif;letter-spacing:.08em}
+.antes .m-tel{margin-top:10px;font-size:14px}
+/* notas del revisor, a boli, debajo de cada fallo */
+.nota{display:flex;align-items:flex-end;gap:5px;margin:2px 0 0 10px;font:italic 600 13px/1.25 var(--texto);color:var(--boli)}
+.nota::before{content:"";flex:none;width:9px;height:9px;margin-bottom:5px;border-left:1.6px solid;border-bottom:1.6px solid;border-bottom-left-radius:4px}
+.m-fila .nota{margin:0}
+.m-fila .nota::before{display:none}
+.resalte{background-image:var(--trazo);background-repeat:no-repeat;background-size:100% 80%;background-position:0 70%;
+         -webkit-box-decoration-break:clone;box-decoration-break:clone}
+.aro{position:absolute;left:-1px;top:-8px;width:calc(100% + 12px);height:calc(100% + 16px);pointer-events:none;overflow:visible}
+.aro path{fill:none;stroke:var(--boli);stroke-width:2.2;stroke-linecap:round}
+/* la misma web arreglada: lo importante a la derecha para que lo que asoma se lea entero */
+.despues{background:#F7F4EF;color:#1D2420;font-family:var(--texto);padding:0 14px}
+.despues .m-cab{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:9px 0;border-bottom:1px solid #E2DDD3}
+.despues .m-cab b{font:800 15px var(--display);letter-spacing:-.01em}
+.despues .m-cab span{font-size:13px;font-weight:700}
+.despues .m-h{margin-top:16px;font:800 20px/1.1 var(--display);letter-spacing:-.02em;max-width:13ch}
+.despues .m-txt{margin-top:4px;font-size:14px;color:#4A534D;max-width:20ch}
+.despues .m-lado{position:absolute;right:14px;top:52px;width:124px;display:grid;gap:8px;text-align:right}
+.despues .m-abierto{display:inline-flex;align-items:center;justify-content:flex-end;gap:6px;font-size:13px;font-weight:700;color:#1E6B3A}
+.despues .m-abierto i{width:8px;height:8px;border-radius:50%;background:#1E8A4A}
+.despues .m-hoy{padding:8px 10px;border-radius:8px;background:#fff;border:1px solid #E2DDD3;font-size:13px}
+.despues .m-hoy b{display:block;font:800 15px/1.15 var(--display);white-space:nowrap}
+.despues .m-btn{display:flex;align-items:center;justify-content:center;min-height:40px;border-radius:8px;background:#1D2420;color:#fff;font-weight:700;font-size:14px}
+.despues .m-btn2{display:flex;align-items:center;justify-content:center;min-height:40px;border-radius:8px;border:1.5px solid #1D2420;font-weight:700;font-size:14px}
+/* el separador: capa del ancho del marco desplazada con transform */
+.linea{position:absolute;inset:0;transform:translateX(var(--pos,64%));pointer-events:none}
+.linea::before{content:"";position:absolute;top:0;bottom:0;left:-1px;width:2px;background:var(--tinta)}
+.tirador{position:absolute;top:50%;left:0;width:44px;height:44px;margin:-22px 0 0 -22px;border-radius:50%;background:var(--tinta);display:grid;place-items:center}
+.tirador svg{width:24px;height:24px;fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.deslizador{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:ew-resize;touch-action:pan-y}
+.deslizador:focus-visible + .linea .tirador{outline:3px solid var(--boli);outline-offset:3px}
+.pie-captura{margin-top:10px;display:flex;justify-content:space-between;align-items:flex-start;gap:12px;font:italic 600 15px/1.35 var(--texto);color:var(--boli)}
+.pie-captura small{font:400 13px/1.35 var(--texto);color:var(--gris);font-style:normal;text-align:right}
+
+/* ---------- Lo que viene debajo (asoma) ---------- */
+.siguiente{padding:48px var(--margen) 24px}
+.siguiente h2{font:700 30px/1.05 var(--display);letter-spacing:-.03em;max-width:18ch;text-wrap:balance}
+.siguiente p{margin-top:12px;color:var(--gris);max-width:46ch}
+
+/* ---------- Barra inferior fija (móvil) ---------- */
+.barra{position:fixed;left:0;right:0;bottom:0;z-index:30;display:grid;grid-template-columns:1fr 1fr 1.25fr;
+       background:var(--hoja);border-top:1.5px solid var(--tinta);padding:0 env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left)}
+.barra a,.barra button{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;min-height:var(--barra);
+       color:var(--tinta);text-decoration:none;font:700 13px/1.1 var(--texto);background:none;border:0;padding:6px 4px}
+.barra svg{width:22px;height:22px;fill:none;stroke:var(--boli);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.barra button span{background-image:var(--trazo);background-repeat:no-repeat;background-size:100% 70%;background-position:0 80%;padding:0 3px}
+
+/* ---------- Escritorio ---------- */
+@media (min-width:960px){
+  :root{--margen:48px;--barra:0px}
+  body{padding-bottom:0}
+  .barra,.menu-boton{display:none}
+  .cab{padding:16px var(--margen);border-bottom:1px solid var(--linea)}
+  .logo{font-size:23px}
+  .nav{display:flex;align-items:center;gap:4px;margin-left:auto}
+  .nav a{display:inline-flex;align-items:center;min-height:44px;padding:0 12px;font:700 16px var(--texto);text-decoration:none}
+  .nav a:hover{text-decoration:underline;text-decoration-color:var(--boli);text-decoration-thickness:2px;text-underline-offset:6px}
+  .nav .boton{margin-left:12px;min-height:46px}
+  .portada{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:56px;align-items:center;padding:52px var(--margen) 64px}
+  h1{font-size:clamp(52px,4.6vw,68px)}
+  .bajada{font-size:20px;margin-top:22px}
+  .acciones{margin-top:28px}
+  .captura{margin-top:0}
+  .marco{height:404px}
+  .mini{font-size:15px}
+  .antes .m-cab{padding:14px 0;font-size:18px}
+  .antes .m-cab span{font-size:15px}
+  .antes .m-h{font-size:32px;margin-top:30px}
+  .antes .m-txt,.antes .m-hor,.antes .m-tel{font-size:17px}
+  .antes .m-btn{font-size:15px;padding:10px 22px}
+  .nota{font-size:16px}
+  .despues{padding:0 26px}
+  .despues .m-cab{padding:14px 0}
+  .despues .m-cab b{font-size:20px}
+  .despues .m-cab span{font-size:15px}
+  .despues .m-h{font-size:32px;margin-top:30px}
+  .despues .m-txt{font-size:17px}
+  .despues .m-lado{right:26px;top:84px;width:190px;gap:12px}
+  .despues .m-abierto{font-size:15px}
+  .despues .m-hoy{font-size:15px;padding:12px 14px}
+  .despues .m-hoy b{font-size:22px}
+  .despues .m-btn,.despues .m-btn2{min-height:48px;font-size:16px}
+  .siguiente{padding:24px var(--margen) 40px}
+  .siguiente h2{font-size:44px}
+}
+
+/* ---------- Movimiento: el marcador pasa y el boli anota (solo al cargar) ---------- */
+@media (prefers-reduced-motion:no-preference){
+  h1 .marcado{background-size:0% 74%;animation:marcar .5s var(--ease-out) .35s forwards}
+  .aro path{stroke-dasharray:var(--largo);stroke-dashoffset:var(--largo);animation:trazar .45s var(--ease-out) 1.25s forwards}
+  .nota{opacity:0;transform:translateY(3px);animation:aparecer .28s var(--ease-out) forwards;animation-delay:calc(var(--n) * 140ms + .9s)}
+}
+/* pista de una sola vez: la línea se desplaza y vuelve (anima la variable registrada) */
+@property --pos{syntax:"<percentage>";inherits:true;initial-value:64%}
+@media (prefers-reduced-motion:no-preference){
+  .marco.pista{animation:pista 1s cubic-bezier(.77,0,.175,1) 1.9s}
+}
+@keyframes pista{0%{--pos:64%}45%{--pos:46%}100%{--pos:64%}}
+@keyframes marcar{to{background-size:100% 74%}}
+@keyframes trazar{to{stroke-dashoffset:0}}
+@keyframes aparecer{to{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<header class="cab">
+  <a class="logo" href="#">Daniel Padilla</a>
+  <nav class="nav" aria-label="Principal">
+    <a href="#">Servicios</a><a href="#">Trabajos</a><a href="#">Precios</a><a href="#">Cómo trabajo</a>
+    <a class="boton" href="#">Contacto</a>
+  </nav>
+  <button class="menu-boton" type="button" aria-expanded="false"><span aria-hidden="true"></span>Menú</button>
+</header>
+
+<main class="portada">
+  <div>
+    <h1>Hago webs para negocios, y <span class="marcado">arreglo las que ya existen</span></h1>
+    <p class="bajada">Desde Sevilla y en remoto. Precio cerrado antes de empezar, y el dominio y el alojamiento a tu nombre.</p>
+    <div class="acciones">
+      <a class="boton" href="#">Te miro la web gratis</a>
+      <a class="enlace" href="#">Ver precios</a>
+    </div>
+  </div>
+
+  <figure class="captura">
+    <div class="rotulos" aria-hidden="true"><span>Antes</span><span>Después</span></div>
+    <div class="marco pista" id="marco" style="--pos:64%">
+      <div class="mini despues" aria-hidden="true">
+        <div class="m-cab"><b>Bodeguita Zarzamora</b><span>Carta</span></div>
+        <p class="m-h">Tapas, desayunos y menú del día</p>
+        <p class="m-txt">En San Bernardo, a dos minutos del metro.</p>
+        <div class="m-lado">
+          <span class="m-abierto"><i></i>Abierto ahora</span>
+          <span class="m-hoy">Hoy<b>8:00 a 23:30</b></span>
+          <span class="m-btn">Llamar</span>
+          <span class="m-btn2">Cómo llegar</span>
+        </div>
+      </div>
+      <div class="mini antes" aria-hidden="true">
+        <div class="m-cab"><b>BODEGUITA ZARZAMORA</b><span>Inicio | Carta | Contacto</span></div>
+        <p class="m-h"><span class="resalte">Your Content Goes Here</span></p>
+        <p class="nota" style="--n:0">texto de la plantilla, en portada</p>
+        <p class="m-txt">Tapas - Desayunos - Menu</p>
+        <p class="m-hor">Horario de verano <span class="resalte">2019</span>: de 8:00 a 15:00</p>
+        <p class="nota" style="--n:1">horario de hace siete años</p>
+        <div class="m-fila"><span class="m-btn">RESERVAR<svg class="aro" viewBox="0 0 140 54" preserveAspectRatio="none" aria-hidden="true" style="--largo:420"><path d="M20 30 C14 12 50 4 82 5 C116 6 136 16 133 30 C130 46 98 52 66 50 C34 48 8 40 12 26 C14 18 26 12 40 10"/></svg></span>
+          <span class="nota" style="--n:2">no se lee (1,3:1)</span></div>
+        <p class="m-tel">Tlf: 954 000 000</p>
+        <p class="nota" style="--n:3">no se puede tocar para llamar</p>
+      </div>
+      <input class="deslizador" type="range" min="0" max="100" value="64" aria-label="Mover la línea entre la web rota y la arreglada">
+      <div class="linea"><span class="tirador"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 7l-5 5 5 5M15 7l5 5-5 5"/></svg></span></div>
+    </div>
+    <figcaption class="pie-captura">Arrastra la línea y mira la misma web arreglada.<small>Negocio inventado<br>para el ejemplo</small></figcaption>
+  </figure>
+</main>
+
+<section class="siguiente" aria-label="Siguiente sección (asoma)">
+  <h2>Lo que suelo encontrar en webs de Sevilla</h2>
+  <p>Cuatro casos reales. Ninguno de estos dueños lo sabía, y todos se arreglaron sin rehacer la web.</p>
+</section>
+
+<nav class="barra" aria-label="Contacto rápido">
+  <a href="tel:+34628129468"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>Llamar</a>
+  <a href="https://wa.me/34628129468"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20l1.3-4A8 8 0 1 1 8 18.7z"/><path d="M9 9.5c.3 2.4 2.2 4.4 4.6 4.9l1-1.2 1.9.8"/></svg>WhatsApp</a>
+  <button type="button" data-ia-open><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/><path d="M9 10.5h6"/></svg><span>Pregunta a la IA</span></button>
+</nav>
+
+<script>
+/* Antes/después: un input range nativo encima (teclado, lector de pantalla y dedo funcionan solos). */
+(function(){
+  var marco=document.getElementById('marco'), r=marco.querySelector('.deslizador');
+  r.addEventListener('input',function(){ marco.classList.remove('pista'); marco.style.setProperty('--pos', r.value+'%'); });
+  r.addEventListener('pointerdown',function(){ marco.classList.remove('pista'); });
+})();
+</script>
+</body>
+</html>
