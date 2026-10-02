@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Clínica Arenal · Odontología en Sevilla</title>
+<meta name="description" content="Clínica dental en el Arenal, Sevilla. Precios publicados, presupuesto por escrito y simulador de cuotas.">
+<meta name="theme-color" content="#0B7A5E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://images.unsplash.com">
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --fondo:#F5F7F7; --carta:#FFFFFF; --tinta:#102220; --gris:#50605D; --linea:#DCE3E1;
+  --verde:#0B7A5E; --verde-hondo:#08614B; --verde-suave:#E4F1EC;
+  --fuente:Onest,system-ui,sans-serif; --ease-out:cubic-bezier(.23,1,.32,1);
+}
+*{box-sizing:border-box;min-width:0}
+html{scroll-behavior:smooth;caret-color:var(--verde);scrollbar-color:#B9C6C3 var(--fondo);overflow-x:hidden}
+body{margin:0;background:var(--fondo);color:var(--tinta);font:400 17px/1.62 var(--fuente);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+::selection{background:var(--verde);color:#fff}
+img{display:block;max-width:100%;height:auto}
+h1,h2,h3{margin:0;line-height:1.08;letter-spacing:-.025em;font-weight:700;text-wrap:balance}
+p{margin:0;text-wrap:pretty}
+a{color:inherit;text-underline-offset:.22em;text-decoration-thickness:1px}
+.env{max-width:1140px;margin:0 auto;padding:0 20px}
+:focus-visible{outline:3px solid var(--verde);outline-offset:3px;border-radius:4px}
+.saltar{position:fixed;left:12px;top:-60px;z-index:60;background:var(--tinta);color:#fff;padding:12px 18px;border-radius:8px;text-decoration:none;font-weight:600}
+.saltar:focus{top:12px}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:12px 22px;border-radius:10px;border:1.5px solid transparent;
+     font:600 16px var(--fuente);text-decoration:none;cursor:pointer;white-space:nowrap;
+     transition:background .15s var(--ease-out),color .15s var(--ease-out),border-color .15s var(--ease-out),transform .16s var(--ease-out)}
+.btn-verde{background:var(--verde);color:#fff}
+.btn-verde:hover{background:var(--verde-hondo)}
+.btn-linea{background:transparent;color:var(--tinta);border-color:#AEBCB9}
+.btn-linea:hover{border-color:var(--tinta)}
+.btn:active{transform:scale(.97)}
+
+.cab{position:sticky;top:0;z-index:40;background:rgba(245,247,247,.93);backdrop-filter:blur(8px);border-bottom:1px solid var(--linea)}
+.cab-in{display:flex;align-items:center;justify-content:space-between;gap:14px;min-height:66px}
+.marca{display:flex;align-items:center;min-height:44px;gap:10px;font-weight:700;font-size:19px;text-decoration:none;letter-spacing:-.01em}
+.marca svg{width:26px;height:26px;flex:none}
+.cab nav{display:flex;gap:24px;font-size:15.5px;color:var(--gris)}
+.cab nav a{text-decoration:none;padding:10px 0}
+.cab nav a:hover{color:var(--tinta)}
+
+.portada{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(24px,4vw,56px);align-items:center;padding-top:clamp(28px,5vw,64px);padding-bottom:clamp(28px,5vw,64px)}
+.portada h1{font-size:clamp(40px,5.6vw,68px)}
+.portada h1 span{color:var(--verde)}
+.lead{margin-top:18px;font-size:clamp(17px,1.6vw,19px);color:var(--gris);max-width:44ch}
+.acciones{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+.garantias{list-style:none;margin:28px 0 0;padding:0;display:grid;gap:10px}
+.garantias li{display:flex;gap:10px;align-items:flex-start;color:var(--gris)}
+.garantias svg{width:20px;height:20px;flex:none;margin-top:3px;color:var(--verde)}
+.foto{border-radius:18px;overflow:hidden;aspect-ratio:4/5;background:var(--verde-suave)}
+.foto img{width:100%;height:100%;object-fit:cover}
+
+/* simulador */
+.bloque{padding-top:clamp(48px,7vw,96px);padding-bottom:clamp(48px,7vw,96px)}
+.sim{background:var(--carta);border:1px solid var(--linea);border-radius:20px;display:grid;grid-template-columns:1.2fr .8fr;overflow:hidden}
+.sim-in{padding:clamp(22px,3.5vw,40px)}
+.sim h2{font-size:clamp(32px,4vw,48px)}
+.sim .sub{margin-top:10px;color:var(--gris);max-width:46ch}
+.etq{display:block;margin:26px 0 10px;font-weight:600;font-size:15px}
+.trat{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:8px}
+.trat input{position:absolute;opacity:0;width:1px;height:1px}
+.trat label{display:flex;justify-content:space-between;align-items:center;gap:10px;min-height:52px;padding:10px 14px;border:1.5px solid var(--linea);border-radius:10px;
+            cursor:pointer;transition:border-color .15s var(--ease-out),background .15s var(--ease-out)}
+.trat label:hover{border-color:#9FB6B1}
+.trat label b{font-weight:600;font-variant-numeric:tabular-nums;white-space:nowrap}
+.trat input:checked+label{border-color:var(--verde);background:var(--verde-suave)}
+.trat input:focus-visible+label{outline:3px solid var(--verde);outline-offset:2px}
+.plazo{display:flex;align-items:center;gap:16px}
+.plazo output{font-weight:700;font-variant-numeric:tabular-nums;min-width:86px}
+input[type=range]{flex:1;height:44px;margin:0;background:transparent;-webkit-appearance:none;appearance:none;cursor:pointer;touch-action:pan-y}
+input[type=range]::-webkit-slider-runnable-track{height:6px;border-radius:3px;background:var(--linea)}
+input[type=range]::-moz-range-track{height:6px;border-radius:3px;background:var(--linea)}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:26px;height:26px;margin-top:-10px;border-radius:50%;background:var(--verde);border:4px solid #fff;box-shadow:0 1px 5px rgba(16,34,32,.3)}
+input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;background:var(--verde);border:4px solid #fff;box-shadow:0 1px 5px rgba(16,34,32,.3)}
+.marcas{position:relative;height:18px;margin-right:102px;font-size:13px;color:var(--gris);margin-top:2px;font-variant-numeric:tabular-nums}
+.marcas span{position:absolute;top:0;white-space:nowrap}
+.marcas span:nth-child(2){transform:translateX(-50%)}
+
+.res{background:var(--tinta);color:#fff;padding:clamp(22px,3.5vw,40px);display:flex;flex-direction:column;justify-content:center}
+.res .et{color:#A9C2BC;font-size:15px}
+.cuota{font-size:clamp(46px,7vw,72px);font-weight:700;letter-spacing:-.03em;line-height:1;margin-top:6px;font-variant-numeric:tabular-nums;transition:opacity .2s,filter .2s}
+.cuota.cambia{opacity:.35;filter:blur(2px)}
+.cuota small{font-size:18px;font-weight:500;letter-spacing:0;color:#A9C2BC;margin-left:4px}
+.desglose{list-style:none;margin:22px 0 0;padding:0;font-size:15px}
+.desglose li{display:flex;justify-content:space-between;gap:10px;padding:9px 0;border-top:1px solid rgba(255,255,255,.12);font-variant-numeric:tabular-nums}
+.desglose li span:first-child{color:#A9C2BC}
+.sin-int{display:inline-block;margin-top:16px;background:rgba(255,255,255,.1);color:#CFE6DF;padding:6px 10px;border-radius:6px;font-size:14px}
+.res .aviso{margin-top:18px;font-size:13px;color:#90A9A3}
+
+/* tratamientos */
+.lista-trat{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(20px,3vw,40px);margin-top:34px}
+.lista-trat h3{font-size:20px;padding-bottom:12px;border-bottom:2px solid var(--tinta)}
+.lista-trat ul{list-style:none;margin:0;padding:0}
+.lista-trat li{display:flex;justify-content:space-between;gap:12px;padding:12px 0;border-bottom:1px solid var(--linea)}
+.lista-trat li span:last-child{color:var(--gris);white-space:nowrap;font-variant-numeric:tabular-nums}
+.seccion-tit{font-size:clamp(32px,4vw,48px)}
+.seccion-sub{margin-top:12px;color:var(--gris);max-width:52ch}
+
+/* primera visita: la secuencia es informacion, por eso lleva numeros */
+.pasos{list-style:none;margin:34px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2.5vw,28px);counter-reset:p}
+.pasos li{counter-increment:p;background:var(--carta);border:1px solid var(--linea);border-radius:16px;padding:22px}
+.pasos li::before{content:counter(p);display:grid;place-items:center;width:36px;height:36px;border-radius:50%;background:var(--verde-suave);color:var(--verde);font-weight:700;margin-bottom:14px}
+.pasos h3{font-size:19px}
+.pasos p{margin-top:8px;color:var(--gris);font-size:15.5px}
+
+.faq{margin-top:28px;max-width:760px}
+.faq details{border-bottom:1px solid var(--linea)}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;min-height:60px;padding:14px 0;font-weight:600;font-size:17.5px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"";width:14px;height:14px;flex:none;color:var(--verde);
+  background:linear-gradient(currentColor,currentColor) center/100% 2px no-repeat,linear-gradient(currentColor,currentColor) center/2px 100% no-repeat;transition:background-size .2s var(--ease-out)}
+.faq details[open] summary::after{background-size:100% 2px,2px 0}
+.faq details p{padding:0 0 18px;color:var(--gris);max-width:62ch}
+
+.contacto{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,56px);background:var(--verde);color:#fff;border-radius:22px;padding:clamp(26px,4vw,52px)}
+.contacto h2{font-size:clamp(32px,4vw,48px)}
+.contacto p{margin-top:12px;color:#F2FAF7}
+.contacto .btn-verde{background:#fff;color:var(--verde)}
+.contacto .btn-verde:hover{background:var(--verde-suave)}
+.contacto .btn-linea{color:#fff;border-color:rgba(255,255,255,.55)}
+.contacto .btn-linea:hover{border-color:#fff}
+.contacto :focus-visible{outline-color:#fff}
+.horas{list-style:none;margin:0;padding:0}
+.horas li{display:flex;justify-content:space-between;gap:12px;padding:12px 0;border-top:1px solid rgba(255,255,255,.22);font-variant-numeric:tabular-nums}
+.horas li span:last-child{text-align:right}
+.horas li:first-child{border-top:none}
+
+footer{margin-top:clamp(48px,7vw,80px);border-top:1px solid var(--linea);padding:22px 0 34px;color:var(--gris);font-size:14px}
+.pie{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.pie a{display:inline-block;padding:10px 0}
+
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn:active{transform:none}.cuota{transition:none}}
+@media(max-width:900px){
+  .portada,.sim,.contacto{grid-template-columns:1fr}
+  .foto{aspect-ratio:16/10;order:-1}
+  .lista-trat,.pasos{grid-template-columns:1fr}
+  .cab nav{display:none}
+}
+@media(max-width:520px){.acciones .btn{flex:1}}
+</style>
+</head>
+<body>
+<a class="saltar" href="#contenido">Saltar al contenido</a>
+
+<header class="cab">
+  <div class="env cab-in">
+    <a class="marca" href="#">
+      <svg viewBox="0 0 26 26" fill="none" aria-hidden="true"><rect width="26" height="26" rx="7" fill="#0B7A5E"/><path d="M8 9.5c0-1.9 1.4-3 3-3 .8 0 1.4.3 2 .6.6-.3 1.2-.6 2-.6 1.6 0 3 1.1 3 3 0 2.2-.6 4-1.1 5.7-.4 1.5-.7 3.3-1.6 3.3-.8 0-1-1.5-1.3-2.7-.2-.8-.5-1.2-1-1.2s-.8.4-1 1.2c-.3 1.2-.5 2.7-1.3 2.7-.9 0-1.2-1.8-1.6-3.3C8.6 13.5 8 11.7 8 9.5Z" fill="#fff"/></svg>
+      Clínica Arenal
+    </a>
+    <nav aria-label="Principal">
+      <a href="#precio">Precios</a><a href="#tratamientos">Tratamientos</a><a href="#visita">Primera visita</a>
+    </nav>
+    <a class="btn btn-verde" href="tel:+34954000001">Llamar</a>
+  </div>
+</header>
+
+<main id="contenido">
+  <section class="env portada">
+    <div>
+      <h1>Sabrás el precio <span>antes de sentarte</span> en el sillón</h1>
+      <p class="lead">Odontología general y estética en el Arenal. Publicamos precios, damos el presupuesto por escrito y no empezamos nada sin tu firma.</p>
+      <div class="acciones">
+        <a class="btn btn-verde" href="#precio">Calcular mi cuota</a>
+        <a class="btn btn-linea" href="#contacto">Pedir cita</a>
+      </div>
+      <ul class="garantias">
+        <li><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="m4 10.5 4 4 8-9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Primera revisión y radiografía sin coste</li>
+        <li><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="m4 10.5 4 4 8-9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Presupuesto cerrado y por escrito</li>
+        <li><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="m4 10.5 4 4 8-9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Pago en cuotas, sin intereses hasta 12 meses</li>
+      </ul>
+    </div>
+    <div class="foto">
+      <img src="https://images.unsplash.com/photo-1643660527071-52e37cf7c7ea?auto=format&fit=crop&w=1100&q=70" width="1100" height="1375"
+           alt="Gabinete dental con sillón azul y equipo" fetchpriority="high">
+    </div>
+  </section>
+
+  <section class="env bloque" id="precio" aria-labelledby="sim-tit">
+    <div class="sim">
+      <div class="sim-in">
+        <h2 id="sim-tit">¿Cuánto pagarías al mes?</h2>
+        <p class="sub">Elige un tratamiento y el plazo. La cuota se calcula al momento con los mismos números que te daríamos en consulta.</p>
+        <span class="etq" id="etq-trat">Tratamiento</span>
+        <div class="trat" role="radiogroup" aria-labelledby="etq-trat" id="trat"></div>
+        <label class="etq" for="meses">Plazo</label>
+        <div class="plazo"><input type="range" id="meses" min="3" max="24" step="1" value="12"><output for="meses" id="meses-out">12 meses</output></div>
+        <div class="marcas" aria-hidden="true"><span style="left:0">3</span><span style="left:42.86%">12</span><span style="right:0">24 meses</span></div>
+      </div>
+      <div class="res" aria-live="polite">
+        <span class="et">Cuota mensual</span>
+        <p class="cuota" id="cuota">0 €<small>/mes</small></p>
+        <span class="sin-int" id="sin-int">Sin intereses</span>
+        <ul class="desglose">
+          <li><span>Precio del tratamiento</span><span id="d-precio">0 €</span></li>
+          <li><span>Intereses</span><span id="d-int">0 €</span></li>
+          <li><span>Total a pagar</span><span id="d-total">0 €</span></li>
+        </ul>
+        <p class="aviso">Ejemplo orientativo. Desde 13 meses se aplica un TIN del 7,9 %. La financiación está sujeta a la aprobación de la entidad.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="env" id="tratamientos" aria-labelledby="trat-tit">
+    <h2 class="seccion-tit" id="trat-tit">Precios publicados</h2>
+    <p class="seccion-sub">Lo que cuesta cada cosa, sin tener que llamar a preguntarlo. Te damos el precio exacto después de la revisión.</p>
+    <div class="lista-trat">
+      <div><h3>Prevención</h3><ul>
+        <li><span>Revisión y radiografía</span><span>Gratis</span></li>
+        <li><span>Limpieza dental</span><span>50 €</span></li>
+        <li><span>Sellado de fisuras</span><span>25 €</span></li></ul></div>
+      <div><h3>Restauración</h3><ul>
+        <li><span>Empaste</span><span>desde 55 €</span></li>
+        <li><span>Endodoncia</span><span>desde 180 €</span></li>
+        <li><span>Implante unitario</span><span>desde 1.150 €</span></li></ul></div>
+      <div><h3>Estética</h3><ul>
+        <li><span>Blanqueamiento</span><span>290 €</span></li>
+        <li><span>Carilla de composite</span><span>desde 160 €</span></li>
+        <li><span>Ortodoncia invisible</span><span>desde 3.200 €</span></li></ul></div>
+    </div>
+  </section>
+
+  <section class="env bloque" id="visita" aria-labelledby="vis-tit">
+    <h2 class="seccion-tit" id="vis-tit">Tu primera visita</h2>
+    <ol class="pasos">
+      <li><h3>Revisión</h3><p>Exploración y radiografía panorámica. Sin coste y sin compromiso.</p></li>
+      <li><h3>Presupuesto por escrito</h3><p>Te explicamos qué hace falta, qué es opcional y cuánto cuesta cada cosa.</p></li>
+      <li><h3>Tú decides</h3><p>Te lo llevas a casa. No empezamos ningún tratamiento hasta que lo firmes.</p></li>
+    </ol>
+    <div class="faq">
+      <details><summary>¿Atendéis urgencias?</summary><p>Sí, de lunes a viernes. Llámanos por la mañana y te hacemos hueco ese mismo día si es un dolor fuerte.</p></details>
+      <details><summary>¿Trabajáis con mutuas?</summary><p>Aplicamos descuento a los principales seguros dentales. Dinos el tuyo al pedir cita y te confirmamos las condiciones.</p></details>
+      <details><summary>¿El presupuesto me compromete a algo?</summary><p>No. Es tuyo, te lo llevas, y si lo quieres comparar con otra clínica, adelante.</p></details>
+      <details><summary>¿Puedo pagar en cuotas cualquier tratamiento?</summary><p>A partir de 150 €. El simulador de arriba te da la cuota exacta para el plazo que elijas.</p></details>
+    </div>
+  </section>
+
+  <section class="env" id="contacto" aria-labelledby="con-tit">
+    <div class="contacto">
+      <div>
+        <h2 id="con-tit">Pide tu revisión</h2>
+        <p>Calle Arfe, en el Arenal. Junto a la Maestranza.</p>
+        <div class="acciones">
+          <a class="btn btn-verde" href="tel:+34954000001">Llamar</a>
+          <a class="btn btn-linea" href="https://wa.me/34954000001">WhatsApp</a>
+        </div>
+      </div>
+      <ul class="horas" aria-label="Horario">
+        <li><span>Lunes a jueves</span><span>9:30&nbsp;–&nbsp;14:00<br>16:30&nbsp;–&nbsp;20:30</span></li>
+        <li><span>Viernes</span><span>9:30 – 15:00</span></li>
+        <li><span>Sábado y domingo</span><span>Cerrado</span></li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="env pie">
+    <span>Clínica Arenal · Sevilla · Fotografía de Unsplash</span>
+    <a href="../index.html#trabajos">Web de demostración con un negocio ficticio, hecha por Daniel Padilla</a>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var TRAT = [["Implante unitario",1150],["Ortodoncia invisible",3200],["Blanqueamiento",290],["Endodoncia",180],["Carillas (4 piezas)",640]];
+  var cont = document.getElementById("trat");
+  TRAT.forEach(function(t,i){
+    var w = document.createElement("div");
+    w.innerHTML = '<input type="radio" name="trat" id="t'+i+'"'+(i===0?' checked':'')+'><label for="t'+i+'"><span></span><b></b></label>';
+    w.querySelector("input").value = t[1];
+    w.querySelector("span").textContent = t[0];
+    w.querySelector("b").textContent = eur(t[1], 0);
+    w.querySelector("input").addEventListener("change", calc);
+    cont.appendChild(w);
+  });
+  var meses = document.getElementById("meses");
+  meses.addEventListener("input", calc);
+
+  /* formato espanol con punto de millar siempre, tambien en cuatro cifras, para que coincida con la lista de precios */
+  function eur(n, dec){
+    var s = Math.abs(n).toFixed(dec).split("."), e = s[0].replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    return (n < 0 ? "-" : "") + e + (dec ? "," + s[1] : "") + " €";
+  }
+  var cuotaEl = document.getElementById("cuota"), ultimo = "";
+  function calc(){
+    var p = +document.querySelector('input[name=trat]:checked').value, n = +meses.value, c, total;
+    document.getElementById("meses-out").textContent = n + " meses";
+    if(n <= 12){ c = p/n; total = p; document.getElementById("sin-int").textContent = "Sin intereses"; }
+    else { var r = 0.079/12; c = p*r/(1-Math.pow(1+r,-n)); total = c*n; document.getElementById("sin-int").textContent = "TIN 7,9 %"; }
+    var v = eur(c,2);
+    if(v !== ultimo){
+      ultimo = v; cuotaEl.classList.add("cambia");
+      setTimeout(function(){ cuotaEl.innerHTML = v.replace(" €","") + " €<small>/mes</small>"; cuotaEl.classList.remove("cambia"); }, 90);
+    }
+    document.getElementById("d-precio").textContent = eur(p,0);
+    document.getElementById("d-int").textContent = eur(total-p,2);
+    document.getElementById("d-total").textContent = eur(total,2);
+  }
+  calc();
+})();
+</script>
+</body>
+</html>

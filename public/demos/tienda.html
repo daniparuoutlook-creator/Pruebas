@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>La Despensa de Triana · Ultramarinos</title>
+<meta name="description" content="Ultramarinos en Triana: aceite, conservas, quesos y vinos de productores andaluces. Pide por WhatsApp y recoge o recibe en Sevilla.">
+<meta name="theme-color" content="#56631F">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://images.unsplash.com">
+<link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --fondo:#EEF1E8; --papel:#F8FAF4; --tinta:#1A1D12; --gris:#555C48; --linea:#CDD4BF;
+  --oliva:#56631F; --oliva-hondo:#434D17; --oliva-suave:#E2E8D2;
+  --slab:"Alfa Slab One",Georgia,serif; --texto:Barlow,system-ui,sans-serif;
+  --ease-out:cubic-bezier(.23,1,.32,1); --ease-cajon:cubic-bezier(.32,.72,0,1);
+}
+*{box-sizing:border-box;min-width:0}
+html{scroll-behavior:smooth;caret-color:var(--oliva);scrollbar-color:#B7C0A6 var(--fondo);overflow-x:hidden}
+body{margin:0;background:var(--fondo);color:var(--tinta);font:400 17px/1.6 var(--texto);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+::selection{background:var(--oliva);color:#fff}
+img{display:block;max-width:100%;height:auto}
+h1,h2,h3{margin:0;text-wrap:balance}
+h1,h2{font-family:var(--slab);font-weight:400;line-height:1.02;letter-spacing:-.01em}
+p{margin:0;text-wrap:pretty}
+a{color:inherit;text-underline-offset:.22em;text-decoration-thickness:1px}
+.env{max-width:1180px;margin:0 auto;padding:0 20px}
+:focus-visible{outline:3px solid var(--oliva);outline-offset:3px;border-radius:4px}
+.saltar{position:fixed;left:12px;top:-60px;z-index:80;background:var(--tinta);color:#fff;padding:12px 18px;border-radius:6px;text-decoration:none;font-weight:600}
+.saltar:focus{top:12px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:12px 22px;border-radius:6px;border:2px solid transparent;
+     font:700 16px var(--texto);letter-spacing:.01em;text-decoration:none;cursor:pointer;white-space:nowrap;
+     transition:background .15s var(--ease-out),color .15s var(--ease-out),border-color .15s var(--ease-out),transform .16s var(--ease-out)}
+.btn-oliva{background:var(--oliva);color:#fff}
+.btn-oliva:hover{background:var(--oliva-hondo)}
+.btn-linea{background:transparent;border-color:var(--tinta);color:var(--tinta)}
+.btn-linea:hover{background:var(--tinta);color:#fff}
+.btn:active{transform:scale(.97)}
+.btn svg{width:20px;height:20px;flex:none}
+
+.cab{position:sticky;top:0;z-index:40;background:rgba(238,241,232,.94);backdrop-filter:blur(8px);border-bottom:2px solid var(--tinta)}
+.cab-in{display:flex;align-items:center;justify-content:space-between;gap:14px;min-height:68px}
+.marca{display:inline-flex;flex-direction:column;justify-content:center;min-height:44px;font-family:var(--slab);font-size:22px;text-decoration:none;line-height:1}
+.marca small{display:block;font:600 12.5px var(--texto);letter-spacing:.02em;color:var(--gris);margin-top:4px}
+.cesta-btn{position:relative}
+.cuenta{display:inline-grid;place-items:center;min-width:24px;height:24px;padding:0 6px;border-radius:12px;background:#fff;color:var(--oliva);font-size:13.5px;font-weight:700;font-variant-numeric:tabular-nums}
+@media (prefers-reduced-motion:no-preference){ .cuenta.salta{animation:salta .24s var(--ease-out)} @keyframes salta{50%{transform:scale(1.25)}} }
+
+.portada{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(24px,4vw,56px);align-items:center;padding-top:clamp(28px,5vw,60px);padding-bottom:clamp(28px,5vw,60px)}
+.portada h1{font-size:clamp(42px,6.2vw,80px)}
+.lead{margin-top:18px;font-size:clamp(17px,1.6vw,19px);color:var(--gris);max-width:42ch}
+.acciones{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+.foto{border:2px solid var(--tinta);border-radius:8px;overflow:hidden;aspect-ratio:5/4;background:var(--oliva-suave)}
+.foto img{width:100%;height:100%;object-fit:cover}
+
+.bloque{padding-top:clamp(44px,6vw,80px);padding-bottom:clamp(44px,6vw,80px)}
+.desp-cab{display:flex;justify-content:space-between;align-items:flex-end;gap:18px;flex-wrap:wrap}
+.desp-cab h2{font-size:clamp(34px,4.6vw,56px)}
+.filtros{display:flex;flex-wrap:wrap;gap:6px}
+.filtro{min-height:44px;padding:10px 16px;border-radius:6px;border:2px solid var(--linea);background:transparent;color:var(--tinta);
+        font:600 15px var(--texto);cursor:pointer;transition:background .15s var(--ease-out),border-color .15s var(--ease-out),transform .16s var(--ease-out)}
+.filtro:hover{border-color:var(--tinta)}
+.filtro:active{transform:scale(.97)}
+.filtro[aria-pressed="true"]{background:var(--tinta);border-color:var(--tinta);color:#fff}
+
+/* cada producto es una etiqueta de conserva */
+.estante{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:28px}
+.etiqueta{background:var(--papel);border:2px solid var(--tinta);border-radius:8px;padding:6px;display:flex}
+.etiqueta-in{border:1px solid var(--tinta);border-radius:4px;padding:16px 16px 14px;display:flex;flex-direction:column;flex:1}
+.origen{display:flex;justify-content:space-between;gap:8px;font:600 12.5px var(--texto);letter-spacing:.04em;text-transform:uppercase;color:var(--gris);
+        padding-bottom:10px;border-bottom:1px solid var(--linea)}
+.etiqueta h3{font-family:var(--slab);font-weight:400;font-size:22px;line-height:1.08;margin-top:14px}
+.etiqueta p{margin-top:8px;font-size:15px;color:var(--gris);flex:1}
+.compra{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:16px;padding-top:12px;border-top:1px dashed var(--linea)}
+.precio{font-family:var(--slab);font-size:22px;color:var(--oliva);font-variant-numeric:tabular-nums}
+.anadir{min-height:44px;padding:8px 14px;border-radius:6px;border:2px solid var(--tinta);background:var(--tinta);color:#fff;font:700 14.5px var(--texto);cursor:pointer;
+        transition:background .15s var(--ease-out),transform .16s var(--ease-out)}
+.anadir:hover{background:var(--oliva);border-color:var(--oliva)}
+.anadir:active{transform:scale(.96)}
+.anadir.hecho{background:var(--oliva);border-color:var(--oliva)}
+
+.como{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:28px}
+.como div{border-top:2px solid var(--tinta);padding-top:16px}
+.como h3{font-size:21px;font-weight:700}
+.como p{margin-top:8px;color:var(--gris)}
+.seccion-tit{font-size:clamp(32px,4.2vw,50px)}
+
+.visita{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,56px);background:var(--oliva);color:#fff;border-radius:10px;padding:clamp(26px,4vw,52px);margin-top:clamp(44px,6vw,80px)}
+.visita h2{font-size:clamp(32px,4vw,48px)}
+.visita p{margin-top:12px;color:#E4EAD3}
+.visita .btn-oliva{background:#fff;color:var(--oliva)}
+.visita .btn-oliva:hover{background:var(--oliva-suave)}
+.visita .btn-linea{color:#fff;border-color:#fff}
+.visita .btn-linea:hover{background:#fff;color:var(--oliva)}
+.visita :focus-visible{outline-color:#fff}
+.horas{list-style:none;margin:0;padding:0}
+.horas li{display:flex;justify-content:space-between;gap:12px;padding:12px 0;border-top:1px solid rgba(255,255,255,.28);font-variant-numeric:tabular-nums}
+.horas li:first-child{border-top:none}
+.horas li span:last-child{text-align:right}
+
+footer{margin-top:clamp(44px,6vw,72px);border-top:2px solid var(--tinta);padding:20px 0 34px;color:var(--gris);font-size:14px}
+.pie{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.pie a{display:inline-block;padding:10px 0}
+
+/* cesta: panel lateral, no modal */
+.velo{position:fixed;inset:0;background:rgba(26,29,18,.4);opacity:0;pointer-events:none;transition:opacity .25s var(--ease-out);z-index:60}
+.velo.ver{opacity:1;pointer-events:auto}
+.cesta{position:fixed;top:0;right:0;height:100%;height:100dvh;width:min(420px,100%);background:var(--papel);border-left:2px solid var(--tinta);z-index:70;
+       display:flex;flex-direction:column;transform:translateX(100%);transition:transform .38s var(--ease-cajon);visibility:hidden}
+.cesta.ver{transform:none;visibility:visible}
+.cesta-cab{display:flex;justify-content:space-between;align-items:center;padding:18px 20px;border-bottom:2px solid var(--tinta)}
+.cesta-cab h2{font-size:28px}
+.cerrar{width:44px;height:44px;border:2px solid var(--tinta);border-radius:6px;background:transparent;cursor:pointer;position:relative}
+.cerrar::before,.cerrar::after{content:"";position:absolute;left:50%;top:50%;width:18px;height:2px;background:var(--tinta);transform:translate(-50%,-50%) rotate(45deg)}
+.cerrar::after{transform:translate(-50%,-50%) rotate(-45deg)}
+.lineas{flex:1;overflow:auto;padding:6px 20px;list-style:none;margin:0}
+.linea{display:grid;grid-template-columns:1fr auto;gap:4px 12px;padding:14px 0;border-bottom:1px solid var(--linea)}
+.linea b{font-weight:600}
+.linea .sub{color:var(--gris);font-size:14.5px;font-variant-numeric:tabular-nums}
+.cant{grid-column:2;grid-row:1/3;display:flex;align-items:center;gap:4px}
+.cant button{width:44px;height:44px;border:2px solid var(--linea);border-radius:6px;background:transparent;font:700 18px var(--texto);cursor:pointer}
+.cant button:hover{border-color:var(--tinta)}
+.cant span{min-width:22px;text-align:center;font-weight:700;font-variant-numeric:tabular-nums}
+.vacia{padding:32px 20px;color:var(--gris)}
+.vacia b{display:block;color:var(--tinta);font-size:18px;margin-bottom:6px}
+.cesta-pie{border-top:2px solid var(--tinta);padding:16px 20px 20px}
+.entrega{display:grid;gap:8px;margin-bottom:14px}
+.entrega label{display:flex;justify-content:space-between;align-items:center;gap:10px;min-height:48px;padding:10px 12px;border:2px solid var(--linea);border-radius:6px;cursor:pointer}
+.entrega input{accent-color:var(--oliva);width:18px;height:18px;margin:0 10px 0 0}
+.entrega label:has(input:checked){border-color:var(--oliva);background:var(--oliva-suave)}
+.entrega span.coste{color:var(--gris);font-variant-numeric:tabular-nums;white-space:nowrap}
+.total{display:flex;justify-content:space-between;align-items:baseline;font-family:var(--slab);font-size:26px;margin-bottom:12px;font-variant-numeric:tabular-nums}
+.cesta-pie .btn{width:100%}
+.cesta-pie .nota{margin-top:10px;font-size:13.5px;color:var(--gris)}
+.btn[aria-disabled="true"]{opacity:.45;pointer-events:none}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .cesta{transition:none}
+  .btn:active,.filtro:active,.anadir:active{transform:none}
+}
+@media(max-width:1000px){.estante{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:860px){.portada,.visita{grid-template-columns:1fr}.foto{order:-1;aspect-ratio:16/10}}
+@media(max-width:560px){
+  .estante,.como{grid-template-columns:1fr}
+  .acciones .btn{flex:1}
+  .visita .acciones{flex-direction:column}
+  .visita .acciones .btn{width:100%}
+  .marca small{display:none}
+}
+</style>
+</head>
+<body>
+<a class="saltar" href="#contenido">Saltar al contenido</a>
+
+<header class="cab">
+  <div class="env cab-in">
+    <a class="marca" href="#">La Despensa<small>Ultramarinos · Triana</small></a>
+    <button class="btn btn-oliva cesta-btn" id="abrir-cesta" type="button" aria-controls="cesta" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 8h16l-1.4 10.2A2 2 0 0 1 16.6 20H7.4a2 2 0 0 1-2-1.8L4 8Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M9 8V6a3 3 0 0 1 6 0v2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      Cesta <span class="cuenta" id="cuenta">0</span><span class="sr"> productos</span>
+    </button>
+  </div>
+</header>
+
+<main id="contenido">
+  <section class="env portada">
+    <div>
+      <h1>Lo que se come aquí, no lo que se exporta</h1>
+      <p class="lead">Aceite de molino, conservas de la bahía, quesos de sierra y vinos de bodegas pequeñas. De productores que conocemos por su nombre.</p>
+      <div class="acciones">
+        <a class="btn btn-oliva" href="#despensa">Ver productos</a>
+        <a class="btn btn-linea" href="#visita">Cómo llegar</a>
+      </div>
+    </div>
+    <div class="foto">
+      <img src="https://images.unsplash.com/photo-1778493754612-7afb7b5e7711?auto=format&fit=crop&w=1300&q=70" width="1300" height="1040"
+           alt="Interior de una tienda con estanterías llenas de productos artesanos" fetchpriority="high">
+    </div>
+  </section>
+
+  <section class="env bloque" id="despensa" aria-labelledby="desp-tit">
+    <div class="desp-cab">
+      <h2 id="desp-tit">La despensa</h2>
+      <div class="filtros" role="group" aria-label="Filtrar por tipo">
+        <button class="filtro" aria-pressed="true" data-f="todo">Todo</button>
+        <button class="filtro" aria-pressed="false" data-f="aceite">Aceites</button>
+        <button class="filtro" aria-pressed="false" data-f="conserva">Conservas</button>
+        <button class="filtro" aria-pressed="false" data-f="queso">Quesos</button>
+        <button class="filtro" aria-pressed="false" data-f="vino">Vinos</button>
+        <button class="filtro" aria-pressed="false" data-f="dulce">Dulces</button>
+      </div>
+    </div>
+    <div class="estante" id="estante" aria-live="polite"></div>
+  </section>
+
+  <section class="env" aria-labelledby="como-tit">
+    <h2 class="seccion-tit" id="como-tit">Cómo te llega</h2>
+    <div class="como">
+      <div><h3>Recoges en la tienda</h3><p>Nos haces el pedido por WhatsApp y te lo dejamos preparado con tu nombre. Sin coste.</p></div>
+      <div><h3>Te lo llevamos en Sevilla</h3><p>3,90 € el envío, gratis a partir de 40 €. Repartimos por las tardes, de martes a sábado.</p></div>
+    </div>
+  </section>
+
+  <section class="env" id="visita" aria-labelledby="vis-tit">
+    <div class="visita">
+      <div>
+        <h2 id="vis-tit">Estamos en Triana</h2>
+        <p>Calle Pureza, a una calle del mercado. Si vienes por primera vez, pide que te demos a probar el aceite.</p>
+        <div class="acciones">
+          <a class="btn btn-oliva" href="https://maps.google.com/?q=Calle+Pureza+Sevilla" rel="noopener">Abrir en el mapa</a>
+          <a class="btn btn-linea" href="tel:+34954000002">Llamar</a>
+        </div>
+      </div>
+      <ul class="horas" aria-label="Horario">
+        <li><span>Lunes a viernes</span><span>10:00&nbsp;–&nbsp;14:00<br>17:30&nbsp;–&nbsp;20:30</span></li>
+        <li><span>Sábado</span><span>10:00 – 14:30</span></li>
+        <li><span>Domingo</span><span>Cerrado</span></li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="env pie">
+    <span>La Despensa de Triana · Sevilla · Fotografía de Unsplash</span>
+    <a href="../index.html#trabajos">Web de demostración con un negocio ficticio, hecha por Daniel Padilla</a>
+  </div>
+</footer>
+
+<div class="velo" id="velo"></div>
+<aside class="cesta" id="cesta" aria-labelledby="cesta-tit" tabindex="-1">
+  <div class="cesta-cab"><h2 id="cesta-tit">Tu cesta</h2><button class="cerrar" id="cerrar" type="button" aria-label="Cerrar la cesta"></button></div>
+  <ul class="lineas" id="lineas"></ul>
+  <div class="cesta-pie">
+    <div class="entrega" role="radiogroup" aria-label="Entrega">
+      <label><span><input type="radio" name="ent" value="0" checked>Recoger en tienda</span><span class="coste">Gratis</span></label>
+      <label><span><input type="radio" name="ent" value="1">Envío en Sevilla</span><span class="coste" id="coste-envio">3,90 €</span></label>
+    </div>
+    <p class="total"><span>Total</span><span id="total">0,00 €</span></p>
+    <a class="btn btn-oliva" id="pedir" href="#" aria-disabled="true" rel="noopener">Hacer el pedido por WhatsApp</a>
+    <p class="nota">Te confirmamos disponibilidad y pagas al recoger o al recibir.</p>
+  </div>
+</aside>
+
+<script>
+(function(){
+  var TEL = "34954000002";
+  var P = [
+    ["aceite","Aceite picual","Jaén","500 ml","Virgen extra de cosecha temprana. Verde, amargo y picante, como tiene que ser.",9.80],
+    ["aceite","Arbequina temprana","Sierra de Segura","250 ml","Suave y afrutado. El de mojar pan sin nada más.",7.50],
+    ["conserva","Melva canutera","Barbate","120 g","En aceite de oliva, de almadraba. La reina de las conservas del sur.",6.20],
+    ["conserva","Atún rojo en aceite","Barbate","180 g","Lomo de atún de almadraba, en tarro de cristal.",11.90],
+    ["queso","Queso payoyo","Sierra de Grazalema","400 g","De cabra payoya, curado. Pastor y quesería en el mismo pueblo.",12.50],
+    ["queso","Oveja curado","Sierra Norte","500 g","Curado en aceite doce meses. Para cortar fino.",13.80],
+    ["vino","Manzanilla en rama","Sanlúcar","75 cl","Sin filtrar, embotellada en saca de primavera.",14.50],
+    ["dulce","Mostachones","Utrera","caja de 6","Bizcocho de horno de leña, con su papel de estraza.",4.20]
+  ];
+  var cesta = {}, filtroAct = "todo";
+  function eur(n){ return n.toLocaleString("es-ES",{minimumFractionDigits:2,maximumFractionDigits:2}) + " €"; }
+
+  var estante = document.getElementById("estante");
+  function pintarEstante(){
+    estante.innerHTML = "";
+    P.forEach(function(p,i){
+      if(filtroAct !== "todo" && p[0] !== filtroAct) return;
+      var a = document.createElement("article"); a.className = "etiqueta";
+      a.innerHTML = '<div class="etiqueta-in"><div class="origen"><span></span><span></span></div><h3></h3><p></p>'+
+                    '<div class="compra"><span class="precio"></span><button class="anadir" type="button">Añadir</button></div></div>';
+      var o = a.querySelectorAll(".origen span"); o[0].textContent = p[2]; o[1].textContent = p[3];
+      a.querySelector("h3").textContent = p[1];
+      a.querySelector("p").textContent = p[4];
+      a.querySelector(".precio").textContent = eur(p[5]);
+      var b = a.querySelector(".anadir");
+      b.setAttribute("aria-label","Añadir " + p[1] + " a la cesta");
+      b.addEventListener("click", function(){
+        cesta[i] = (cesta[i]||0) + 1; pintarCesta();
+        b.textContent = "Añadido"; b.classList.add("hecho");
+        setTimeout(function(){ b.textContent = "Añadir"; b.classList.remove("hecho"); }, 1200);
+      });
+      estante.appendChild(a);
+    });
+  }
+  Array.prototype.forEach.call(document.querySelectorAll(".filtro"), function(f){
+    f.addEventListener("click", function(){
+      Array.prototype.forEach.call(document.querySelectorAll(".filtro"), function(o){ o.setAttribute("aria-pressed","false"); });
+      f.setAttribute("aria-pressed","true"); filtroAct = f.dataset.f; pintarEstante();
+    });
+  });
+
+  var lineas = document.getElementById("lineas");
+  function pintarCesta(){
+    var n = 0, sub = 0; lineas.innerHTML = "";
+    Object.keys(cesta).forEach(function(k){
+      var q = cesta[k]; if(!q) return; var p = P[k]; n += q; sub += q*p[5];
+      var li = document.createElement("li"); li.className = "linea";
+      li.innerHTML = '<b></b><span class="sub"></span><div class="cant"><button type="button">−</button><span></span><button type="button">+</button></div>';
+      li.querySelector("b").textContent = p[1];
+      li.querySelector(".sub").textContent = q + " × " + eur(p[5]);
+      li.querySelector(".cant span").textContent = q;
+      var bs = li.querySelectorAll(".cant button");
+      bs[0].setAttribute("aria-label","Quitar uno de " + p[1]); bs[1].setAttribute("aria-label","Añadir uno de " + p[1]);
+      bs[0].onclick = function(){ cesta[k]--; pintarCesta(); };
+      bs[1].onclick = function(){ cesta[k]++; pintarCesta(); };
+      lineas.appendChild(li);
+    });
+    if(!n) lineas.innerHTML = '<li class="vacia"><b>La cesta está vacía</b>Añade productos desde la despensa y aquí verás el total.</li>';
+    var envio = document.querySelector('input[name=ent]:checked').value === "1" ? (sub >= 40 ? 0 : 3.90) : 0;
+    document.getElementById("coste-envio").textContent = sub >= 40 ? "Gratis" : "3,90 €";
+    document.getElementById("total").textContent = eur(sub + envio);
+    var c = document.getElementById("cuenta"); c.textContent = n;
+    c.classList.remove("salta"); void c.offsetWidth; if(n) c.classList.add("salta");
+    var pedir = document.getElementById("pedir");
+    if(n){
+      var txt = "Hola, quería hacer este pedido en La Despensa:\n" +
+        Object.keys(cesta).filter(function(k){ return cesta[k]; }).map(function(k){ return "- " + cesta[k] + " x " + P[k][1] + " (" + P[k][3] + ")"; }).join("\n") +
+        "\nEntrega: " + (envio || document.querySelector('input[name=ent]:checked').value === "1" ? "envío en Sevilla" : "recojo en tienda") +
+        "\nTotal: " + eur(sub + envio);
+      pedir.href = "https://wa.me/" + TEL + "?text=" + encodeURIComponent(txt); pedir.setAttribute("aria-disabled","false");
+    } else { pedir.href = "#"; pedir.setAttribute("aria-disabled","true"); }
+  }
+  Array.prototype.forEach.call(document.querySelectorAll('input[name=ent]'), function(r){ r.addEventListener("change", pintarCesta); });
+
+  var panel = document.getElementById("cesta"), velo = document.getElementById("velo"), abrir = document.getElementById("abrir-cesta");
+  function abrirCesta(){ panel.classList.add("ver"); velo.classList.add("ver"); abrir.setAttribute("aria-expanded","true"); setTimeout(function(){ panel.focus(); }, 50); }
+  function cerrarCesta(){ panel.classList.remove("ver"); velo.classList.remove("ver"); abrir.setAttribute("aria-expanded","false"); abrir.focus(); }
+  abrir.addEventListener("click", abrirCesta);
+  document.getElementById("cerrar").addEventListener("click", cerrarCesta);
+  velo.addEventListener("click", cerrarCesta);
+  document.addEventListener("keydown", function(e){ if(e.key === "Escape" && panel.classList.contains("ver")) cerrarCesta(); });
+
+  pintarEstante(); pintarCesta();
+})();
+</script>
+</body>
+</html>

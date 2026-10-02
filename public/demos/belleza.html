@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Estudio Malva · Peluquería y estética en Nervión</title>
+<meta name="description" content="Peluquería y estética en Nervión, Sevilla. Elige tus servicios, mira el precio y pide cita por WhatsApp.">
+<meta name="theme-color" content="#86407F">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://images.unsplash.com">
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400;0,500;0,700;0,800;1,700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --fondo:#FAFAFB; --carta:#FFFFFF; --tinta:#1B1720; --gris:#5E5966; --linea:#E6E3EA;
+  --malva:#86407F; --malva-hondo:#6E3168; --malva-suave:#F4EAF3;
+  --fuente:"Schibsted Grotesk",system-ui,sans-serif;
+  --ease-out:cubic-bezier(.23,1,.32,1);
+}
+*{box-sizing:border-box;min-width:0}
+html{scroll-behavior:smooth;caret-color:var(--malva);scrollbar-color:#C9C3CF var(--fondo);overflow-x:hidden}
+body{margin:0;background:var(--fondo);color:var(--tinta);font:400 17px/1.6 var(--fuente);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+::selection{background:var(--malva);color:#fff}
+img{display:block;max-width:100%;height:auto}
+h1,h2,h3{margin:0;line-height:1.02;letter-spacing:-.03em;font-weight:800;text-wrap:balance}
+p{margin:0;text-wrap:pretty}
+a{color:inherit;text-underline-offset:.22em;text-decoration-thickness:1px}
+.env{max-width:1160px;margin:0 auto;padding:0 20px}
+:focus-visible{outline:3px solid var(--malva);outline-offset:3px;border-radius:4px}
+.saltar{position:fixed;left:12px;top:-60px;z-index:60;background:var(--tinta);color:#fff;padding:12px 18px;border-radius:8px;text-decoration:none;font-weight:700}
+.saltar:focus{top:12px}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:12px 22px;border-radius:12px;border:1.5px solid transparent;
+     font:700 16px var(--fuente);text-decoration:none;cursor:pointer;white-space:nowrap;
+     transition:background .15s var(--ease-out),border-color .15s var(--ease-out),color .15s var(--ease-out),transform .16s var(--ease-out),opacity .15s}
+.btn-malva{background:var(--malva);color:#fff}
+.btn-malva:hover{background:var(--malva-hondo)}
+.btn-linea{background:transparent;border-color:var(--tinta);color:var(--tinta)}
+.btn-linea:hover{background:var(--tinta);color:#fff}
+.btn:active{transform:scale(.97)}
+.btn[aria-disabled="true"]{opacity:.45;pointer-events:none}
+
+.cab{position:sticky;top:0;z-index:40;background:rgba(250,250,251,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--linea)}
+.cab-in{display:flex;justify-content:space-between;align-items:center;gap:14px;min-height:66px}
+.marca{display:inline-flex;align-items:center;gap:.28em;min-height:44px;font-weight:800;font-size:21px;letter-spacing:-.02em;text-decoration:none}
+.marca span{color:var(--malva)}
+
+.portada{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,64px);align-items:center;padding-top:clamp(28px,5vw,64px);padding-bottom:clamp(28px,5vw,64px)}
+.portada h1{font-size:clamp(44px,6.6vw,86px);line-height:1.06;padding-bottom:.06em}
+.portada h1 em{font-style:italic;font-weight:700;color:var(--malva)}
+.lead{margin-top:20px;font-size:clamp(17px,1.6vw,19px);color:var(--gris);max-width:40ch}
+.acciones{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+.datos{margin-top:28px;display:flex;flex-wrap:wrap;gap:6px 22px;color:var(--gris);font-size:15px}
+.datos b{color:var(--tinta);font-weight:700}
+.foto{border-radius:22px;overflow:hidden;aspect-ratio:5/6;background:var(--malva-suave)}
+.foto img{width:100%;height:100%;object-fit:cover}
+
+/* arma tu cita */
+.bloque{padding-top:clamp(48px,7vw,96px);padding-bottom:clamp(48px,7vw,96px)}
+.cita-cab h2{font-size:clamp(38px,5vw,60px)}
+.cita-cab p{margin-top:14px;color:var(--gris);max-width:52ch}
+.cita{margin-top:34px;display:grid;grid-template-columns:1.5fr 1fr;gap:clamp(20px,3vw,40px);align-items:start}
+.grupo+.grupo{margin-top:26px}
+.grupo h3{font-size:19px;letter-spacing:-.01em;margin-bottom:12px}
+.servicios{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+.serv{position:relative}
+.serv input{position:absolute;opacity:0;width:1px;height:1px}
+.serv label{display:grid;grid-template-columns:1fr auto;gap:2px 12px;min-height:64px;padding:12px 16px;border:1.5px solid var(--linea);border-radius:12px;
+            background:var(--carta);cursor:pointer;transition:border-color .15s var(--ease-out),background .15s var(--ease-out),transform .16s var(--ease-out)}
+.serv label:hover{border-color:#C9A7C5}
+.serv label:active{transform:scale(.98)}
+.serv .nom{font-weight:700}
+.serv .dur{color:var(--gris);font-size:14px;grid-column:1}
+.serv .pre{grid-column:2;grid-row:1/3;align-self:center;font-weight:700;font-variant-numeric:tabular-nums}
+.serv input:checked+label{border-color:var(--malva);background:var(--malva-suave)}
+.serv input:checked+label .nom::after{content:"";display:inline-block;width:14px;height:8px;margin-left:8px;vertical-align:3px;
+            border-left:2.5px solid var(--malva);border-bottom:2.5px solid var(--malva);transform:rotate(-45deg)}
+.serv input:focus-visible+label{outline:3px solid var(--malva);outline-offset:2px}
+
+.resumen{position:sticky;top:88px;background:var(--tinta);color:#fff;border-radius:18px;padding:24px}
+.resumen h3{font-size:18px;color:#D9CFE0;font-weight:700}
+.totales{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px}
+.totales div{background:rgba(255,255,255,.07);border-radius:12px;padding:12px 14px}
+.totales span{display:block;font-size:13.5px;color:#C7BED0}
+.totales b{display:block;font-size:30px;letter-spacing:-.02em;margin-top:2px;font-variant-numeric:tabular-nums;transition:opacity .2s,filter .2s}
+.totales b.cambia{opacity:.35;filter:blur(2px)}
+.lista{list-style:none;margin:18px 0 0;padding:0;font-size:15px;color:#E4DDEA}
+.lista li{display:flex;justify-content:space-between;gap:10px;padding:7px 0;border-top:1px solid rgba(255,255,255,.1)}
+.lista li span:last-child{font-variant-numeric:tabular-nums;color:#C7BED0}
+.vacio{margin-top:18px;color:#C7BED0;font-size:15px}
+.resumen .btn{width:100%;margin-top:18px;background:#fff;color:var(--tinta)}
+.resumen .btn:hover{background:var(--malva-suave)}
+.resumen .aviso{margin-top:10px;font-size:13px;color:#BBB2C4}
+.resumen :focus-visible{outline-color:#fff}
+
+/* estudio */
+.estudio{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,64px);align-items:center;border-top:1px solid var(--linea);padding-top:clamp(40px,6vw,80px)}
+.estudio .foto{aspect-ratio:4/3}
+.estudio h2{font-size:clamp(34px,4.4vw,52px)}
+.estudio p{margin-top:16px;color:var(--gris);max-width:46ch}
+.equipo{list-style:none;margin:24px 0 0;padding:0;display:grid;gap:0}
+.equipo li{display:flex;justify-content:space-between;gap:14px;padding:13px 0;border-top:1px solid var(--linea)}
+.equipo li span:last-child{color:var(--gris);text-align:right}
+
+.visita{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,56px);margin-top:clamp(48px,7vw,96px);background:var(--malva-suave);border-radius:22px;padding:clamp(24px,4vw,48px)}
+.visita h2{font-size:clamp(32px,4vw,48px)}
+.visita p{margin-top:12px;color:var(--gris)}
+.horas{list-style:none;margin:0;padding:0}
+.horas li{display:flex;justify-content:space-between;gap:12px;padding:12px 0;border-top:1px solid #E2CFE0;font-variant-numeric:tabular-nums}
+.horas li:first-child{border-top:none}
+
+footer{margin-top:clamp(48px,7vw,80px);border-top:1px solid var(--linea);padding:22px 0 34px;color:var(--gris);font-size:14px}
+.pie{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.pie a{display:inline-block;padding:10px 0}
+
+.barra-cita{position:fixed;left:0;right:0;bottom:0;z-index:50;background:var(--tinta);color:#fff;
+  padding:12px 16px calc(12px + env(safe-area-inset-bottom));display:none;align-items:center;justify-content:space-between;gap:12px;
+  box-shadow:0 -8px 24px -12px rgba(27,23,32,.5);transform:translateY(110%);transition:transform .3s var(--ease-out)}
+.barra-cita.ver{transform:none}
+.barra-cita p{font-size:14.5px;line-height:1.3;color:#D9CFE0}
+.barra-cita b{display:block;color:#fff;font-size:17px;font-variant-numeric:tabular-nums}
+.barra-cita .btn{background:#fff;color:var(--tinta);flex:none}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn:active,.serv label:active{transform:none}.totales b{transition:none}.barra-cita{transition:none}}
+@media(max-width:900px){
+  .portada,.cita,.estudio,.visita{grid-template-columns:1fr}
+  .foto{aspect-ratio:4/3;order:-1}
+  .estudio .foto{order:0}
+  .resumen{position:static}
+}
+@media(max-width:900px){.barra-cita{display:flex}body.con-barra{padding-bottom:84px}}
+@media(max-width:560px){
+  .servicios{grid-template-columns:1fr}
+  .acciones .btn{flex:1}
+  .visita .acciones{flex-direction:column}
+  .visita .acciones .btn{width:100%}
+}
+</style>
+</head>
+<body>
+<a class="saltar" href="#contenido">Saltar al contenido</a>
+
+<header class="cab">
+  <div class="env cab-in">
+    <a class="marca" href="#">Estudio <span>Malva</span></a>
+    <a class="btn btn-malva" href="#cita">Pedir cita</a>
+  </div>
+</header>
+
+<main id="contenido">
+  <section class="env portada">
+    <div>
+      <h1>Tu pelo, <em>sin prisas</em> y sin sorpresas en el precio</h1>
+      <p class="lead">Peluquería y estética en Nervión. Elige lo que quieres hacerte, mira cuánto cuesta y cuánto tarda, y nos lo mandas por WhatsApp.</p>
+      <div class="acciones">
+        <a class="btn btn-malva" href="#cita">Elegir servicios</a>
+        <a class="btn btn-linea" href="#visita">Horario</a>
+      </div>
+      <p class="datos"><span><b>Nervión</b>, Sevilla</span><span>Martes a sábado</span><span>Cita por <b>WhatsApp</b></span></p>
+    </div>
+    <div class="foto">
+      <img src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?auto=format&fit=crop&w=1100&q=70" width="1100" height="1320"
+           alt="Peluquera secando el pelo de una clienta con cepillo redondo" fetchpriority="high">
+    </div>
+  </section>
+
+  <section class="env bloque" id="cita" aria-labelledby="cita-tit">
+    <div class="cita-cab">
+      <h2 id="cita-tit">Arma tu cita</h2>
+      <p>Marca los servicios que quieres. Te decimos al momento el precio y el tiempo total, y te preparamos el mensaje para pedirla.</p>
+    </div>
+    <div class="cita">
+      <div id="grupos"></div>
+      <aside class="resumen" aria-labelledby="res-tit">
+        <h3 id="res-tit">Tu cita</h3>
+        <div class="totales" aria-live="polite">
+          <div><span>Tiempo</span><b id="t-tiempo">0 min</b></div>
+          <div><span>Precio</span><b id="t-precio">0 €</b></div>
+        </div>
+        <p class="vacio" id="vacio">Aún no has elegido nada. Marca uno o varios servicios.</p>
+        <ul class="lista" id="lista"></ul>
+        <a class="btn" id="wa" href="#" aria-disabled="true" rel="noopener">Pedir por WhatsApp</a>
+        <p class="aviso">Te confirmamos el hueco y el precio final antes de la cita.</p>
+      </aside>
+    </div>
+  </section>
+
+  <section class="env estudio" aria-labelledby="est-tit">
+    <div class="foto">
+      <img src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?auto=format&fit=crop&w=1200&q=70" width="1200" height="900"
+           alt="Interior de la peluquería con tres sillones frente a un espejo largo" loading="lazy">
+    </div>
+    <div>
+      <h2 id="est-tit">Tres sillones y ninguna prisa</h2>
+      <p>Trabajamos con cita para que nadie espere de pie. Cada servicio lleva su tiempo, y lo respetamos.</p>
+      <ul class="equipo">
+        <li><span>Lucía</span><span>Color y mechas</span></li>
+        <li><span>Marta</span><span>Corte y recogidos</span></li>
+        <li><span>Rocío</span><span>Estética y uñas</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="env" id="visita" aria-labelledby="vis-tit">
+    <div class="visita">
+      <div>
+        <h2 id="vis-tit">Ven a vernos</h2>
+        <p>Calle Luis de Morales, en Nervión. A cinco minutos del metro de Gran Plaza.</p>
+        <div class="acciones">
+          <a class="btn btn-malva" href="https://maps.google.com/?q=Nervion+Sevilla" rel="noopener">Abrir en el mapa</a>
+          <a class="btn btn-linea" href="tel:+34955000000">Llamar</a>
+        </div>
+      </div>
+      <ul class="horas" aria-label="Horario">
+        <li><span>Martes a viernes</span><span>10:00 – 20:00</span></li>
+        <li><span>Sábado</span><span>9:30 – 14:30</span></li>
+        <li><span>Domingo y lunes</span><span>Cerrado</span></li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+<div class="barra-cita" id="barra-cita" aria-hidden="true">
+  <p id="barra-txt"><b>0 €</b>0 servicios</p>
+  <a class="btn" id="barra-wa" href="#" tabindex="-1">Pedir por WhatsApp</a>
+</div>
+
+<footer>
+  <div class="env pie">
+    <span>Estudio Malva · Nervión, Sevilla · Fotografías de Unsplash</span>
+    <a href="../index.html#trabajos">Web de demostración con un negocio ficticio, hecha por Daniel Padilla</a>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var TEL = "34955000000";
+  var GRUPOS = [
+    ["Pelo",[["Corte y peinado",28,45],["Corte caballero",16,30],["Peinado",18,30],["Recogido",40,60]]],
+    ["Color",[["Tinte de raíz",32,60],["Mechas balayage",85,150],["Baño de color",26,40]]],
+    ["Tratamientos",[["Hidratación profunda",22,30],["Alisado de keratina",110,150]]],
+    ["Estética",[["Diseño de cejas",9,15],["Manicura semipermanente",20,45],["Pedicura",28,50]]]
+  ];
+  var cont = document.getElementById("grupos"), n = 0;
+  GRUPOS.forEach(function(g){
+    var div = document.createElement("div"); div.className = "grupo";
+    var h = document.createElement("h3"); h.textContent = g[0]; div.appendChild(h);
+    var fs = document.createElement("div"); fs.className = "servicios"; fs.setAttribute("role","group"); fs.setAttribute("aria-label",g[0]);
+    g[1].forEach(function(s){
+      var id = "s"+(n++);
+      var w = document.createElement("div"); w.className = "serv";
+      w.innerHTML = '<input type="checkbox" id="'+id+'"><label for="'+id+'"><span class="nom"></span><span class="dur"></span><span class="pre"></span></label>';
+      var inp = w.querySelector("input");
+      inp.dataset.nom = s[0]; inp.dataset.pre = s[1]; inp.dataset.dur = s[2];
+      w.querySelector(".nom").textContent = s[0];
+      w.querySelector(".dur").textContent = dur(s[2]);
+      w.querySelector(".pre").textContent = s[1] + " €";
+      inp.addEventListener("change", pintar);
+      fs.appendChild(w);
+    });
+    div.appendChild(fs); cont.appendChild(div);
+  });
+
+  function dur(m){ var h = Math.floor(m/60), r = m%60; return h ? (h+" h"+(r?" "+r+" min":"")) : (m+" min"); }
+  var bT = document.getElementById("t-tiempo"), bP = document.getElementById("t-precio");
+  function fijar(el, v){ if(el.textContent === v) return; el.classList.add("cambia"); setTimeout(function(){ el.textContent = v; el.classList.remove("cambia"); }, 110); }
+
+  function pintar(){
+    var sel = Array.prototype.filter.call(document.querySelectorAll(".serv input"), function(i){ return i.checked; });
+    var tp = 0, tm = 0, lista = document.getElementById("lista"); lista.innerHTML = "";
+    sel.forEach(function(i){
+      tp += +i.dataset.pre; tm += +i.dataset.dur;
+      var li = document.createElement("li"); li.innerHTML = "<span></span><span></span>";
+      li.children[0].textContent = i.dataset.nom; li.children[1].textContent = i.dataset.pre + " €";
+      lista.appendChild(li);
+    });
+    fijar(bT, dur(tm)); fijar(bP, tp + " €");
+    document.getElementById("vacio").hidden = sel.length > 0;
+    var wa = document.getElementById("wa");
+    if(sel.length){
+      var txt = "Hola, quería pedir cita en Estudio Malva para: " + sel.map(function(i){ return i.dataset.nom; }).join(", ") +
+                ". Son unos " + dur(tm) + ". ¿Qué huecos tenéis?";
+      wa.href = "https://wa.me/" + TEL + "?text=" + encodeURIComponent(txt);
+      wa.setAttribute("aria-disabled","false");
+    } else { wa.href = "#"; wa.setAttribute("aria-disabled","true"); }
+    document.getElementById("barra-txt").innerHTML = "<b>" + tp + " €</b>" + sel.length + (sel.length === 1 ? " servicio" : " servicios") + " · " + dur(tm);
+    document.getElementById("barra-wa").href = wa.href;
+    hayServicios = sel.length > 0; actualizarBarra();
+  }
+  var hayServicios = false, resumenVisible = false, barra = document.getElementById("barra-cita");
+  function actualizarBarra(){
+    var ver = hayServicios && !resumenVisible;
+    barra.classList.toggle("ver", ver);
+    barra.setAttribute("aria-hidden", ver ? "false" : "true");
+    document.getElementById("barra-wa").tabIndex = ver ? 0 : -1;
+    document.body.classList.toggle("con-barra", ver);
+  }
+  if("IntersectionObserver" in window){
+    new IntersectionObserver(function(e){ resumenVisible = e[0].isIntersecting; actualizarBarra(); },{threshold:.35})
+      .observe(document.querySelector(".resumen"));
+  }
+  pintar();
+})();
+</script>
+</body>
+</html>

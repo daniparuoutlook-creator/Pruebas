@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Bar Almanaque · Tapas en Sevilla</title>
+<meta name="description" content="Bar de tapas de barrio en Sevilla. Carta de tapas y raciones, pizarra del día y horario.">
+<meta name="theme-color" content="#1C2321">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://images.unsplash.com">
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --pizarra:#1C2321;      /* fondo: pizarra de bar */
+  --pizarra-2:#242D2A;
+  --tiza:#ECEDE6;         /* texto principal: tiza */
+  --tiza-2:#A7B0AB;       /* texto secundario */
+  --raya:#34403C;
+  --limon:#F2D544;        /* unico acento: tiza amarilla */
+  --display:"Big Shoulders Display",Figtree,sans-serif;
+  --texto:Figtree,system-ui,sans-serif;
+  --ease-out:cubic-bezier(.23,1,.32,1);
+}
+*{box-sizing:border-box;min-width:0}
+html{scroll-behavior:smooth;caret-color:var(--limon);scrollbar-color:var(--raya) var(--pizarra);overflow-x:hidden}
+body{margin:0;background:var(--pizarra);color:var(--tiza);font:400 17px/1.6 var(--texto);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+::selection{background:var(--limon);color:var(--pizarra)}
+img{display:block;max-width:100%;height:auto}
+h1,h2,h3{font-family:var(--display);font-weight:800;line-height:.95;letter-spacing:-.01em;margin:0;text-wrap:balance;text-transform:uppercase}
+p{margin:0;text-wrap:pretty}
+a{color:inherit;text-underline-offset:.22em;text-decoration-thickness:1px}
+.env{max-width:1180px;margin:0 auto;padding:0 20px}
+:focus-visible{outline:3px solid var(--limon);outline-offset:3px;border-radius:4px}
+.saltar{position:fixed;left:12px;top:-60px;z-index:60;background:var(--limon);color:var(--pizarra);padding:12px 18px;border-radius:6px;font-weight:600;text-decoration:none}
+.saltar:focus{top:12px}
+
+/* botones */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:12px 22px;border-radius:999px;
+     font:600 16px var(--texto);text-decoration:none;border:1.5px solid var(--limon);cursor:pointer;white-space:nowrap;
+     transition:background .15s var(--ease-out),color .15s var(--ease-out),transform .16s var(--ease-out)}
+.btn-lleno{background:var(--limon);color:var(--pizarra)}
+.btn-lleno:hover{background:#FFE36A}
+.btn-hueco{background:transparent;color:var(--tiza);border-color:var(--tiza-2)}
+.btn-hueco:hover{border-color:var(--tiza);background:var(--pizarra-2)}
+.btn:active{transform:scale(.97)}
+.btn svg{width:18px;height:18px;flex:none}
+
+/* cabecera */
+.cab{position:sticky;top:0;z-index:40;background:rgba(28,35,33,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--raya)}
+.cab-in{display:flex;align-items:center;justify-content:space-between;gap:14px;min-height:64px}
+.marca{display:inline-flex;align-items:center;min-height:44px;font-family:var(--display);font-weight:800;font-size:24px;text-transform:uppercase;letter-spacing:.01em;text-decoration:none}
+.estado{display:inline-flex;align-items:center;gap:8px;font-size:14.5px;color:var(--tiza-2)}
+.estado b{color:var(--tiza);font-weight:600}
+.punto{width:9px;height:9px;border-radius:50%;background:var(--tiza-2);flex:none}
+.estado.abierto .punto{background:#7BD389}
+.estado.cerrado .punto{background:#E0866F}
+
+/* portada */
+.portada{display:grid;grid-template-columns:1fr 1.05fr;gap:clamp(24px,4vw,56px);align-items:center;padding-top:clamp(28px,5vw,64px);padding-bottom:clamp(28px,5vw,64px)}
+.portada h1{font-size:clamp(52px,8.4vw,112px)}
+.portada h1 span{color:var(--limon)}
+.lead{margin-top:20px;font-size:clamp(17px,1.6vw,19px);color:var(--tiza-2);max-width:40ch}
+.acciones{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+.foto-portada{position:relative;border-radius:14px;overflow:hidden;aspect-ratio:4/5;background:var(--pizarra-2)}
+.foto-portada img{width:100%;height:100%;object-fit:cover}
+.foto-portada figcaption{position:absolute;left:14px;bottom:14px;background:rgba(28,35,33,.82);padding:8px 12px;border-radius:8px;font-size:13.5px;color:var(--tiza)}
+@media (prefers-reduced-motion:no-preference){
+  .foto-portada img{animation:asentar 1.1s var(--ease-out) both}
+  @keyframes asentar{from{transform:scale(1.06)}to{transform:scale(1)}}
+}
+
+/* pizarra del dia */
+.pizarra{position:relative;border-radius:18px;overflow:hidden;margin:clamp(20px,4vw,40px) 0;isolation:isolate}
+.pizarra>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;filter:saturate(.7)}
+.pizarra::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(20,26,24,.94) 0%,rgba(20,26,24,.86) 55%,rgba(20,26,24,.55) 100%)}
+.pizarra-in{padding:clamp(28px,5vw,56px);max-width:640px}
+.pizarra h2{font-size:clamp(40px,6vw,72px);color:var(--limon)}
+.pizarra .fecha{margin-top:10px;color:var(--tiza-2);font-size:15px}
+.hoy{list-style:none;margin:26px 0 0;padding:0}
+.hoy li{display:grid;grid-template-columns:1fr auto;gap:6px 16px;padding:14px 0;border-top:1px dashed rgba(236,237,230,.28)}
+.hoy li:last-child{border-bottom:1px dashed rgba(236,237,230,.28)}
+.hoy b{font-family:var(--display);font-weight:700;font-size:26px;line-height:1.05;text-transform:uppercase;letter-spacing:.01em}
+.hoy span{color:var(--tiza-2);font-size:15px;grid-column:1}
+.hoy .pvp{grid-column:2;grid-row:1/3;align-self:center;font-family:var(--display);font-weight:800;font-size:28px;color:var(--limon);font-variant-numeric:tabular-nums}
+
+/* carta */
+.bloque{padding-top:clamp(48px,7vw,88px);padding-bottom:clamp(48px,7vw,88px)}
+.carta-cab{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap}
+.carta-cab h2{font-size:clamp(44px,6vw,76px)}
+.pestanas{display:flex;flex-wrap:wrap;gap:6px}
+.pestana{min-height:44px;padding:10px 18px;border-radius:999px;border:1px solid var(--raya);background:transparent;color:var(--tiza);
+         font:500 15px var(--texto);cursor:pointer;transition:background .15s var(--ease-out),border-color .15s var(--ease-out),transform .16s var(--ease-out)}
+.pestana:hover{border-color:var(--tiza-2)}
+.pestana:active{transform:scale(.97)}
+.pestana[aria-selected="true"]{background:var(--tiza);color:var(--pizarra);border-color:var(--tiza)}
+.tabla{margin-top:28px;width:100%;border-collapse:collapse}
+.tabla caption{text-align:left;color:var(--tiza-2);font-size:14.5px;padding-bottom:10px}
+.tabla th{font:600 13.5px var(--texto);color:var(--tiza-2);text-align:right;padding:0 0 10px 16px;white-space:nowrap}
+.tabla th:first-child{text-align:left;padding-left:0}
+.tabla td{padding:16px 0;border-top:1px solid var(--raya);vertical-align:baseline}
+.tabla td.pvp{text-align:right;padding-left:16px;font-variant-numeric:tabular-nums;white-space:nowrap;font-weight:600;width:1%}
+.tabla td.pvp.no{color:var(--raya)}
+.plato{font-weight:600;font-size:18px}
+.nota{display:block;color:var(--tiza-2);font-size:14.5px;margin-top:2px}
+.carta-pie{margin-top:18px;color:var(--tiza-2);font-size:14.5px}
+
+/* horario y sitio */
+.info{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(24px,4vw,56px);border-top:1px solid var(--raya);padding-top:clamp(40px,6vw,72px)}
+.info h2{font-size:clamp(40px,5.2vw,64px)}
+.info-txt{margin-top:18px;color:var(--tiza-2);max-width:46ch}
+.horas{list-style:none;margin:0;padding:0;background:var(--pizarra-2);border-radius:14px;padding:8px 22px}
+.horas li{display:flex;justify-content:space-between;gap:16px;padding:14px 0;border-top:1px solid var(--raya);font-variant-numeric:tabular-nums}
+.horas li:first-child{border-top:none}
+.horas li.hoy-es{color:var(--limon);font-weight:600}
+.horas span:last-child{text-align:right;white-space:pre-line}
+.direccion{margin-top:22px;display:flex;flex-wrap:wrap;gap:10px}
+
+/* cierre */
+.cierre{text-align:left;background:var(--limon);color:var(--pizarra);border-radius:18px;padding:clamp(28px,5vw,56px);margin:clamp(40px,6vw,72px) 0;
+        display:flex;justify-content:space-between;align-items:center;gap:22px;flex-wrap:wrap}
+.cierre h2{font-size:clamp(36px,5vw,60px);max-width:14ch}
+.cierre p{margin-top:10px;max-width:40ch}
+.cierre .btn-lleno{background:var(--pizarra);color:var(--tiza);border-color:var(--pizarra)}
+.cierre .btn-lleno:hover{background:#2C3733}
+.cierre :focus-visible{outline-color:var(--pizarra)}
+
+footer{border-top:1px solid var(--raya);padding:24px 0 34px;color:var(--tiza-2);font-size:14px}
+.pie{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.pie a{display:inline-block;padding:10px 0}
+
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn:active,.pestana:active{transform:none}}
+@media(max-width:860px){
+  .portada,.info{grid-template-columns:1fr}
+  .foto-portada{aspect-ratio:4/3;order:-1}
+  .pizarra::before{background:linear-gradient(180deg,rgba(20,26,24,.9),rgba(20,26,24,.95))}
+  .estado span.largo{display:none}
+}
+@media(max-width:520px){
+  .cab-in .btn{padding:10px 16px}
+  .acciones .btn{flex:1}
+  .hoy b{font-size:22px}
+  .plato{font-size:16.5px}
+}
+</style>
+</head>
+<body>
+<a class="saltar" href="#contenido">Saltar al contenido</a>
+
+<header class="cab">
+  <div class="env cab-in">
+    <a class="marca" href="#">Almanaque</a>
+    <p class="estado" id="estado" aria-live="polite"><span class="punto" aria-hidden="true"></span><span id="estado-txt">Horario</span></p>
+    <a class="btn btn-lleno" href="tel:+34954000000">Llamar</a>
+  </div>
+</header>
+
+<main id="contenido">
+  <section class="env portada">
+    <div>
+      <h1>Tapas de siempre en <span>la calle Feria</span></h1>
+      <p class="lead">Guisos del día, frituras al momento y vermú de grifo. Bar de barrio desde que había mercado.</p>
+      <div class="acciones">
+        <a class="btn btn-lleno" href="#carta">Ver la carta</a>
+        <a class="btn btn-hueco" href="#donde">Cómo llegar</a>
+      </div>
+    </div>
+    <figure class="foto-portada" style="margin:0">
+      <img src="https://images.unsplash.com/photo-1656423521731-9665583f100c?auto=format&fit=crop&w=1200&q=70" width="1200" height="1500"
+           alt="Mesa con varias tapas y bebidas" fetchpriority="high">
+      <figcaption>Mesa de la barra, un jueves cualquiera</figcaption>
+    </figure>
+  </section>
+
+  <section class="env" aria-labelledby="pizarra-tit">
+    <div class="pizarra">
+      <img src="https://images.unsplash.com/photo-1625418277638-6db2d521a78c?auto=format&fit=crop&w=1600&q=60" width="1600" height="900" alt="" loading="lazy">
+      <div class="pizarra-in">
+        <h2 id="pizarra-tit">La pizarra de hoy</h2>
+        <p class="fecha" id="fecha-hoy">Fuera de carta</p>
+        <ul class="hoy">
+          <li><b>Tortilla de camarones</b><span>Fina, crujiente, recién hecha</span><strong class="pvp">3,50 €</strong></li>
+          <li><b>Atún encebollado</b><span>Guiso de la casa, con pan de Alcalá</span><strong class="pvp">4,50 €</strong></li>
+          <li><b>Salmorejo</b><span>Con huevo y jamón picado</span><strong class="pvp">3,80 €</strong></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="env bloque" id="carta" aria-labelledby="carta-tit">
+    <div class="carta-cab">
+      <h2 id="carta-tit">La carta</h2>
+      <div class="pestanas" role="tablist" aria-label="Secciones de la carta">
+        <button class="pestana" role="tab" aria-selected="true" aria-controls="panel-carta" data-g="picar">Para picar</button>
+        <button class="pestana" role="tab" aria-selected="false" aria-controls="panel-carta" data-g="frito">Frituras</button>
+        <button class="pestana" role="tab" aria-selected="false" aria-controls="panel-carta" data-g="guiso">Guisos</button>
+        <button class="pestana" role="tab" aria-selected="false" aria-controls="panel-carta" data-g="beber">Para beber</button>
+      </div>
+    </div>
+    <div id="panel-carta" role="tabpanel" aria-live="polite">
+      <table class="tabla">
+        <caption id="carta-caption">Para picar</caption>
+        <thead><tr><th scope="col">Plato</th><th scope="col">Tapa</th><th scope="col" class="racion">Ración</th></tr></thead>
+        <tbody id="carta-cuerpo"></tbody>
+      </table>
+    </div>
+    <p class="carta-pie">Precios con IVA incluido. Pregunta por alérgenos en la barra: te lo decimos plato a plato.</p>
+  </section>
+
+  <section class="env info" id="donde" aria-labelledby="donde-tit">
+    <div>
+      <h2 id="donde-tit">Dónde y cuándo</h2>
+      <p class="info-txt">Calle Feria, a dos pasos del mercado. Sin reservas en barra; para mesas de más de seis, mejor llamar antes.</p>
+      <div class="direccion">
+        <a class="btn btn-lleno" href="https://maps.google.com/?q=Calle+Feria+Sevilla" rel="noopener">Abrir en el mapa</a>
+        <a class="btn btn-hueco" href="https://wa.me/34954000000">WhatsApp</a>
+      </div>
+    </div>
+    <ul class="horas" id="horas" aria-label="Horario de apertura"></ul>
+  </section>
+
+  <section class="env">
+    <div class="cierre">
+      <div>
+        <h2>¿Vienes con gente?</h2>
+        <p>Para grupos guardamos la mesa del fondo. Una llamada y te la tenemos lista.</p>
+      </div>
+      <a class="btn btn-lleno" href="tel:+34954000000">Llamar al bar</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="env pie">
+    <span>Bar Almanaque · Calle Feria, Sevilla · Fotografías de Unsplash</span>
+    <a href="../index.html#trabajos">Web de demostración con un negocio ficticio, hecha por Daniel Padilla</a>
+  </div>
+</footer>
+
+<script>
+(function(){
+  /* horario: [dia 0=domingo], tramos en minutos desde medianoche */
+  var H = {
+    0:[[750,990],[1200,1440]], 1:[], 2:[[750,990],[1200,1440]], 3:[[750,990],[1200,1440]],
+    4:[[750,990],[1200,1440]], 5:[[750,990],[1200,1500]], 6:[[750,990],[1200,1500]]
+  };
+  var DIAS = ["Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado"];
+  function hm(m){ m = m % 1440; var h = Math.floor(m/60), mi = m%60; return (h<10?"0":"") + h + ":" + (mi<10?"0":"") + mi; }
+  function tramosTxt(d){ return H[d].length ? H[d].map(function(t){return hm(t[0])+"\u00a0–\u00a0"+hm(t[1]);}).join("\n") : "Cerrado"; }
+
+  var ahora = new Date(), dia = ahora.getDay(), min = ahora.getHours()*60 + ahora.getMinutes();
+
+  /* lista de horario, empezando por el lunes y marcando hoy */
+  var ul = document.getElementById("horas");
+  [1,2,3,4,5,6,0].forEach(function(d){
+    var li = document.createElement("li");
+    if(d === dia) li.className = "hoy-es";
+    li.innerHTML = "<span></span><span></span>";
+    li.children[0].textContent = DIAS[d] + (d === dia ? " (hoy)" : "");
+    li.children[1].textContent = tramosTxt(d);
+    ul.appendChild(li);
+  });
+
+  /* estado en vivo: comprueba el tramo de hoy y el que cruza medianoche desde ayer */
+  function abiertoAhora(){
+    var ayer = (dia+6)%7, t, i;
+    for(i=0;i<H[dia].length;i++){ t=H[dia][i]; if(min>=t[0] && min<t[1]) return t[1]; }
+    for(i=0;i<H[ayer].length;i++){ t=H[ayer][i]; if(t[1]>1440 && min < t[1]-1440) return t[1]; }
+    return null;
+  }
+  function proximaApertura(){
+    for(var k=0;k<8;k++){
+      var d=(dia+k)%7;
+      for(var i=0;i<H[d].length;i++){
+        var t=H[d][i];
+        if(k>0 || t[0]>min) return (k===0?"hoy":k===1?"mañana":DIAS[d].toLowerCase()) + " a las " + hm(t[0]);
+      }
+    }
+    return "pronto";
+  }
+  var el = document.getElementById("estado"), txt = document.getElementById("estado-txt");
+  var cierra = abiertoAhora();
+  if(cierra !== null){
+    el.className = "estado abierto";
+    txt.innerHTML = "<b>Abierto</b> <span class='largo'>· cierra a las " + hm(cierra) + "</span>";
+  } else {
+    el.className = "estado cerrado";
+    txt.innerHTML = "<b>Cerrado</b> <span class='largo'>· abre " + proximaApertura() + "</span>";
+  }
+  document.getElementById("fecha-hoy").textContent =
+    "Fuera de carta · " + ahora.toLocaleDateString("es-ES",{weekday:"long",day:"numeric",month:"long"});
+
+  /* carta */
+  var CARTA = {
+    picar:{t:"Para picar",p:[
+      ["Aceitunas aliñadas","De la casa, con ajo y orégano","2,50",""],
+      ["Queso viejo de oveja","Curado en aceite","4,50","11,00"],
+      ["Chicharrones de Cádiz","Con limón y comino","3,50","8,50"],
+      ["Ensaladilla","La de siempre, con picos","3,50","8,00"]]},
+    frito:{t:"Frituras",p:[
+      ["Croquetas de puchero","Cuatro unidades","","7,50"],
+      ["Pavía de bacalao","Con pimiento morrón","3,50",""],
+      ["Boquerones fritos","En adobo suave","4,00","9,50"],
+      ["Patatas bravas","Salsa brava picante de verdad","3,50","6,50"]]},
+    guiso:{t:"Guisos",p:[
+      ["Espinacas con garbanzos","Receta sevillana, con comino","3,80","8,50"],
+      ["Carrillada al oloroso","Hecha a fuego lento, dos días","4,80","13,00"],
+      ["Menudo","Solo fines de semana","4,50","11,00"]]},
+    beber:{t:"Para beber",p:[
+      ["Caña","Cruzcampo de grifo","1,80",""],
+      ["Manzanilla de Sanlúcar","Copa","2,50",""],
+      ["Vermú de grifo","Con naranja y aceituna","3,00",""],
+      ["Tinto de verano","Con limón o con gaseosa","2,80",""]]}
+  };
+  var cuerpo = document.getElementById("carta-cuerpo"), cap = document.getElementById("carta-caption");
+  function pintar(g){
+    cap.textContent = CARTA[g].t;
+    cuerpo.innerHTML = "";
+    CARTA[g].p.forEach(function(r){
+      var tr = document.createElement("tr");
+      tr.innerHTML = "<td><span class='plato'></span><span class='nota'></span></td><td class='pvp'></td><td class='pvp racion'></td>";
+      tr.querySelector(".plato").textContent = r[0];
+      tr.querySelector(".nota").textContent = r[1];
+      var c = tr.querySelectorAll(".pvp");
+      c[0].textContent = r[2] ? r[2]+" €" : "—"; if(!r[2]) c[0].classList.add("no");
+      c[1].textContent = r[3] ? r[3]+" €" : "—"; if(!r[3]) c[1].classList.add("no");
+      cuerpo.appendChild(tr);
+    });
+  }
+  var tabs = document.querySelectorAll(".pestana");
+  Array.prototype.forEach.call(tabs, function(b){
+    b.addEventListener("click", function(){
+      Array.prototype.forEach.call(tabs, function(o){ o.setAttribute("aria-selected","false"); });
+      b.setAttribute("aria-selected","true"); pintar(b.dataset.g);
+    });
+  });
+  pintar("picar");
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,1075 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Diseño web en Sevilla y en remoto · Daniel Padilla</title>
+<meta name="description" content="Diseño, arreglo y mantenimiento de webs para negocios, y asistentes con IA. Base en Sevilla y en remoto para cualquier país. Precio cerrado y dominio a tu nombre.">
+<meta name="theme-color" content="#16191F">
+<meta property="og:title" content="Diseño web en Sevilla y en remoto · Daniel Padilla">
+<meta property="og:description" content="Webs para negocios y asistentes con IA. Base en Sevilla, en remoto a cualquier país. Precio cerrado y dominio a tu nombre.">
+<meta property="og:locale" content="es_ES">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://web.daniparuoutlook.workers.dev/">
+<meta property="og:image" content="https://web.daniparuoutlook.workers.dev/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Daniel Padilla · Diseño y desarrollo web desde Sevilla">
+<meta property="og:site_name" content="Daniel Padilla · Desarrollo Web">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="author" content="Daniel Padilla">
+<link rel="canonical" href="https://web.daniparuoutlook.workers.dev/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%2316191F'/%3E%3Ctext x='32' y='44' font-family='Arial,sans-serif' font-size='34' font-weight='bold' fill='%23FFE24A' text-anchor='middle'%3EdP%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Archivo:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* =====================================================================
+   1. TOKENS — cambia aqui los colores, tipos y espaciados de toda la web
+   ===================================================================== */
+:root{
+  --papel:#EDEFF2;
+  --carta:#FFFFFF;
+  --tinta:#16191F;
+  --azul:#1F3BD6;
+  --azul-hondo:#152BA0;
+  --marcador:#FFE24A;
+  --gris:#5B6470;
+  --linea:#D5DAE1;
+  --linea-oscura:#2C313B;
+  --tenue:#9AA6B8;
+  --tenue-2:#7F8CA0;         /* texto secundario sobre fondo oscuro */
+  --borde-oscuro:#454B57;    /* bordes sobre fondo oscuro */
+  --hover-oscuro:#252A33;    /* fondo al pasar por encima, sobre oscuro */
+  --borde-oscuro-2:#6B7381;
+  --ease-out:cubic-bezier(.23,1,.32,1);   /* salida rapida: la curva que recomienda Emil Kowalski */
+
+  --display:"Bricolage Grotesque",Archivo,sans-serif;
+  --texto:Archivo,system-ui,sans-serif;
+
+  --paso:clamp(56px,7vw,92px);
+  --radio:8px;
+  --ancho-max:1120px;
+}
+
+/* =====================================================================
+   2. BASE
+   ===================================================================== */
+*{box-sizing:border-box;min-width:0}
+img,svg,iframe,video{max-width:100%}
+html{scroll-behavior:smooth;scroll-padding-top:86px;overflow-x:hidden}
+body{overflow-x:hidden;max-width:100%}
+body{margin:0;background:var(--papel);color:var(--tinta);
+     font:400 17px/1.6 var(--texto);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+h1,h2,h3{font-family:var(--display);margin:0;line-height:1.05;letter-spacing:-.02em}
+h1{font-weight:700}
+h2{font-weight:700;font-size:clamp(30px,4.2vw,44px)}
+h3{font-weight:500}
+p{margin:0}
+a{color:inherit;text-underline-offset:.22em;text-decoration-thickness:1px}
+button{font-family:inherit}
+::selection{background:var(--marcador);color:var(--tinta)}
+html{caret-color:var(--azul);scrollbar-color:var(--gris) var(--papel)}
+h1,h2,h3{text-wrap:balance}
+p{text-wrap:pretty}
+.saltar{position:fixed;left:12px;top:-60px;z-index:100;background:var(--tinta);color:#fff;
+        padding:12px 18px;border-radius:6px;text-decoration:none;font-weight:600;transition:top .2s var(--ease-out)}
+.saltar:focus{top:12px}
+.env{max-width:var(--ancho-max);margin:0 auto;padding:0 24px}
+.bloque{padding-top:var(--paso);padding-bottom:var(--paso)}
+.medida{max-width:56ch}
+.claro{background:var(--carta);border-top:1px solid var(--linea);border-bottom:1px solid var(--linea)}
+:focus-visible{outline:3px solid var(--azul);outline-offset:3px}
+
+/* =====================================================================
+   3. BOTONES
+   ===================================================================== */
+.boton{display:inline-flex;align-items:center;gap:9px;white-space:nowrap;background:var(--azul);color:#fff;
+       text-decoration:none;font-weight:600;font-size:15.5px;padding:12px 22px;border-radius:6px;
+       border:1px solid var(--azul);cursor:pointer;transition:background .15s,border-color .15s}
+.boton:hover,.boton:focus-visible{background:var(--azul-hondo);border-color:var(--azul-hondo)}
+.boton,.chip,.tel,.wa,.opcion span{transition-property:background,border-color,color,transform;
+       transition-duration:.15s,.15s,.15s,.16s;transition-timing-function:var(--ease-out)}
+.boton:active,.chip:active,.tel:active,.wa:active,.opcion:active span{transform:scale(.97)}
+.boton-claro{background:transparent;color:var(--tinta);border-color:var(--tinta)}
+.boton-claro:hover,.boton-claro:focus-visible{background:var(--tinta);color:#fff}
+
+/* =====================================================================
+   4. CABECERA con indicador de seccion activa
+   ===================================================================== */
+.cab{position:sticky;top:0;z-index:40;background:rgba(237,239,242,.93);
+     backdrop-filter:blur(10px);border-bottom:1px solid var(--linea)}
+.cab-in{display:flex;align-items:center;justify-content:space-between;gap:16px;
+        max-width:var(--ancho-max);margin:0 auto;padding:14px 24px}
+.logo{display:inline-flex;align-items:center;gap:.3em;min-height:44px;font-family:var(--display);font-weight:700;font-size:18px;text-decoration:none;letter-spacing:-.02em}
+.logo span{font-weight:500;color:var(--gris)}
+.cab nav{display:flex;align-items:center;gap:26px}
+.cab nav a{position:relative;text-decoration:none;font-size:15px;color:var(--gris);padding:4px 0}
+.cab nav a::after{content:"";position:absolute;left:0;right:0;bottom:-2px;height:2px;
+                  background:var(--azul);transform:scaleX(0);transform-origin:left;transition:transform .22s var(--ease-out)}
+.cab nav a:hover{color:var(--tinta)}
+.cab nav a.activo{color:var(--tinta)}
+.cab nav a.activo::after{transform:scaleX(1)}
+
+/* =====================================================================
+   5. PORTADA y PANEL DE HALLAZGOS
+   ===================================================================== */
+.portada{padding-top:clamp(48px,7vw,84px);padding-bottom:var(--paso)}
+.portada-rejilla{display:grid;grid-template-columns:1.02fr .98fr;gap:clamp(32px,5vw,64px);align-items:start}
+.portada h1{font-size:clamp(38px,5.6vw,62px);max-width:14ch}
+.subtitulo{margin-top:22px;font-size:clamp(18px,2vw,20px);color:var(--gris);max-width:44ch;line-height:1.5}
+.acciones{margin-top:32px;display:flex;flex-wrap:wrap;gap:12px}
+.datos-rapidos{margin-top:34px;display:flex;flex-wrap:wrap;gap:8px 28px;font-size:15px;color:var(--gris)}
+.datos-rapidos b{font-weight:500;color:var(--tinta)}
+
+.hallazgos{background:var(--tinta);color:#E9ECF2;border-radius:10px;padding:clamp(24px,3vw,32px);
+           box-shadow:0 18px 44px -28px rgba(22,25,31,.75)}
+.hallazgos-tit{font-family:var(--display);font-weight:500;font-size:16px;color:var(--tenue);margin-bottom:4px}
+.hallazgos-sub{font-size:14.5px;color:var(--tenue-2);margin-bottom:18px;line-height:1.5}
+
+.hallazgo{border-top:1px solid var(--linea-oscura)}
+.hallazgo:first-of-type{border-top:none}
+.hallazgo summary{display:block;list-style:none;cursor:pointer;padding:14px 0;position:relative}
+.hallazgo summary::-webkit-details-marker{display:none}
+.quien{font-size:13.5px;color:var(--tenue-2);margin-bottom:5px}
+.hallazgo summary p:last-child{font-size:16px;line-height:1.48;padding-right:26px}
+.hallazgo summary::after{content:"";position:absolute;right:2px;top:19px;width:14px;height:14px;color:var(--marcador);
+  background:linear-gradient(currentColor,currentColor) center/100% 2px no-repeat,
+             linear-gradient(currentColor,currentColor) center/2px 100% no-repeat;
+  transition:background-size .2s var(--ease-out)}
+.hallazgo[open] summary::after{background-size:100% 2px,2px 0}
+.hallazgo .detalle{font-size:15px;line-height:1.55;color:var(--tenue);padding:0 26px 0 0;margin:0 0 16px}
+.hallazgos-pie{margin-top:18px;padding-top:16px;border-top:1px solid var(--linea-oscura);
+               font-size:13.5px;color:var(--tenue-2);line-height:1.5}
+
+.marca{background-image:linear-gradient(var(--marcador),var(--marcador));background-repeat:no-repeat;
+       background-size:100% 100%;background-position:0 0;color:var(--tinta);
+       padding:1px 5px;border-radius:2px;font-weight:500;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+@media (prefers-reduced-motion:no-preference){
+  .marca{background-size:0% 100%;animation:marcar .45s var(--ease-out) forwards}
+  .hallazgo:nth-of-type(1) .marca{animation-delay:.45s}
+  .hallazgo:nth-of-type(2) .marca{animation-delay:.70s}
+  .hallazgo:nth-of-type(3) .marca{animation-delay:.95s}
+  .hallazgo:nth-of-type(4) .marca{animation-delay:1.2s}
+}
+@keyframes marcar{to{background-size:100% 100%}}
+
+/* =====================================================================
+   6. LISTA DE SERVICIOS Y PRECIOS
+   ===================================================================== */
+.lista-precios{margin-top:40px;border-top:1px solid var(--linea)}
+.servicio{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:20px 40px;align-items:baseline;
+          padding:26px 0;border-bottom:1px solid var(--linea)}
+.servicio h3{font-size:22px}
+.servicio p{margin-top:8px;color:var(--gris);font-size:16px;max-width:60ch;line-height:1.55}
+.precio{font-variant-numeric:tabular-nums;font-family:var(--display);font-weight:700;font-size:clamp(22px,3vw,28px);
+        white-space:nowrap;text-align:right}
+.precio small{display:block;font-family:var(--texto);font-weight:400;font-size:13.5px;
+              color:var(--gris);margin-top:3px}
+.nota-precios{margin-top:26px;font-size:15px;color:var(--gris);max-width:70ch;line-height:1.55}
+
+/* =====================================================================
+   7. ESTIMADOR DE PRESUPUESTO
+   ===================================================================== */
+.estimador{margin-top:46px;display:grid;grid-template-columns:1.1fr .9fr;
+           border:1px solid var(--linea);border-radius:10px;overflow:hidden;background:var(--papel)}
+.estimador-campos{padding:clamp(22px,3vw,30px)}
+.estimador h3{font-size:21px}
+.estimador-ayuda{margin-top:6px;font-size:14.5px;color:var(--gris);line-height:1.5}
+.grupo{margin-top:22px}
+.grupo-tit{font-size:14px;color:var(--gris);margin-bottom:10px}
+.opciones{display:flex;flex-wrap:wrap;gap:8px}
+.opcion{position:relative;display:inline-block}
+.opcion input{position:absolute;opacity:0;width:0;height:0}
+.opcion span{display:flex;align-items:center;min-height:44px;padding:10px 16px;border:1px solid var(--linea);border-radius:22px;
+             background:var(--carta);cursor:pointer;font-size:15px}
+.opcion span:hover{border-color:var(--azul)}
+.opcion input:checked+span{background:var(--tinta);color:#fff;border-color:var(--tinta)}
+.opcion input:focus-visible+span{outline:3px solid var(--azul);outline-offset:2px}
+
+.estimador-total{background:var(--tinta);color:#fff;padding:clamp(24px,3vw,32px);
+                 display:flex;flex-direction:column;justify-content:center}
+.total-et{font-size:14.5px;color:var(--tenue)}
+.total-cifra{font-variant-numeric:tabular-nums;font-family:var(--display);font-weight:700;font-size:clamp(32px,8vw,54px);
+             overflow-wrap:break-word;
+             line-height:1;margin:10px 0 2px}
+.total-mes{font-size:16px;color:var(--marcador);min-height:24px}
+.total-desglose{margin-top:22px;padding-top:18px;border-top:1px solid var(--linea-oscura);
+                font-size:14.5px;color:var(--tenue);line-height:1.6}
+.total-desglose ul{margin:0;padding-left:18px}
+.total-nota{margin-top:18px;font-size:13px;color:var(--tenue-2);line-height:1.5}
+
+/* =====================================================================
+   8. VISOR DE PANTALLAS
+   ===================================================================== */
+.visor{margin-top:40px;border:1px solid var(--linea);border-radius:10px;background:var(--carta);overflow:hidden}
+.visor-barra{display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between;
+             padding:16px 20px;border-bottom:1px solid var(--linea)}
+.visor-demos{display:flex;flex-wrap:wrap;gap:6px}
+.chip{min-height:44px;padding:10px 16px;border:1px solid var(--linea);background:var(--papel);border-radius:22px;
+      cursor:pointer;font-size:14.5px;color:var(--tinta)}
+.chip:hover{border-color:var(--azul)}
+.chip.activo{background:var(--tinta);color:#fff;border-color:var(--tinta)}
+.visor-medida{display:flex;align-items:center;gap:12px;flex:1;min-width:250px;justify-content:flex-end}
+.visor-medida input[type=range]{flex:1;max-width:220px;height:44px;margin:0;background:transparent;
+  -webkit-appearance:none;appearance:none;cursor:pointer;touch-action:pan-y}
+.visor-medida input[type=range]::-webkit-slider-runnable-track{height:4px;border-radius:2px;background:var(--linea)}
+.visor-medida input[type=range]::-moz-range-track{height:4px;border-radius:2px;background:var(--linea)}
+.visor-medida input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:24px;height:24px;margin-top:-10px;
+  border-radius:50%;background:var(--azul);border:3px solid #fff;box-shadow:0 1px 4px rgba(22,25,31,.35)}
+.visor-medida input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;background:var(--azul);
+  border:3px solid #fff;box-shadow:0 1px 4px rgba(22,25,31,.35)}
+.visor-medida input[type=range]:focus-visible{outline:3px solid var(--azul);outline-offset:4px;border-radius:4px}
+.medida-et{font-variant-numeric:tabular-nums;font-family:var(--display);font-weight:500;font-size:14.5px;
+           white-space:nowrap;min-width:152px;text-align:right}
+.visor-lienzo{padding:22px;display:flex;justify-content:center;background:var(--papel)}
+.marco{border-radius:6px;overflow:hidden;background:#fff;box-shadow:0 8px 22px -12px rgba(22,25,31,.4)}
+.marco iframe{border:0;display:block;transform-origin:top left;pointer-events:none}
+.visor-lienzo{position:relative}
+.visor-aviso{margin-top:12px;font-size:13px;color:var(--gris);text-align:center}
+.visor-pie{padding:14px 20px;border-top:1px solid var(--linea);font-size:14.5px;color:var(--gris)}
+
+/* =====================================================================
+   9. TARJETAS DE TRABAJOS
+   ===================================================================== */
+.trabajos-rejilla{margin-top:26px;display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.trabajo{background:var(--carta);border:1px solid var(--linea);border-radius:10px;overflow:hidden;
+         display:flex;flex-direction:column;text-decoration:none;transition:border-color .15s}
+.trabajo:hover,.trabajo:focus-visible{border-color:var(--azul)}
+.muestra{height:150px;display:flex;align-items:flex-end;padding:16px 18px;background-size:cover;background-position:center;
+         font-family:var(--display);font-weight:700;font-size:20px;color:#fff}
+.m1{background-image:linear-gradient(180deg,rgba(22,25,31,.05) 30%,rgba(22,25,31,.78)),url("https://images.unsplash.com/photo-1625418277638-6db2d521a78c?auto=format&fit=crop&w=800&q=60")}
+.m2{background-image:linear-gradient(180deg,rgba(22,25,31,.05) 30%,rgba(22,25,31,.78)),url("https://images.unsplash.com/photo-1580618672591-eb180b1a973f?auto=format&fit=crop&w=800&q=60")}
+.m3{background-image:linear-gradient(180deg,rgba(22,25,31,.05) 30%,rgba(22,25,31,.78)),url("https://images.unsplash.com/photo-1643660527071-52e37cf7c7ea?auto=format&fit=crop&w=800&q=60")}
+.m4{background-image:linear-gradient(180deg,rgba(22,25,31,.05) 30%,rgba(22,25,31,.78)),url("https://images.unsplash.com/photo-1778493754612-7afb7b5e7711?auto=format&fit=crop&w=800&q=60")}
+.m5{background:linear-gradient(140deg,#2A3068,#1B1E3A)}
+.trabajo:last-child:nth-child(odd){grid-column:1/-1}
+.trabajo-txt{padding:18px 18px 20px}
+.trabajo h3{font-size:18px}
+.trabajo p{margin-top:7px;font-size:15px;color:var(--gris);line-height:1.5}
+.etiquetas{margin-top:14px;display:flex;flex-wrap:wrap;gap:6px}
+.etiqueta{font-size:12.5px;color:var(--gris);border:1px solid var(--linea);border-radius:20px;padding:3px 10px}
+/* Grupos: cada bloque de ejemplos corresponde a un servicio de la lista de precios.
+   OJO: si cambia un precio en Servicios o Automatizaciones, cambiarlo tambien aqui. */
+.grupo-trabajos{margin-top:56px}
+.grupo-cab{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:6px 24px;
+           padding-bottom:14px;border-bottom:1px solid var(--linea)}
+.grupo-cab h3{font-size:28px}
+.grupo-cab p{font-size:15px;color:var(--gris);line-height:1.45}
+.grupo-cab strong{font-weight:600;color:var(--tinta);font-variant-numeric:tabular-nums}
+.grupo-trabajos .trabajos-rejilla{margin-top:20px}
+.grupo-cab .nw{white-space:nowrap}
+/* Hueco de una demo que aun no existe: compacto para no alargar la pagina en movil */
+.trabajo-prep{min-height:96px;justify-content:center;gap:4px;padding-top:18px;padding-bottom:18px;padding-left:18px;padding-right:18px;
+              background:var(--papel);border-style:dashed;border-color:var(--borde-oscuro-2)}
+.trabajo-prep:hover{border-color:var(--borde-oscuro-2)}
+.trabajo .prep-sector{margin-top:0;color:var(--tinta);font-family:var(--display);font-weight:500;font-size:17px;line-height:1.2}
+.trabajo .prep-estado{margin-top:0;font-size:14px;color:var(--gris);line-height:1.4}
+.aviso-demos{margin-top:22px;font-size:14.5px;color:var(--gris);max-width:70ch;line-height:1.55}
+
+/* =====================================================================
+   10. PREGUNTAS
+   ===================================================================== */
+.faq{margin-top:38px;max-width:76ch}
+.faq details{background:var(--carta);border:1px solid var(--linea);border-radius:var(--radio);margin-bottom:10px}
+.faq summary{padding:18px 22px;cursor:pointer;list-style:none;font-weight:500;font-size:17.5px;
+             display:flex;justify-content:space-between;align-items:center;gap:18px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"";width:16px;height:16px;flex:none;color:var(--azul);
+  background:linear-gradient(currentColor,currentColor) center/100% 2px no-repeat,
+             linear-gradient(currentColor,currentColor) center/2px 100% no-repeat;
+  transition:background-size .2s var(--ease-out)}
+.faq details[open] summary::after{background-size:100% 2px,2px 0}
+.faq details[open] summary{border-bottom:1px solid var(--linea)}
+.faq details p{padding:18px 22px 20px;color:var(--gris);line-height:1.6}
+
+/* =====================================================================
+   11. PROCESO, QUIEN SOY, CONTACTO, PIE
+   ===================================================================== */
+.pasos{margin-top:40px;display:grid;grid-template-columns:repeat(4,1fr);gap:26px}
+.paso{border-top:2px solid var(--tinta);padding-top:16px}
+.num{font-family:var(--display);font-weight:700;font-size:15px;color:var(--azul)}
+.paso h3{font-size:18px;margin-top:6px}
+.paso p{margin-top:8px;font-size:15px;color:var(--gris);line-height:1.55}
+
+.yo-rejilla{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,5vw,64px)}
+.yo p+p{margin-top:16px}
+.yo p{color:var(--gris);line-height:1.65}
+.yo strong{color:var(--tinta);font-weight:500}
+.ficha{background:var(--carta);border:1px solid var(--linea);border-radius:10px;padding:26px 24px;align-self:start}
+.ficha div{display:flex;justify-content:space-between;gap:18px;padding:11px 0;
+           border-bottom:1px solid var(--linea);font-size:15.5px}
+.ficha div:last-child{border-bottom:none}
+.ficha span:first-child{color:var(--gris)}
+.ficha span:last-child{text-align:right}
+
+.contacto{background:var(--tinta);color:#fff}
+.contacto h2{color:#fff;max-width:16ch}
+.contacto p{margin-top:18px;color:var(--tenue);max-width:48ch;line-height:1.6}
+.vias{margin-top:34px;display:flex;flex-wrap:wrap;gap:14px}
+.tel{display:inline-flex;align-items:center;gap:10px;background:#fff;color:var(--tinta);text-decoration:none;
+     font-family:var(--display);font-weight:700;font-size:clamp(20px,3vw,26px);padding:14px 26px;
+     border-radius:6px;letter-spacing:-.01em}
+.tel:hover,.tel:focus-visible{background:var(--marcador)}
+.wa{display:inline-flex;align-items:center;gap:10px;border:1px solid var(--borde-oscuro);color:#fff;text-decoration:none;
+    font-weight:600;font-size:16px;padding:14px 26px;border-radius:6px}
+.wa:hover,.wa:focus-visible{background:var(--hover-oscuro);border-color:var(--borde-oscuro-2)}
+.horario{margin-top:26px;font-size:14.5px;color:var(--tenue-2)}
+.contacto :focus-visible{outline-color:var(--marcador)}
+
+footer{padding:26px 0;font-size:14.5px;color:var(--gris)}
+.pie{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;align-items:center}
+.pie a{display:inline-block;padding:12px 2px}
+
+/* =====================================================================
+   12. RESPONSIVE Y MOVIMIENTO REDUCIDO
+   ===================================================================== */
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .boton:active,.chip:active,.tel:active,.wa:active,.opcion:active span{transform:none}
+  .cab nav a::after,.saltar{transition:none}
+}
+@media(max-width:940px){
+  .portada-rejilla,.yo-rejilla,.estimador{grid-template-columns:1fr}
+  .portada{padding-top:48px;padding-bottom:48px}
+  .pasos{grid-template-columns:repeat(2,1fr)}
+  .cab nav{display:none}
+}
+@media(max-width:700px){
+  /* cabecera compacta: el descriptor sobra cuando no hay sitio */
+  .logo span{display:none}
+  .logo{font-size:17px}
+  .cab-in{padding:11px 16px;gap:10px}
+  .barra .boton,.cab .boton{padding:10px 16px;font-size:15px}
+  .env{padding:0 16px}
+  .cab-in{padding-left:16px;padding-right:16px}
+  h1{letter-spacing:-.01em}
+  .portada{padding-top:30px;padding-bottom:44px}
+  .bloque{padding-top:46px;padding-bottom:46px}
+  .subtitulo{margin-top:16px;font-size:17.5px}
+  .acciones{margin-top:24px}
+  .acciones .boton{flex:1;justify-content:center;text-align:center}
+  .datos-rapidos{margin-top:24px;gap:6px 18px;font-size:14px}
+  .hallazgos{padding:20px 18px}
+  .lista-precios{margin-top:26px}
+  .servicio{padding:20px 0}
+  .servicio h3{font-size:20px}
+  .estimador{margin-top:30px}
+  .estimador-campos,.estimador-total{padding:20px 18px}
+  .visor{margin-top:26px}
+  .trabajos-rejilla{margin-top:20px;gap:16px}
+  .grupo-trabajos{margin-top:40px}
+  .grupo-cab h3{font-size:24px}
+  .grupo-cab p{font-size:14.5px}
+  .grupo-trabajos .trabajos-rejilla{margin-top:16px}
+  .faq{margin-top:26px}
+  .faq summary{padding:15px 18px;font-size:16.5px}
+  .faq details p{padding:15px 18px 17px}
+  .pasos{margin-top:28px;gap:20px}
+  .ficha{padding:20px 18px}
+  .vias{margin-top:26px}
+  .vias .tel,.vias .wa{flex:1;justify-content:center;text-align:center}
+  .pie{flex-direction:column;gap:8px}
+}
+@media(max-width:620px){
+  .visor-demos{flex-wrap:nowrap;overflow-x:auto;margin:0 -14px;padding:2px 14px 6px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .visor-demos::-webkit-scrollbar{display:none}
+  .chip{flex:none}
+  .ficha div{flex-direction:column;gap:2px}
+  .ficha span:last-child{text-align:left}
+  .vias{flex-direction:column}
+  .vias .tel,.vias .wa{width:100%}
+  .trabajos-rejilla,.pasos{grid-template-columns:1fr}
+  .rejilla-prep{grid-template-columns:repeat(2,1fr);gap:10px}
+  .trabajo-prep{min-height:84px;padding-top:14px;padding-bottom:14px;padding-left:14px;padding-right:14px}
+  .trabajo .prep-sector{font-size:15.5px}
+  .trabajo .prep-estado{font-size:13.5px}
+  .servicio{grid-template-columns:1fr;gap:10px}
+  .precio{text-align:left}
+  .visor-medida{justify-content:flex-start;width:100%;min-width:0;gap:10px}
+  .visor-medida input[type=range]{max-width:none}
+  .medida-et{text-align:right;min-width:0;font-size:13.5px}
+  .chip{padding:8px 12px;font-size:14px}
+  .visor-lienzo{padding:12px}
+  .visor-barra{padding:14px 14px 12px}
+}
+</style>
+</head>
+<body>
+
+<a class="saltar" href="#contenido">Saltar al contenido</a>
+
+<header class="cab">
+  <div class="cab-in">
+    <a class="logo" href="#">Daniel Padilla <span>&middot; Desarrollo Web</span></a>
+    <nav id="menu" aria-label="Principal">
+      <a href="#servicios">Servicios</a>
+      <a href="#automatizaciones">Automatizaciones</a>
+      <a href="#trabajos">Trabajos</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <a class="boton" href="tel:+34628129468">628 129 468</a>
+  </div>
+</header>
+
+<main id="contenido">
+
+<!-- ===== PORTADA ===== -->
+<section class="portada env">
+  <div class="portada-rejilla">
+    <div>
+      <h1>Hago webs para negocios, y arreglo las que ya existen</h1>
+      <p class="subtitulo">Desde Sevilla y en remoto para cualquier país. Precio cerrado antes de empezar, el dominio y el alojamiento a tu nombre, y conmigo no hay cuota mensual que te ate.</p>
+      <div class="acciones">
+        <a class="boton" href="#contacto">Pedir presupuesto</a>
+        <a class="boton boton-claro" href="#trabajos">Ver trabajos</a>
+      </div>
+      <div class="datos-rapidos">
+        <span>Base en <b>Sevilla</b>, presencial si estás cerca</span>
+        <span><b>En remoto</b> a cualquier país</span>
+        <span>Respuesta el <b>mismo día</b></span>
+      </div>
+    </div>
+
+    <aside class="hallazgos">
+      <p class="hallazgos-tit">Lo que suelo encontrar</p>
+      <p class="hallazgos-sub">Hallazgos reales de webs de negocios de Sevilla. Ninguno de estos dueños lo sabía. Pulsa en cualquiera para ver qué le costaba.</p>
+
+      <details class="hallazgo">
+        <summary>
+          <p class="quien">Una carpintería</p>
+          <p>Su web estaba publicada en <span class="marca">dos direcciones distintas</span>, y a la que salía en Google le faltaba una letra en el nombre.</p>
+        </summary>
+        <p class="detalle">Google repartía la fuerza entre las dos webs, así que ninguna llegaba a posicionar. Se arregla redirigiendo una a la otra y corrigiendo el enlace de su ficha: media mañana de trabajo.</p>
+      </details>
+
+      <details class="hallazgo">
+        <summary>
+          <p class="quien">Una escuela de idiomas</p>
+          <p>En la portada llevaba meses publicado el texto de relleno de la plantilla: <span class="marca">"Your Content Goes Here"</span>.</p>
+        </summary>
+        <p class="detalle">Lo veía cada persona que entraba, justo encima del formulario de matrícula. Nadie del equipo lo había notado, porque uno deja de mirar su propia portada. Diez minutos de arreglo.</p>
+      </details>
+
+      <details class="hallazgo">
+        <summary>
+          <p class="quien">Un taller mecánico</p>
+          <p>Faltaba un signo menos en las coordenadas, así que para Google <span class="marca">el taller no estaba en Sevilla</span>.</p>
+        </summary>
+        <p class="detalle">Un solo carácter. Con la longitud en positivo, el punto cae a miles de kilómetros, y eso afecta a las búsquedas de "taller cerca de mí", que es como los busca casi todo el mundo.</p>
+      </details>
+
+      <details class="hallazgo">
+        <summary>
+          <p class="quien">Una tienda online</p>
+          <p>Seguía <span class="marca">vendiendo tallas agotadas</span>: la clienta pagaba y el pedido no salía nunca.</p>
+        </summary>
+        <p class="detalle">Estaba escrito en sus propias reseñas de Google, por las clientas. Cada venta fallida costaba el importe del vestido, la devolución y una estrella menos de valoración.</p>
+      </details>
+
+      <p class="hallazgos-pie">Si quieres, miro la tuya y te digo qué encuentro. Sin coste y sin compromiso.</p>
+    </aside>
+  </div>
+</section>
+
+<!-- ===== SERVICIOS + ESTIMADOR ===== -->
+<section class="bloque claro" id="servicios">
+  <div class="env">
+    <h2>Servicios y precios</h2>
+    <p class="subtitulo medida">Son precios de partida. Te paso el precio cerrado por escrito antes de empezar, y no se mueve.</p>
+
+    <div class="lista-precios">
+      <div class="servicio">
+        <div><h3>Arreglo puntual</h3>
+          <p>Algo que no se ve bien en el móvil, una sección descolocada, un formulario que no envía. Lo reviso, te digo qué pasa y lo corrijo.</p></div>
+        <div class="precio">desde 150 €</div>
+      </div>
+      <div class="servicio">
+        <div><h3>Revisión y puesta al día</h3>
+          <p>Reviso tu web entera y te entrego un informe con todo lo que encuentro, corregido: textos desactualizados, enlaces rotos, datos que no coinciden entre tu web, Google y los directorios.</p></div>
+        <div class="precio">desde 250 €</div>
+      </div>
+      <div class="servicio">
+        <div><h3>Web de una página</h3>
+          <p>Tus servicios, tus fotos, dónde estás y un botón para que te llamen. Suficiente para la mayoría de negocios de barrio.</p></div>
+        <div class="precio">desde 500 €</div>
+      </div>
+      <div class="servicio">
+        <div><h3>Web completa</h3>
+          <p>Varias páginas, catálogo o carta, formularios y lo que necesite tu negocio. Incluye WordPress o Shopify si te hace falta gestionarla tú.</p></div>
+        <div class="precio">desde 900 €</div>
+      </div>
+      <div class="servicio">
+        <div><h3>Mantenimiento</h3>
+          <p>Reviso la web cada mes, actualizo lo que haga falta y hago los cambios pequeños que me pidas. Opcional: puedes contratarlo o no.</p></div>
+        <div class="precio">desde 80 €<small>al mes</small></div>
+      </div>
+      <div class="servicio">
+        <div><h3>Herramientas a medida</h3>
+          <p>Para lo que hoy llevas en una libreta o en un Excel que nadie entiende: control de alumnos y asistencias, bonos de clases, citas, pedidos o presupuestos. Una herramienta sencilla, hecha para tu negocio, que se usa desde el móvil o el ordenador.</p></div>
+        <div class="precio">desde 200 €</div>
+      </div>
+    </div>
+
+    <div class="estimador">
+      <div class="estimador-campos">
+        <h3>Calcula lo que costaría lo tuyo</h3>
+        <p class="estimador-ayuda">Elige lo que necesitas y verás la estimación al momento. Sin dejar datos ni esperar a que nadie te llame.</p>
+
+        <div class="grupo">
+          <p class="grupo-tit" id="et-tipo">¿Qué necesitas?</p>
+          <div class="opciones" role="radiogroup" aria-labelledby="et-tipo">
+            <label class="opcion"><input type="radio" name="tipo" value="150" data-et="Arreglo puntual"><span>Un arreglo</span></label>
+            <label class="opcion"><input type="radio" name="tipo" value="250" data-et="Revisión y puesta al día"><span>Revisar mi web</span></label>
+            <label class="opcion"><input type="radio" name="tipo" value="500" data-et="Web de una página" checked><span>Web de una página</span></label>
+            <label class="opcion"><input type="radio" name="tipo" value="900" data-et="Web completa"><span>Web completa</span></label>
+            <label class="opcion"><input type="radio" name="tipo" value="0" data-et=""><span>Ya tengo web</span></label>
+          </div>
+        </div>
+
+        <div class="grupo">
+          <p class="grupo-tit" id="et-extra">¿Algo más? Opcional</p>
+          <div class="opciones" aria-labelledby="et-extra">
+            <label class="opcion"><input type="checkbox" value="400" data-et="Vender online"><span>Vender online</span></label>
+            <label class="opcion"><input type="checkbox" value="200" data-et="Reservas de cita o de mesa"><span>Reservas de cita o de mesa</span></label>
+            <label class="opcion"><input type="checkbox" value="150" data-et="Versión en inglés"><span>Versión en inglés</span></label>
+            <label class="opcion"><input type="checkbox" value="0" data-et="Mantenimiento mensual" data-mes="80"><span>Mantenimiento</span></label>
+          </div>
+        </div>
+
+        <div class="grupo">
+          <p class="grupo-tit" id="et-ia">Automatizaciones con IA. Opcional</p>
+          <div class="opciones" aria-labelledby="et-ia">
+            <label class="opcion"><input type="checkbox" value="350" data-et="Asistente en tu web" data-mes="45"><span>Asistente en tu web</span></label>
+            <label class="opcion"><input type="checkbox" value="300" data-et="Respuestas automáticas de correo" data-mes="40"><span>Respuestas de correo</span></label>
+            <label class="opcion"><input type="checkbox" value="600" data-et="Atención de llamadas" data-mes="90" data-consumo="1"><span>Atención de llamadas</span></label>
+          </div>
+        </div>
+      </div>
+
+      <div class="estimador-total" aria-live="polite">
+        <p class="total-et">Estimación orientativa</p>
+        <p class="total-cifra" id="cifra">desde 500 €</p>
+        <p class="total-mes" id="mes"></p>
+        <div class="total-desglose">
+          <ul id="desglose"><li>Web de una página</li></ul>
+        </div>
+        <p class="total-nota">No incluye dominio ni alojamiento, que son entre 60 y 120 € al año y van a tu nombre. Las automatizaciones llevan cuota mensual porque cuestan dinero cada mes que funcionan. El precio definitivo te lo paso cerrado después de hablar contigo.</p>
+      </div>
+    </div>
+
+    <p class="nota-precios">El dominio y el alojamiento se contratan a tu nombre y con tu tarjeta, entre 60 y 120 € al año que no me pagas a mí. Te acompaño a contratarlos si no lo has hecho nunca. Así la web es tuya de verdad y no dependes de mí para seguir teniéndola.</p>
+  </div>
+</section>
+
+<!-- ===== AUTOMATIZACIONES ===== -->
+<section class="bloque env" id="automatizaciones">
+  <h2>Automatizaciones con inteligencia artificial</h2>
+  <p class="subtitulo medida">Para el trabajo repetitivo que te come el día: contestar lo mismo veinte veces, coger el teléfono mientras atiendes a un cliente, responder correos fuera de horario.</p>
+
+  <div class="lista-precios">
+    <div class="servicio">
+      <div><h3>Asistente en tu web</h3>
+        <p>Responde las dudas de quien entra en tu web: precios, horarios, si trabajáis en su zona, cómo pedir cita. Aprende de tu web y de lo que tú le digas, y te avisa cuando alguien quiere hablar contigo de verdad.</p></div>
+      <div class="precio">desde 350 €<small>+ 45 € al mes</small></div>
+    </div>
+    <div class="servicio">
+      <div><h3>Respuestas automáticas de correo</h3>
+        <p>Clasifica los correos que entran y responde los de siempre: peticiones de presupuesto, dudas sobre horarios, solicitudes de información. Los que no encajan te los deja marcados para que los veas tú.</p></div>
+      <div class="precio">desde 300 €<small>+ 40 € al mes</small></div>
+    </div>
+    <div class="servicio">
+      <div><h3>Atención de llamadas</h3>
+        <p>Coge el teléfono cuando tú no puedes: fuera de horario, cuando estás con un cliente o cuando entran dos llamadas a la vez. Informa, toma el recado con los datos y te lo pasa por escrito.</p></div>
+      <div class="precio">desde 600 €<small>+ 90 € al mes y consumo</small></div>
+    </div>
+  </div>
+
+  <p class="nota-precios">Todo lo que monto avisa de que es una inteligencia artificial en cuanto empieza a hablar contigo, como exige el Reglamento europeo de IA desde agosto de 2026. Ni imita a una persona ni lo aparenta: si quien llama o escribe quiere hablar contigo, te lo pasa. El coste mensual cubre el mantenimiento y el consumo aproximado de un negocio normal; si tu volumen se dispara, te lo digo antes de que llegue la factura, no después.</p>
+</section>
+
+<!-- ===== TRABAJOS + VISOR ===== -->
+<section class="bloque claro" id="trabajos">
+  <div class="env">
+    <h2>Trabajos</h2>
+    <p class="subtitulo medida">Ejemplos con negocios ficticios, ordenados por lo que resuelven. Mueve la barra y verás cómo se reordenan solos según el tamaño de la pantalla.</p>
+
+    <div class="visor">
+      <div class="visor-barra">
+        <div class="visor-demos" role="group" aria-label="Elegir ejemplo">
+          <button type="button" class="chip activo" data-src="demos/tienda.html">La Despensa</button>
+          <button type="button" class="chip" data-src="demos/clinica.html">Clínica Arenal</button>
+          <button type="button" class="chip" data-src="demos/belleza.html">Estudio Malva</button>
+          <button type="button" class="chip" data-src="demos/hosteleria.html">Bar Almanaque</button>
+          <button type="button" class="chip" data-src="demos/academia.html">Academia Compás</button>
+        </div>
+        <div class="visor-medida">
+          <label for="ancho" style="font-size:14.5px;color:var(--gris)">Pantalla</label>
+          <input type="range" id="ancho" min="320" max="1280" step="8" value="1280">
+          <span class="medida-et" id="etiqueta">1280 px · Escritorio</span>
+        </div>
+      </div>
+      <div class="visor-lienzo">
+        <div class="marco" id="marco">
+          <iframe id="lienzo" src="demos/tienda.html" title="Vista previa del ejemplo seleccionado" loading="lazy"></iframe>
+        </div>
+      </div>
+      <p class="visor-pie">Es la web real, no una captura: aquí la ves en miniatura. Para abrirla entera y trastearla, entra desde las tarjetas de abajo.</p>
+    </div>
+
+    <!-- WEBS (sin asistente de IA) -->
+    <div class="grupo-trabajos">
+      <div class="grupo-cab">
+        <h3>Webs para negocios</h3>
+        <p><span class="nw">Web de una página desde <strong>500 €</strong></span> · <span class="nw">web completa desde <strong>900 €</strong></span></p>
+      </div>
+      <div class="trabajos-rejilla">
+        <a class="trabajo" href="demos/hosteleria.html">
+          <div class="muestra m1">Bar Almanaque</div>
+          <div class="trabajo-txt">
+            <h3>Bar de tapas</h3>
+            <p>Indica en vivo si el bar está abierto y cuándo cierra, pizarra del día y carta con precio de tapa y de ración.</p>
+            <div class="etiquetas"><span class="etiqueta">JavaScript</span><span class="etiqueta">Horario en vivo</span><span class="etiqueta">Hostelería</span></div>
+          </div>
+        </a>
+        <a class="trabajo" href="demos/clinica.html">
+          <div class="muestra m3">Clínica Arenal</div>
+          <div class="trabajo-txt">
+            <h3>Clínica dental</h3>
+            <p>Simulador de financiación que calcula la cuota según tratamiento y plazo, precios publicados y primera visita explicada.</p>
+            <div class="etiquetas"><span class="etiqueta">JavaScript</span><span class="etiqueta">Interactivo</span><span class="etiqueta">Salud</span></div>
+          </div>
+        </a>
+        <a class="trabajo" href="demos/belleza.html">
+          <div class="muestra m2">Estudio Malva</div>
+          <div class="trabajo-txt">
+            <h3>Peluquería y estética</h3>
+            <p>La clienta elige sus servicios, ve el precio y el tiempo total, y el botón abre WhatsApp con la cita ya escrita.</p>
+            <div class="etiquetas"><span class="etiqueta">JavaScript</span><span class="etiqueta">Cita por WhatsApp</span><span class="etiqueta">Belleza</span></div>
+          </div>
+        </a>
+        <a class="trabajo" href="demos/tienda.html">
+          <div class="muestra m4">La Despensa</div>
+          <div class="trabajo-txt">
+            <h3>Tienda de alimentación</h3>
+            <p>Cada producto es su propia etiqueta de conserva. Cesta funcional con filtros que termina en un pedido por WhatsApp.</p>
+            <div class="etiquetas"><span class="etiqueta">JavaScript</span><span class="etiqueta">Ecommerce</span><span class="etiqueta">Comercio</span></div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <!-- WEBS CON ASISTENTE DE IA: 2 demos pendientes.
+         Cuando haya una lista, sustituir su .trabajo-prep por una tarjeta normal
+         (a.trabajo > .muestra + .trabajo-txt > h3, p, .etiquetas) y anadirla al visor si se quiere. -->
+    <div class="grupo-trabajos">
+      <div class="grupo-cab">
+        <h3>Webs con asistente de IA</h3>
+        <p><span class="nw">Web desde <strong>500 €</strong></span> <span class="nw">+ asistente desde <strong>350 €</strong></span> <span class="nw">y 45 € al mes</span></p>
+      </div>
+      <div class="trabajos-rejilla rejilla-prep">
+        <div class="trabajo trabajo-prep">
+          <p class="prep-sector">Web con asistente</p>
+          <p class="prep-estado">En mantenimiento</p>
+        </div>
+        <div class="trabajo trabajo-prep">
+          <p class="prep-sector">Web con asistente</p>
+          <p class="prep-estado">En mantenimiento</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- RESERVAS Y PEDIDOS: 4 demos pendientes, se haran con Lovable.
+         2 peluquerias y 2 restaurantes. Mismo sistema de sustitucion que arriba. -->
+    <div class="grupo-trabajos">
+      <div class="grupo-cab">
+        <h3>Reservas y pedidos</h3>
+        <p>Citas para peluquerías y reservas de mesa para restaurantes</p>
+      </div>
+      <div class="trabajos-rejilla rejilla-prep">
+        <div class="trabajo trabajo-prep">
+          <p class="prep-sector">Peluquería</p>
+          <p class="prep-estado">En mantenimiento</p>
+        </div>
+        <div class="trabajo trabajo-prep">
+          <p class="prep-sector">Peluquería</p>
+          <p class="prep-estado">En mantenimiento</p>
+        </div>
+        <div class="trabajo trabajo-prep">
+          <p class="prep-sector">Restaurante</p>
+          <p class="prep-estado">En mantenimiento</p>
+        </div>
+        <div class="trabajo trabajo-prep">
+          <p class="prep-sector">Restaurante</p>
+          <p class="prep-estado">En mantenimiento</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- HERRAMIENTAS A MEDIDA -->
+    <div class="grupo-trabajos">
+      <div class="grupo-cab">
+        <h3>Herramientas a medida</h3>
+        <p>Desde <strong>200 €</strong></p>
+      </div>
+      <div class="trabajos-rejilla">
+        <a class="trabajo" href="demos/academia.html">
+          <div class="muestra m5">Academia Compás</div>
+          <div class="trabajo-txt">
+            <h3>Gestión de alumnos para una academia</h3>
+            <p>Herramienta interna para controlar asistencias, faltas que se pueden recuperar, bonos de clases y mensualidades pendientes. Lo que antes iba en una libreta, en una pantalla y con filtros.</p>
+            <div class="etiquetas"><span class="etiqueta">JavaScript</span><span class="etiqueta">Herramienta a medida</span><span class="etiqueta">Academias</span></div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <p class="aviso-demos">Son proyectos de demostración con negocios ficticios, hechos para enseñar cómo trabajo. El trabajo que hago para clientes no lo publico sin su permiso.</p>
+  </div>
+</section>
+
+<!-- ===== PREGUNTAS ===== -->
+<section class="bloque env" id="preguntas">
+  <h2>Preguntas frecuentes</h2>
+  <p class="subtitulo medida">Lo que me preguntan siempre antes de decidirse.</p>
+  <div class="faq">
+    <details open>
+      <summary>¿Cuánto cuesta hacer una página web?</summary>
+      <p>Una web de una página cuesta desde 500 € y una web completa desde 900 €. Un arreglo puntual sobre una web que ya existe empieza en 150 €. El precio exacto te lo doy cerrado y por escrito antes de empezar, y no se mueve después.</p>
+    </details>
+    <details>
+      <summary>¿El dominio y el alojamiento son míos?</summary>
+      <p>Sí. Se contratan a tu nombre y con tu tarjeta, y cuestan entre 60 y 120 € al año que no me pagas a mí. Te acompaño a contratarlos si no lo has hecho nunca. La web es tuya y no dependes de mí para seguir teniéndola.</p>
+    </details>
+    <details>
+      <summary>¿Tengo que pagar una cuota mensual?</summary>
+      <p>Por la web, no. Pagas la web una vez y es tuya. El mantenimiento mensual es opcional, cuesta desde 80 € al mes e incluye revisión, actualizaciones y cambios pequeños. Las automatizaciones con IA sí llevan cuota mensual, porque tienen un coste de funcionamiento cada mes.</p>
+    </details>
+    <details>
+      <summary>¿Cuánto se tarda en tener la web lista?</summary>
+      <p>Una web de una página suele estar en una o dos semanas desde que me pasas los textos y las fotos. Una web completa, entre tres y cuatro semanas. Lo que más retrasa un proyecto no es el desarrollo, es esperar al contenido.</p>
+    </details>
+    <details>
+      <summary>¿Trabajas fuera de Sevilla?</summary>
+      <p>Sí. Vivo en Sevilla y puedo ir en persona si estás cerca, pero trabajo en remoto con negocios de cualquier país. La web se construye, se revisa y se entrega igual.</p>
+    </details>
+    <details>
+      <summary>¿Puedes arreglar mi web actual sin rehacerla entera?</summary>
+      <p>Sí, y muchas veces es lo que recomiendo. Si tu web está bien construida y solo tiene fallos, sale más barato corregirlos que empezar de cero. Te lo digo claramente después de mirarla, aunque signifique cobrar menos.</p>
+    </details>
+    <details>
+      <summary>¿Qué necesitas de mí para empezar?</summary>
+      <p>Los textos de tu negocio, las fotos que quieras que aparezcan y tu logo si tienes. Si no tienes textos, te ayudo a escribirlos. Sin contenido no se puede empezar, así que es lo primero que te voy a pedir.</p>
+    </details>
+    <details>
+      <summary>¿Y si no me gusta cómo queda?</summary>
+      <p>Te enseño la web a medias, antes de terminarla, para que corrijas cuando aún es fácil cambiar las cosas. Después de entregarla incluyo dos rondas de cambios. Se paga el 50% al empezar y el 50% al entregar.</p>
+    </details>
+  </div>
+</section>
+
+<!-- ===== PROCESO ===== -->
+<section class="bloque claro" id="proceso">
+  <div class="env">
+    <h2>Cómo trabajo</h2>
+    <p class="subtitulo medida">Sin sorpresas ni letra pequeña. Esto es lo que pasa desde que me llamas.</p>
+    <div class="pasos">
+      <div class="paso"><p class="num">Paso 1</p><h3>Hablamos</h3>
+        <p>Me cuentas qué necesitas. Si ya tienes web, la reviso antes y te digo qué le veo.</p></div>
+      <div class="paso"><p class="num">Paso 2</p><h3>Presupuesto cerrado</h3>
+        <p>Te lo paso por escrito, con lo que incluye, lo que no, y el plazo. Si dices que no, ahí queda.</p></div>
+      <div class="paso"><p class="num">Paso 3</p><h3>La construyo</h3>
+        <p>Con tus textos y tus fotos. Te la enseño a medias para que corrijas antes de que esté terminada.</p></div>
+      <div class="paso"><p class="num">Paso 4</p><h3>Publicamos</h3>
+        <p>La subimos a tu alojamiento, a tu nombre. Incluye dos rondas de cambios después de entregarla.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== QUIEN SOY ===== -->
+<section class="bloque env">
+  <div class="yo-rejilla">
+    <div class="yo">
+      <h2>Quién soy</h2>
+      <p style="margin-top:22px">Me llamo <strong>Daniel Padilla</strong>, hago páginas web y vivo en Sevilla. Trabajo <strong>en remoto</strong>, así que da igual dónde tengas el negocio: la web se construye, se revisa y se entrega igual estés en Triana o en Buenos Aires.</p>
+      <p>Terminé el grado medio de Sistemas Microinformáticos y Redes, y ahora estoy cursando el grado superior de Desarrollo de Aplicaciones Web. Hice las prácticas en una empresa de diseño y mantenimiento de páginas web, y <strong>sigo trabajando con ellos</strong>.</p>
+      <p>Trabajo sobre todo con HTML, CSS, WordPress y Shopify. Me gusta el código limpio y sin dependencias que sobran: una web de un negocio de barrio tiene que cargar rápido desde el móvil, en la calle y con mala cobertura, no lucir en una pantalla de 27 pulgadas.</p>
+      <p>Y cuando toco algo que ya existe, <strong>solo cambio lo que me has pedido</strong>. Nada más.</p>
+    </div>
+    <div class="ficha">
+      <div><span>Dónde estoy</span><span>Sevilla, España<br>Trabajo en remoto sin límite de país</span></div>
+      <div><span>Formación</span><span>Grado Superior DAW (en curso)<br>Grado Medio SMR</span></div>
+      <div><span>Tecnologías</span><span>HTML · CSS · JavaScript<br>WordPress · Shopify</span></div>
+      <div><span>Alojamiento</span><span>Siempre a tu nombre</span></div>
+      <div><span>Forma de pago</span><span>50% al empezar<br>50% al entregar</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTACTO ===== -->
+<section class="bloque contacto" id="contacto">
+  <div class="env">
+    <h2>Cuéntame qué necesitas</h2>
+    <p>Llámame o escríbeme por WhatsApp. Si ya tienes web, dime la dirección y le echo un vistazo antes de hablar, para no hacerte perder el tiempo. Si escribes desde fuera de España, dime tu franja horaria y buscamos hueco.</p>
+    <div class="vias">
+      <a class="tel" href="tel:+34628129468">628 129 468</a>
+      <a class="wa" href="https://wa.me/34628129468">Escribir por WhatsApp</a>
+    </div>
+    <p class="horario">Respondo de lunes a viernes en horario peninsular español (CET), y los fines de semana si es urgente.</p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="env pie">
+    <span>Daniel Padilla · Desarrollo web · Sevilla y en remoto</span>
+    <span><a href="aviso-legal.html">Aviso legal</a> · <a href="privacidad.html">Privacidad</a> · 628 129 468</span>
+  </div>
+</footer>
+
+<script>
+/* ---------- 1. Estimador de presupuesto ---------- */
+(function(){
+  var campos = document.querySelectorAll('.estimador input');
+  var cifra = document.getElementById('cifra');
+  var mes = document.getElementById('mes');
+  var desglose = document.getElementById('desglose');
+  if(!campos.length || !cifra) return;
+
+  function euros(n){ return n.toLocaleString('es-ES') + ' \u20AC'; }
+
+  function calcular(){
+    var total = 0, mensual = 0, consumo = false, partes = [];
+    var tipo = document.querySelector('input[name=tipo]:checked');
+    if(tipo){ total += Number(tipo.value); if(tipo.dataset.et) partes.push(tipo.dataset.et); }
+    Array.prototype.forEach.call(
+      document.querySelectorAll('.estimador input[type=checkbox]:checked'),
+      function(c){
+        total += Number(c.value);
+        if(c.dataset.mes) mensual += Number(c.dataset.mes);
+        if(c.dataset.consumo) consumo = true;
+        partes.push(c.dataset.et);
+      });
+    // "Ya tengo web" sin nada marcado: no hay nada que sumar todavia
+    if(!partes.length){
+      cifra.textContent = 'Elige algo';
+      mes.textContent = '';
+      desglose.innerHTML = '<li>Marca lo que quieres añadir a tu web</li>';
+      return;
+    }
+    cifra.textContent = 'desde ' + euros(total);
+    mes.textContent = mensual ? '+ ' + euros(mensual) + ' al mes' + (consumo ? ' y consumo' : '') : '';
+    desglose.innerHTML = '';
+    partes.forEach(function(p){
+      var li = document.createElement('li');
+      li.textContent = p;
+      desglose.appendChild(li);
+    });
+  }
+  Array.prototype.forEach.call(campos, function(c){ c.addEventListener('change', calcular); });
+  calcular();
+})();
+
+/* ---------- 2. Visor de pantallas ---------- */
+(function(){
+  var marco = document.getElementById('marco');
+  var lienzo = document.getElementById('lienzo');
+  var rango = document.getElementById('ancho');
+  var etiqueta = document.getElementById('etiqueta');
+  var chips = document.querySelectorAll('.chip');
+  if(!marco || !lienzo || !rango) return;
+
+  // La altura se adapta a la pantalla: en un monitor cabe una ventana grande,
+  // en un movil no debe comerse mas de la mitad de la pantalla.
+  function altoVisor(){
+    return Math.max(300, Math.min(620, Math.round(window.innerHeight * 0.48)));
+  }
+
+  function nombre(px){
+    if(px < 520) return 'Móvil';
+    if(px < 900) return 'Tablet';
+    return 'Escritorio';
+  }
+
+  function pintar(){
+    var ancho = Number(rango.value);
+    var padre = marco.parentElement;
+    var est = window.getComputedStyle(padre);
+    // clientWidth incluye el relleno: hay que restarlo o el marco sale mas ancho que su caja
+    var disponible = padre.clientWidth
+        - parseFloat(est.paddingLeft || 0)
+        - parseFloat(est.paddingRight || 0)
+        - 4;
+    var escala = Math.min(1, disponible / ancho);
+    lienzo.style.width = ancho + 'px';
+    var ALTO = altoVisor();
+    lienzo.style.height = ALTO + 'px';
+    lienzo.style.transform = 'scale(' + escala + ')';
+    marco.style.width = Math.round(ancho * escala) + 'px';
+    marco.style.height = Math.round(ALTO * escala) + 'px';
+    lienzo.setAttribute('scrolling','no');
+    etiqueta.textContent = ancho + ' px · ' + nombre(ancho);
+  }
+
+  rango.addEventListener('input', pintar);
+  window.addEventListener('resize', pintar);
+
+  Array.prototype.forEach.call(chips, function(b){
+    b.addEventListener('click', function(){
+      Array.prototype.forEach.call(chips, function(o){ o.classList.remove('activo'); });
+      b.classList.add('activo');
+      lienzo.src = b.dataset.src;
+    });
+  });
+
+  if(window.innerWidth < 760) rango.value = 360;
+  pintar();
+  window.addEventListener('load', pintar);
+})();
+
+/* ---------- 3. Sección activa en el menú ---------- */
+(function(){
+  var enlaces = document.querySelectorAll('#menu a');
+  if(!enlaces.length || !('IntersectionObserver' in window)) return;
+  var mapa = {};
+  Array.prototype.forEach.call(enlaces, function(a){
+    var s = document.querySelector(a.getAttribute('href'));
+    if(s) mapa[s.id] = a;
+  });
+  var obs = new IntersectionObserver(function(entradas){
+    entradas.forEach(function(e){
+      if(e.isIntersecting){
+        Array.prototype.forEach.call(enlaces, function(a){ a.classList.remove('activo'); });
+        if(mapa[e.target.id]) mapa[e.target.id].classList.add('activo');
+      }
+    });
+  }, {rootMargin:'-45% 0px -50% 0px'});
+  Object.keys(mapa).forEach(function(id){ obs.observe(document.getElementById(id)); });
+})();
+</script>
+
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfessionalService","@id":"https://web.daniparuoutlook.workers.dev/#negocio","name":"Daniel Padilla · Desarrollo Web","description":"Desarrollo y mantenimiento de páginas web para negocios, y automatizaciones con inteligencia artificial. Con base en Sevilla y trabajo en remoto para cualquier país.","url":"https://web.daniparuoutlook.workers.dev/","telephone":"+34628129468","image":"https://web.daniparuoutlook.workers.dev/og.png","priceRange":"€€","address":{"@type":"PostalAddress","addressLocality":"Sevilla","addressRegion":"Andalucía","addressCountry":"ES"},"areaServed":[{"@type":"City","name":"Sevilla"},{"@type":"Country","name":"España"},{"@type":"Place","name":"Cualquier país, en remoto"}],"availableLanguage":[{"@type":"Language","name":"Español"}],"knowsAbout":["Diseño web","Desarrollo web","HTML","CSS","JavaScript","WordPress","Shopify","Diseño responsive","Mantenimiento web","Automatización con inteligencia artificial","Agentes conversacionales","Herramientas de gestión a medida"],"founder":{"@type":"Person","name":"Daniel Padilla","jobTitle":"Desarrollador web","telephone":"+34628129468","address":{"@type":"PostalAddress","addressLocality":"Sevilla","addressCountry":"ES"}},"makesOffer":[{"@type":"Offer","itemOffered":{"@type":"Service","name":"Arreglo puntual de web"},"price":"150","priceCurrency":"EUR","availability":"https://schema.org/InStock"},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Revisión y puesta al día"},"price":"250","priceCurrency":"EUR","availability":"https://schema.org/InStock"},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Web de una página"},"price":"500","priceCurrency":"EUR","availability":"https://schema.org/InStock"},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Web completa"},"price":"900","priceCurrency":"EUR","availability":"https://schema.org/InStock"},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Herramientas de gestión a medida"},"price":"200","priceCurrency":"EUR","availability":"https://schema.org/InStock"},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Mantenimiento web mensual"},"price":"80","priceCurrency":"EUR","priceSpecification":{"@type":"UnitPriceSpecification","price":"80","priceCurrency":"EUR","unitCode":"MON"},"availability":"https://schema.org/InStock"},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Asistente de IA en tu web"},"price":"350","priceCurrency":"EUR","priceSpecification":[{"@type":"UnitPriceSpecification","price":"350","priceCurrency":"EUR","description":"Alta"},{"@type":"UnitPriceSpecification","price":"45","priceCurrency":"EUR","unitCode":"MON","description":"Cuota mensual"}],"availability":"https://schema.org/InStock"},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Respuestas automáticas de correo"},"price":"300","priceCurrency":"EUR","priceSpecification":[{"@type":"UnitPriceSpecification","price":"300","priceCurrency":"EUR","description":"Alta"},{"@type":"UnitPriceSpecification","price":"40","priceCurrency":"EUR","unitCode":"MON","description":"Cuota mensual"}],"availability":"https://schema.org/InStock"},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Atención de llamadas con IA"},"price":"600","priceCurrency":"EUR","priceSpecification":[{"@type":"UnitPriceSpecification","price":"600","priceCurrency":"EUR","description":"Alta"},{"@type":"UnitPriceSpecification","price":"90","priceCurrency":"EUR","unitCode":"MON","description":"Cuota mensual más consumo"}],"availability":"https://schema.org/InStock"}],"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"09:00","closes":"19:00"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"¿Cuánto cuesta hacer una página web?","acceptedAnswer":{"@type":"Answer","text":"Una web de una página cuesta desde 500 € y una web completa desde 900 €. Un arreglo puntual sobre una web que ya existe empieza en 150 €. El precio exacto te lo doy cerrado y por escrito antes de empezar, y no se mueve después."}},{"@type":"Question","name":"¿El dominio y el alojamiento son míos?","acceptedAnswer":{"@type":"Answer","text":"Sí. Se contratan a tu nombre y con tu tarjeta, y cuestan entre 60 y 120 € al año que no me pagas a mí. Te acompaño a contratarlos si no lo has hecho nunca. La web es tuya y no dependes de mí para seguir teniéndola."}},{"@type":"Question","name":"¿Tengo que pagar una cuota mensual?","acceptedAnswer":{"@type":"Answer","text":"Por la web, no. Pagas la web una vez y es tuya. El mantenimiento mensual es opcional, cuesta desde 80 € al mes e incluye revisión, actualizaciones y cambios pequeños. Las automatizaciones con IA sí llevan cuota mensual, porque tienen un coste de funcionamiento cada mes."}},{"@type":"Question","name":"¿Cuánto se tarda en tener la web lista?","acceptedAnswer":{"@type":"Answer","text":"Una web de una página suele estar en una o dos semanas desde que me pasas los textos y las fotos. Una web completa, entre tres y cuatro semanas. Lo que más retrasa un proyecto no es el desarrollo, es esperar al contenido."}},{"@type":"Question","name":"¿Trabajas fuera de Sevilla?","acceptedAnswer":{"@type":"Answer","text":"Sí. Vivo en Sevilla y puedo ir en persona si estás cerca, pero trabajo en remoto con negocios de cualquier país. La web se construye, se revisa y se entrega igual."}},{"@type":"Question","name":"¿Puedes arreglar mi web actual sin rehacerla entera?","acceptedAnswer":{"@type":"Answer","text":"Sí, y muchas veces es lo que recomiendo. Si tu web está bien construida y solo tiene fallos, sale más barato corregirlos que empezar de cero. Te lo digo claramente después de mirarla, aunque signifique cobrar menos."}},{"@type":"Question","name":"¿Qué necesitas de mí para empezar?","acceptedAnswer":{"@type":"Answer","text":"Los textos de tu negocio, las fotos que quieras que aparezcan y tu logo si tienes. Si no tienes textos, te ayudo a escribirlos. Sin contenido no se puede empezar, así que es lo primero que te voy a pedir."}},{"@type":"Question","name":"¿Y si no me gusta cómo queda?","acceptedAnswer":{"@type":"Answer","text":"Te enseño la web a medias, antes de terminarla, para que corrijas cuando aún es fácil cambiar las cosas. Después de entregarla incluyo dos rondas de cambios. Se paga el 50% al empezar y el 50% al entregar."}}]}</script>
+
+<!-- Asistente IA · pegar justo antes de </body> -->
+<div id="ia">
+<style>
+#ia{--ia-dark:#16191F;--ia-bg:#fff;--ia-soft:#F1F2F4;--ia-line:#E2E4E8;--ia-muted:#5B616B;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:16px;line-height:1.45;color:var(--ia-dark)}
+#ia *{box-sizing:border-box}
+#ia a{color:inherit}
+#ia button{font:inherit;cursor:pointer}
+#ia :focus-visible{outline:2px solid #3B82F6;outline-offset:2px}
+.ia-open{position:fixed;right:max(16px,env(safe-area-inset-right));bottom:max(16px,env(safe-area-inset-bottom));z-index:9998;display:flex;align-items:center;gap:8px;height:52px;padding:0 20px 0 16px;border:0;border-radius:26px;background:var(--ia-dark);color:#fff;font-weight:600!important;font-size:15px!important;box-shadow:0 6px 20px rgba(22,25,31,.28)}
+.ia-open[hidden],.ia-panel[hidden],.ia-chips[hidden]{display:none}
+.ia-panel{position:fixed;inset:0;z-index:9999;display:flex;flex-direction:column;height:100vh;height:100dvh;background:var(--ia-bg);overflow:hidden}
+.ia-head{display:flex;align-items:center;gap:12px;padding:12px 8px 12px 16px;padding-top:max(12px,env(safe-area-inset-top));background:var(--ia-dark);color:#fff}
+.ia-head b{display:block;font-size:16px}
+.ia-head small{display:block;font-size:13px;opacity:.8}
+.ia-x{margin-left:auto;width:44px;height:44px;flex:none;border:0;border-radius:22px;background:transparent;color:#fff;font-size:26px!important;line-height:1}
+.ia-contact{display:flex;align-items:center;gap:8px;padding:8px 16px;border-bottom:1px solid var(--ia-line);font-size:14px;color:var(--ia-muted)}
+.ia-contact span{flex:1;min-width:0}
+.ia-contact a{padding:8px 12px;border:1px solid var(--ia-line);border-radius:18px;color:var(--ia-dark)!important;text-decoration:none;font-weight:600;white-space:nowrap}
+.ia-log{flex:1;display:flex;flex-direction:column;gap:10px;padding:16px;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
+.ia-m{max-width:86%;padding:10px 14px;border-radius:16px;white-space:pre-wrap;overflow-wrap:anywhere}
+.ia-bot{align-self:flex-start;background:var(--ia-soft);border-bottom-left-radius:4px}
+.ia-user{align-self:flex-end;background:var(--ia-dark);color:#fff;border-bottom-right-radius:4px}
+.ia-wait{color:var(--ia-muted);font-style:italic}
+.ia-hand{align-self:stretch;display:flex;flex-direction:column;gap:8px;padding:12px;border:1px solid var(--ia-line);border-radius:12px}
+.ia-hand p{margin:0;font-size:14px;color:var(--ia-muted)}
+.ia-hand a{display:block;padding:12px;border-radius:10px;background:var(--ia-dark);color:#fff!important;text-align:center;text-decoration:none;font-weight:600}
+.ia-hand a+a{background:transparent;color:var(--ia-dark)!important;border:1px solid var(--ia-dark)}
+.ia-chips{display:flex;flex-wrap:wrap;gap:8px;padding:0 16px 10px}
+.ia-chips button{padding:8px 12px;border:1px solid var(--ia-line);border-radius:18px;background:var(--ia-bg);color:var(--ia-dark);font-size:14px!important}
+.ia-form{display:flex;align-items:flex-end;gap:8px;padding:10px 12px;border-top:1px solid var(--ia-line)}
+.ia-form textarea{flex:1;min-height:44px;max-height:120px;padding:10px 14px;border:1px solid var(--ia-line);border-radius:22px;font:inherit;font-size:16px;color:inherit;background:var(--ia-bg);resize:none}
+.ia-send{width:44px;height:44px;flex:none;display:grid;place-items:center;border:0;border-radius:22px;background:var(--ia-dark);color:#fff}
+.ia-send:disabled{opacity:.4}
+.ia-note{margin:0;padding:0 16px max(10px,env(safe-area-inset-bottom));font-size:12px;color:var(--ia-muted)}
+@media(min-width:640px){
+.ia-panel{inset:auto;right:24px;bottom:24px;width:380px;height:min(620px,calc(100dvh - 48px));border-radius:16px;box-shadow:0 12px 40px rgba(22,25,31,.25)}
+.ia-head{padding-top:12px}
+.ia-note{padding-bottom:10px}
+}
+</style>
+
+<button class="ia-open" id="ia-open" type="button" aria-controls="ia-panel" aria-expanded="false">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></svg>
+Pregunta a la IA
+</button>
+
+<section class="ia-panel" id="ia-panel" role="dialog" aria-modal="true" aria-labelledby="ia-title" tabindex="-1" hidden>
+<header class="ia-head">
+<div><b id="ia-title">Asistente de IA</b><small>Soy una inteligencia artificial, no Daniel</small></div>
+<button class="ia-x" id="ia-close" type="button" aria-label="Cerrar el chat">×</button>
+</header>
+<div class="ia-contact"><span>¿Prefieres hablar con Daniel?</span><a href="tel:+34628129468">Llamar</a><a href="https://wa.me/34628129468" target="_blank" rel="noopener">WhatsApp</a></div>
+<div class="ia-log" id="ia-log" role="log" aria-live="polite">
+<div class="ia-m ia-bot">Hola. Soy el asistente de la web de Daniel Padilla y soy una inteligencia artificial, no una persona, así que puedo equivocarme. Te resuelvo dudas sobre servicios, precios y cómo trabaja Daniel. Para un presupuesto cerrado o algo concreto de tu negocio, mejor hablarlo con él.</div>
+</div>
+<div class="ia-chips" id="ia-chips">
+<button type="button">¿Cuánto cuesta una web?</button>
+<button type="button">Quiero arreglar mi web</button>
+<button type="button">¿Trabajas fuera de Sevilla?</button>
+</div>
+<form class="ia-form" id="ia-form">
+<label for="ia-input" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Escribe tu pregunta</label>
+<textarea id="ia-input" rows="1" maxlength="1000" placeholder="Escribe tu pregunta" enterkeyhint="send"></textarea>
+<button class="ia-send" id="ia-send" type="submit" aria-label="Enviar"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+</form>
+<p class="ia-note">Es una IA y puede equivocarse. No escribas datos personales. <a href="/privacidad.html">Privacidad</a></p>
+</section>
+
+<template id="ia-hand-tpl"><div class="ia-hand"><p>Esto mejor lo hablas con Daniel:</p><a href="tel:+34628129468">Llamar al 628 129 468</a><a href="https://wa.me/34628129468" target="_blank" rel="noopener">Escribir por WhatsApp</a></div></template>
+
+<script>
+(()=>{
+const $=id=>document.getElementById(id),btn=$('ia-open'),panel=$('ia-panel'),log=$('ia-log'),form=$('ia-form'),input=$('ia-input'),send=$('ia-send'),chips=$('ia-chips'),vv=window.visualViewport;
+const FALL='Ahora mismo no puedo responder. Habla directamente con Daniel en el 628 129 468 o por WhatsApp.';
+const HOSTS=['wa.me',location.hostname,'web.daniparuoutlook.workers.dev'];
+const RX=/https?:\/\/[^\s]+|(?:\+34 ?)?[6-9]\d{2} ?\d{3} ?\d{3}/g;
+const hist=[];let busy=false;
+const mobile=()=>matchMedia('(max-width:639px)').matches;
+const down=()=>log.scrollTop=log.scrollHeight;
+
+function fill(el,t){let i=0;for(const m of t.matchAll(RX)){const u=m[0].replace(/[.,;:)]+$/,'');el.append(t.slice(i,m.index));let a=null;
+ if(u[0]==='h'){try{if(HOSTS.includes(new URL(u).hostname)){a=document.createElement('a');a.href=u;a.target='_blank';a.rel='noopener'}}catch(e){}}
+ else{a=document.createElement('a');a.href='tel:+34'+u.replace(/\D/g,'').slice(-9)}
+ if(a){a.textContent=u;el.append(a)}else el.append(u);i=m.index+u.length}
+ el.append(t.slice(i))}
+function msg(role,t){const d=document.createElement('div');d.className='ia-m ia-'+role;fill(d,t);log.append(d);down();return d}
+
+function fit(){if(!vv||panel.hidden||!mobile()){panel.style.height=panel.style.top='';return}
+ panel.style.height=vv.height+'px';panel.style.top=vv.offsetTop+'px';down()}
+function open(){panel.hidden=false;btn.hidden=true;btn.setAttribute('aria-expanded','true');
+ if(mobile())document.documentElement.style.overflow='hidden';fit();down();(mobile()?panel:input).focus()}
+function close(){panel.hidden=true;btn.hidden=false;btn.setAttribute('aria-expanded','false');document.documentElement.style.overflow='';btn.focus()}
+function grow(){input.style.height='auto';input.style.height=Math.min(input.scrollHeight,120)+'px'}
+
+async function ask(t){t=t.trim();if(!t||busy)return;busy=true;send.disabled=true;chips.hidden=true;
+ msg('user',t);hist.push({role:'user',content:t});input.value='';grow();
+ const w=msg('bot','Escribiendo…');w.classList.add('ia-wait');let reply='',hand=false;
+ try{const r=await fetch('/api/chat',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({messages:hist.slice(-16)})});
+  const d=await r.json();reply=d.reply||'';hand=!!d.handoff}catch(e){}
+ if(!reply){reply=FALL;hand=true}
+ w.remove();msg('bot',reply);hist.push({role:'assistant',content:reply});
+ if(hand){log.append($('ia-hand-tpl').content.cloneNode(true));down()}
+ busy=false;send.disabled=false;if(!mobile())input.focus()}
+
+btn.onclick=open;$('ia-close').onclick=close;
+document.querySelectorAll('[data-ia-open]').forEach(el=>el.addEventListener('click',e=>{e.preventDefault();open()}));
+panel.addEventListener('keydown',e=>{if(e.key==='Escape')close()});
+chips.addEventListener('click',e=>{if(e.target.tagName==='BUTTON')ask(e.target.textContent)});
+form.addEventListener('submit',e=>{e.preventDefault();ask(input.value)});
+input.addEventListener('input',grow);
+input.addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey&&!matchMedia('(pointer:coarse)').matches){e.preventDefault();ask(input.value)}});
+if(vv){vv.addEventListener('resize',fit);vv.addEventListener('scroll',fit)}
+addEventListener('resize',fit);
+})();
+</script>
+</div>
+<!-- /Asistente IA -->
+
+</body>
+</html>

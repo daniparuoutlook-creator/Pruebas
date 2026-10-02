@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Academia Compás · Control de clases</title>
+<style>
+:root{
+  --fondo:#F3F4F8; --carta:#FFFFFF; --tinta:#1B1E3A; --gris:#646985; --linea:#E1E3EC;
+  --naranja:#F07A2E; --naranja-suave:#FFF1E6; --verde:#1E8A5A; --verde-suave:#E4F5EC;
+  --rojo:#C8412E; --rojo-suave:#FBE9E6;
+}
+*{box-sizing:border-box;min-width:0}
+html,body{overflow-x:hidden}
+body{margin:0;background:var(--fondo);color:var(--tinta);font:400 15.5px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:inherit;font-weight:700;margin:0;letter-spacing:-.015em;text-wrap:balance}
+button{font:inherit;cursor:pointer}
+.env{max-width:1060px;margin:0 auto;padding:0 18px}
+
+.cab{background:var(--tinta);color:#fff}
+.cab-in{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;padding-top:16px;padding-bottom:16px}
+.marca{font-weight:800;font-size:19px;letter-spacing:-.02em}
+.marca span{color:var(--naranja)}
+.fecha{font-size:13.5px;color:#B7BBD6}
+
+main{padding:24px 0 48px}
+.intro{display:flex;justify-content:space-between;align-items:flex-end;gap:14px;flex-wrap:wrap;margin-bottom:18px}
+.intro h1{font-size:clamp(22px,4vw,28px)}
+.intro p{margin:4px 0 0;color:var(--gris);font-size:14.5px}
+.reiniciar{min-height:44px;border:1px solid var(--linea);background:var(--carta);color:var(--tinta);padding:10px 16px;border-radius:8px;font-size:14px}
+.reiniciar:hover{border-color:var(--tinta)}
+
+/* resumen */
+.resumen{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:18px}
+.dato{background:var(--carta);border:1px solid var(--linea);border-radius:12px;padding:14px 16px}
+.dato span{display:block;font-size:12.5px;color:var(--gris)}
+.dato b{display:block;font-size:28px;font-weight:700;margin-top:2px;font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.dato.alerta b{color:var(--rojo)}
+.dato.aviso b{color:#B54F0E}
+
+/* filtros */
+.filtros{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+.filtro{min-height:44px;border:1px solid var(--linea);background:var(--carta);color:var(--tinta);padding:10px 16px;border-radius:22px;font-size:14px}
+.filtro:hover{border-color:var(--naranja)}
+.filtro.on{background:var(--tinta);color:#fff;border-color:var(--tinta)}
+
+/* alumnos */
+.lista{display:grid;gap:10px}
+.alumno{background:var(--carta);border:1px solid var(--linea);border-radius:12px;padding:14px 16px;
+        display:grid;grid-template-columns:1.3fr 1.6fr auto;gap:16px;align-items:center}
+.nombre h3{font-size:15.5px}
+.nombre p{margin:2px 0 0;font-size:13px;color:var(--gris)}
+.etiquetas{display:flex;gap:6px;flex-wrap:wrap;margin-top:7px}
+.et{font-size:12.5px;font-weight:600;padding:3px 8px;border-radius:12px}
+.et.ok{background:var(--verde-suave);color:var(--verde)}
+.et.debe{background:var(--rojo-suave);color:var(--rojo)}
+.et.recu{background:var(--naranja-suave);color:#8F3E0B}
+.bono-cab{display:flex;justify-content:space-between;font-size:12.5px;color:var(--gris);margin-bottom:6px}
+.bono-cab b{color:var(--tinta);font-weight:600}
+.barra{height:9px;background:#ECEEF4;border-radius:6px;overflow:hidden;display:flex}
+.barra i{display:block;height:100%}
+.barra .asis{background:var(--verde)}
+.barra .falt{background:var(--naranja)}
+.leyenda{display:flex;gap:14px;margin-top:6px;font-size:12px;color:var(--gris)}
+.leyenda span::before{content:"";display:inline-block;width:8px;height:8px;border-radius:2px;margin-right:5px;vertical-align:middle}
+.leyenda .l1::before{background:var(--verde)}
+.leyenda .l2::before{background:var(--naranja)}
+.acciones{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}
+.acc{min-height:44px;border:1px solid var(--linea);background:#fff;color:var(--tinta);padding:10px 13px;border-radius:8px;font-size:13.5px;white-space:nowrap}
+.acc:hover{border-color:var(--tinta)}
+.acc.si{background:var(--verde);border-color:var(--verde);color:#fff}
+.acc.si:hover{background:#176E48}
+.acc:disabled{opacity:.4;cursor:not-allowed}
+.vacio{background:var(--carta);border:1px dashed var(--linea);border-radius:12px;padding:26px;text-align:center;color:var(--gris)}
+
+.nota{margin-top:20px;font-size:13.5px;color:var(--gris);text-align:center}
+.nota a{display:inline-block;padding:12px 0;color:var(--tinta);text-underline-offset:.22em}
+.toast{position:fixed;left:50%;bottom:22px;transform:translateX(-50%) translateY(20px);opacity:0;
+       background:var(--tinta);color:#fff;padding:10px 16px;border-radius:8px;font-size:13.5px;transition:.2s;pointer-events:none}
+.toast.ver{opacity:1;transform:translateX(-50%) translateY(0)}
+:focus-visible{outline:3px solid var(--tinta);outline-offset:2px}
+::selection{background:var(--tinta);color:#fff}
+html{caret-color:var(--tinta)}
+.reiniciar,.filtro,.acc{transition:background .15s cubic-bezier(.23,1,.32,1),border-color .15s cubic-bezier(.23,1,.32,1),transform .16s cubic-bezier(.23,1,.32,1)}
+.reiniciar:active,.filtro:active,.acc:active:not(:disabled){transform:scale(.97)}
+.bono-cab b,.leyenda,.fecha{font-variant-numeric:tabular-nums}
+@media (prefers-reduced-motion:reduce){.reiniciar:active,.filtro:active,.acc:active:not(:disabled){transform:none}.toast{transition:opacity .2s}}
+@media(max-width:820px){
+  .resumen{grid-template-columns:repeat(2,1fr)}
+  .alumno{grid-template-columns:1fr;gap:12px}
+  .acciones{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .acc{width:100%}
+  .filtros{flex-wrap:nowrap;overflow-x:auto;margin-left:-18px;margin-right:-18px;padding:2px 18px 6px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .filtros::-webkit-scrollbar{display:none}
+  .filtro{flex:none}
+}
+</style>
+</head>
+<body>
+
+<header class="cab">
+  <div class="env cab-in">
+    <div class="marca">Academia <span>Compás</span></div>
+    <div class="fecha" id="fecha"></div>
+  </div>
+</header>
+
+<main class="env">
+  <div class="intro">
+    <div>
+      <h1>Control de clases del mes</h1>
+      <p>Asistencias, faltas por recuperar, bonos y pagos de cada alumno, en una sola pantalla.</p>
+    </div>
+    <button class="reiniciar" id="reiniciar" type="button">Reiniciar demo</button>
+  </div>
+
+  <div class="resumen" aria-live="polite">
+    <div class="dato"><span>Alumnos activos</span><b id="r-alumnos">0</b></div>
+    <div class="dato"><span>Clases dadas este mes</span><b id="r-clases">0</b></div>
+    <div class="dato aviso"><span>Clases por recuperar</span><b id="r-recu">0</b></div>
+    <div class="dato alerta"><span>Mensualidades pendientes</span><b id="r-pagos">0</b></div>
+  </div>
+
+  <div class="filtros" role="group" aria-label="Filtrar alumnos">
+    <button class="filtro on" data-f="todos" type="button">Todos</button>
+    <button class="filtro" data-f="debe" type="button">Deben la mensualidad</button>
+    <button class="filtro" data-f="recu" type="button">Tienen clases por recuperar</button>
+    <button class="filtro" data-f="agotado" type="button">Bono casi agotado</button>
+  </div>
+
+  <div class="lista" id="lista"></div>
+
+  <p class="nota">Demostración con alumnos ficticios. Los cambios no se guardan: al recargar vuelve al estado inicial. <a href="../index.html#trabajos">Hecha por Daniel Padilla</a>.</p>
+</main>
+
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+var INICIAL = [
+  {n:"Lucía Márquez",   g:"Salsa · Iniciación",   bono:8, asis:5, falt:1, recu:1, paga:true},
+  {n:"Javier Ortega",   g:"Bachata · Medio",      bono:8, asis:6, falt:2, recu:0, paga:false},
+  {n:"Carmen Vidal",    g:"Danza del vientre",    bono:4, asis:2, falt:1, recu:1, paga:true},
+  {n:"Andrés Molina",   g:"Salsa · Iniciación",   bono:8, asis:3, falt:0, recu:0, paga:true},
+  {n:"Marta Ruiz",      g:"Sevillanas",           bono:4, asis:3, falt:1, recu:1, paga:false},
+  {n:"Pablo Serrano",   g:"Hip hop · Infantil",   bono:8, asis:7, falt:0, recu:0, paga:true},
+  {n:"Elena Castro",    g:"Bachata · Medio",      bono:8, asis:4, falt:2, recu:2, paga:true}
+];
+var alumnos, filtro = "todos";
+
+function clonar(){ alumnos = INICIAL.map(function(a){ return Object.assign({}, a); }); }
+
+function usadas(a){ return a.asis + a.falt - a.recu; }
+function restantes(a){ return Math.max(0, a.bono - a.asis - (a.falt - a.recu)); }
+
+function aviso(t){
+  var el = document.getElementById("toast");
+  el.textContent = t; el.classList.add("ver");
+  clearTimeout(aviso._t); aviso._t = setTimeout(function(){ el.classList.remove("ver"); }, 1600);
+}
+
+function pasaFiltro(a){
+  if(filtro === "debe") return !a.paga;
+  if(filtro === "recu") return a.recu > 0;
+  if(filtro === "agotado") return restantes(a) <= 1;
+  return true;
+}
+
+function pintar(){
+  var lista = document.getElementById("lista");
+  lista.innerHTML = "";
+  var vis = alumnos.filter(pasaFiltro);
+
+  if(!vis.length){
+    lista.innerHTML = '<div class="vacio">Ningún alumno cumple este filtro ahora mismo.</div>';
+  }
+
+  vis.forEach(function(a){
+    var i = alumnos.indexOf(a);
+    var pctA = Math.min(100, a.asis / a.bono * 100);
+    var pctF = Math.min(100 - pctA, (a.falt - a.recu) / a.bono * 100);
+    var quedan = restantes(a);
+
+    var fila = document.createElement("article");
+    fila.className = "alumno";
+    fila.innerHTML =
+      '<div class="nombre"><h3></h3><p></p><div class="etiquetas"></div></div>' +
+      '<div class="bono">' +
+        '<div class="bono-cab"><span>Bono de ' + a.bono + ' clases</span><b>quedan ' + quedan + '</b></div>' +
+        '<div class="barra"><i class="asis" style="width:' + pctA + '%"></i><i class="falt" style="width:' + Math.max(0,pctF) + '%"></i></div>' +
+        '<div class="leyenda"><span class="l1">' + a.asis + (a.asis === 1 ? ' asistida' : ' asistidas') + '</span><span class="l2">' + a.falt + (a.falt === 1 ? ' falta' : ' faltas') + '</span></div>' +
+      '</div>' +
+      '<div class="acciones">' +
+        '<button class="acc si" data-a="asis" type="button">Ha venido</button>' +
+        '<button class="acc" data-a="falt" type="button">Ha faltado</button>' +
+        '<button class="acc" data-a="recu" type="button">Recupera clase</button>' +
+        '<button class="acc" data-a="paga" type="button"></button>' +
+      '</div>';
+
+    fila.querySelector("h3").textContent = a.n;
+    fila.querySelector("p").textContent = a.g;
+
+    var et = fila.querySelector(".etiquetas");
+    et.innerHTML += a.paga ? '<span class="et ok">Mes pagado</span>' : '<span class="et debe">Debe el mes</span>';
+    if(a.recu > 0) et.innerHTML += '<span class="et recu">' + a.recu + ' por recuperar</span>';
+
+    var bPaga = fila.querySelector('[data-a="paga"]');
+    bPaga.textContent = a.paga ? "Marcar pendiente" : "Marcar pagado";
+
+    fila.querySelector('[data-a="recu"]').disabled = a.recu === 0 || quedan === 0;
+    fila.querySelector('[data-a="asis"]').disabled = quedan === 0;
+    fila.querySelector('[data-a="falt"]').disabled = quedan === 0;
+
+    fila.querySelectorAll(".acc").forEach(function(b){
+      b.addEventListener("click", function(){ accion(i, b.dataset.a); });
+    });
+    lista.appendChild(fila);
+  });
+
+  document.getElementById("r-alumnos").textContent = alumnos.length;
+  document.getElementById("r-clases").textContent = alumnos.reduce(function(s,a){ return s + a.asis; }, 0);
+  document.getElementById("r-recu").textContent = alumnos.reduce(function(s,a){ return s + a.recu; }, 0);
+  document.getElementById("r-pagos").textContent = alumnos.filter(function(a){ return !a.paga; }).length;
+}
+
+function accion(i, tipo){
+  var a = alumnos[i];
+  if(tipo === "asis"){ a.asis++; aviso(a.n + ": asistencia anotada"); }
+  if(tipo === "falt"){ a.falt++; a.recu++; aviso(a.n + ": falta anotada, podrá recuperarla"); }
+  if(tipo === "recu" && a.recu > 0){ a.recu--; a.asis++; aviso(a.n + ": clase recuperada"); }
+  if(tipo === "paga"){ a.paga = !a.paga; aviso(a.n + (a.paga ? ": mes pagado" : ": pago pendiente")); }
+  pintar();
+}
+
+document.querySelectorAll(".filtro").forEach(function(b){
+  b.addEventListener("click", function(){
+    document.querySelectorAll(".filtro").forEach(function(o){ o.classList.remove("on"); });
+    b.classList.add("on"); filtro = b.dataset.f; pintar();
+  });
+});
+document.getElementById("reiniciar").addEventListener("click", function(){ clonar(); pintar(); aviso("Demo reiniciada"); });
+
+var hoy = new Date();
+document.getElementById("fecha").textContent =
+  hoy.toLocaleDateString("es-ES", {weekday:"long", day:"numeric", month:"long"});
+
+clonar(); pintar();
+</script>
+</body>
+</html>
