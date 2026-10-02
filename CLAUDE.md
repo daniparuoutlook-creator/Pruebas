@@ -75,6 +75,7 @@ Si dos skills se contradicen en estética, manda este archivo y después `docs/B
 - El secreto `ANTHROPIC_API_KEY` vive solo en Cloudflare. **Nunca** lo pongas en ningún archivo, ni de ejemplo con un valor que parezca real.
 - **No despliegues.** No ejecutes `wrangler deploy`, `wrangler login` ni nada contra Cloudflare. Dani despliega desde su ordenador con `npx wrangler deploy`.
 - Sin frameworks ni bundlers: HTML + CSS + JavaScript sin dependencias de ejecución salvo GSAP autoalojado. Con varias páginas, el CSS y el JS comunes van en archivos compartidos (`public/assets/css/…`, `public/assets/js/…`) para que el navegador los cachee.
+- Las páginas se escriben en `src/` y se generan con `node scripts/construir.mjs` (sin dependencias). **No edites a mano el HTML de `public/`**: se sobrescribe. Precios y contacto salen de `src/datos/negocio.json` (copia de `docs/NEGOCIO.md`) y el dominio de `src/datos/sitio.json`. Detalle en `docs/ESTADO-ACTUAL.md`.
 - Rutas limpias: Cloudflare sirve `public/servicios/index.html` en `/servicios/` y `public/aviso-legal.html` en `/aviso-legal`. Usa carpetas con `index.html` para las páginas nuevas.
 - Tipografías y fotos **autoalojadas** (la política de privacidad dice que la web no conecta con terceros salvo lo que se declare; si se quita Google Fonts, se actualiza ese párrafo).
 
@@ -101,6 +102,8 @@ Si cambian páginas, demos o precios, actualiza también el texto `SYSTEM` de `w
 4. `impeccable detect --json` en cada página. Los avisos `clipped-overflow-container` de `html`/`body` ya existían (vienen de `overflow-x:hidden`); el resto se arregla o se justifica.
 5. Rendimiento: imágenes en AVIF/WebP con `width`/`height`, `loading="lazy"` fuera de la primera pantalla, fuentes en `woff2` con `font-display:swap` y precarga solo de la principal. Si puedes, pasa Lighthouse móvil (`npx lighthouse`) y apunta las cifras.
 6. Enlaces internos: ninguno roto (rastrea todas las páginas con un script).
+
+Atajos ya hechos: `node scripts/comprobar.mjs` (enlaces, precios y los puntos 2 y 6 en todas las páginas) y `node scripts/probar-momentos.mjs` (interacciones en móvil táctil). El contraste, `impeccable` y Lighthouse siguen siendo a mano.
 
 ## 8. SEO y GEO (que Google y los asistentes de IA entiendan la web)
 

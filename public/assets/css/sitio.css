@@ -8,6 +8,12 @@
 @font-face{font-family:"Bricolage";src:url(/assets/fuentes/bricolage.woff2) format("woff2");font-weight:600 800;font-style:normal;font-display:swap}
 @font-face{font-family:"Archivo";src:url(/assets/fuentes/archivo.woff2) format("woff2");font-weight:100 900;font-style:normal;font-display:swap}
 @font-face{font-family:"Archivo";src:url(/assets/fuentes/archivo-cursiva.woff2) format("woff2");font-weight:100 900;font-style:italic;font-display:swap}
+/* Respaldo con las medidas de Archivo (medidas con fontTools): mientras llega la fuente, el texto ocupa
+   casi lo mismo y la página no salta al cambiarla. Arial/Helvetica en iPhone, Mac y Windows; Roboto en Android. */
+@font-face{font-family:"Archivo respaldo";font-weight:100 500;src:local("Arial"),local("ArialMT"),local("Helvetica"),local("Liberation Sans"),local("LiberationSans");size-adjust:98%;ascent-override:89.6%;descent-override:21.4%;line-gap-override:0%}
+@font-face{font-family:"Archivo respaldo";font-weight:600 900;src:local("Arial Bold"),local("Arial-BoldMT"),local("Helvetica Bold"),local("Helvetica-Bold"),local("Liberation Sans Bold"),local("LiberationSans-Bold");size-adjust:98.5%;ascent-override:89.1%;descent-override:21.3%;line-gap-override:0%}
+@font-face{font-family:"Archivo respaldo Android";font-weight:100 500;src:local("Roboto"),local("Roboto-Regular");size-adjust:99.4%;ascent-override:88.3%;descent-override:21.1%;line-gap-override:0%}
+@font-face{font-family:"Archivo respaldo Android";font-weight:600 900;src:local("Roboto Bold"),local("Roboto-Bold");size-adjust:104.6%;ascent-override:83.9%;descent-override:20.1%;line-gap-override:0%}
 
 /* ---------- 2. Tokens ---------- */
 :root{
@@ -25,7 +31,7 @@
   --linea:#CDD3DB;       /* separadores decorativos */
   --borde:#6B7381;       /* bordes de controles · 4,66:1 hoja · 3,88:1 mesa */
   --display:"Bricolage",system-ui,-apple-system,"Segoe UI",sans-serif;
-  --texto:"Archivo",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --texto:"Archivo","Archivo respaldo","Archivo respaldo Android",system-ui,-apple-system,"Segoe UI",sans-serif;
   --ease-out:cubic-bezier(.23,1,.32,1);
   --ease-in-out:cubic-bezier(.77,0,.175,1);
   --margen:16px;
@@ -188,7 +194,7 @@ strong,b{font-weight:700}
 .ad-capa + .ad-capa{border-top:1.5px dashed var(--tinta)}
 .ad-capa::before{content:attr(data-rotulo);position:absolute;right:8px;bottom:8px;font:700 12px var(--texto);background:var(--tinta);color:#fff;padding:3px 8px;border-radius:3px}
 /* La web rota: Times por defecto, pegada al borde, botón ilegible */
-.ad-antes{background:#fff;color:#222;font-family:"Times New Roman",Times,serif}
+.ad-antes{background:#fff;color:#222;font-family:"Times New Roman",Times,serif;padding:0 14px}
 .ad-antes .m-cab{display:flex;justify-content:space-between;align-items:baseline;gap:10px;padding:9px 0;border-bottom:1px solid #ddd;font-size:14px}
 .ad-antes .m-cab b{letter-spacing:.06em}
 .ad-antes .m-cab span{color:#00e;text-decoration:underline;font-size:13px;white-space:nowrap}
@@ -310,7 +316,7 @@ strong,b{font-weight:700}
 .precio-grande{grid-column:1/-1}
 .precio-grande .precio-que{font-size:18px}
 .precio-grande .precio-cifra b{font-size:clamp(44px,12vw,64px)}
-.precio-grande .precio-nota{font-size:15px;color:var(--gris);max-width:40ch}
+.precio-grande .precio-nota{margin-top:.6em;font-size:15px;color:var(--gris);max-width:40ch}
 .precio-grande .precio-cifra{margin-top:6px;padding-left:10px}
 @media (min-width:700px){.tablon{grid-template-columns:repeat(3,1fr);gap:16px}}
 @media (min-width:1100px){.tablon{grid-template-columns:repeat(4,1fr)}.precio-grande{grid-column:span 2}}

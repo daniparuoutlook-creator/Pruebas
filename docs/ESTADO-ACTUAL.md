@@ -1,88 +1,69 @@
-# Estado actual de la web (2 de octubre de 2026)
+# Estado actual de la web (tras el rediseño, 2 de octubre de 2026)
 
-Publicada en `https://web.daniparuoutlook.workers.dev` (Worker de Cloudflare llamado `web`). Funciona y está desplegada tal cual está en este repositorio.
+Dominio: `https://web.daniparuoutlook.workers.dev` (Worker de Cloudflare llamado `web`). Para pasar a `webpadilla.com`, ver `docs/CAMBIO-DE-DOMINIO.md`.
+La versión anterior (una sola página) está en el primer commit del repositorio y descrita en `docs/AUDITORIA.md`.
 
-## Archivos
+## Cómo está hecha
 
-```
-worker.js            Worker: /api/chat (asistente con la API de Claude) + sirve public/
-wrangler.jsonc       Configuración del Worker (no tocar)
-public/
-  index.html         TODA la web en una sola página (≈70 KB, CSS y JS dentro)
-  404.html
-  aviso-legal.html   Datos legales (LSSI) — contenido legal no se toca
-  privacidad.html    Política de privacidad (RGPD) — idem
-  robots.txt         Allow: / + sitemap
-  sitemap.xml        Solo la portada
-  og.png             Imagen para compartir (1200×630)
-  demos/             5 demos de negocios ficticios, autocontenidas, noindex
-    hosteleria.html  Bar Almanaque
-    belleza.html     Estudio Malva
-    clinica.html     Clínica Arenal
-    tienda.html      La Despensa de Triana
-    academia.html    Academia Compás
-scripts/dev-server.mjs   Servidor local con /api/chat simulado
-```
-
-## Identidad visual actual (punto de partida, se puede evolucionar)
-
-Concepto: **el marcador amarillo** de quien revisa y corrige. Papel, tinta y un subrayado amarillo que señala lo importante.
+HTML, CSS y JavaScript sin frameworks ni dependencias de ejecución. Las páginas **no se editan en `public/`**: se escriben en `src/` y un generador sin dependencias las monta.
 
 ```
---papel:#EDEFF2   --carta:#FFFFFF   --tinta:#16191F   --azul:#1F3BD6   --azul-hondo:#152BA0
---marcador:#FFE24A   --gris:#5B6470   --linea:#D5DAE1
---ease-out:cubic-bezier(.23,1,.32,1)
-Títulos: Bricolage Grotesque 500/700 · Texto: Archivo 400/500/600 (hoy desde Google Fonts)
-Radio 8 px · ancho máximo 1120 px · espaciado vertical clamp(56px,7vw,92px)
+src/
+  datos/negocio.json     Precios, plazos, extras y contacto (copia de docs/NEGOCIO.md: si cambia uno, cambia el otro)
+  datos/sitio.json       Dominio de la web y fecha de actualización
+  plantilla/base.html    Esqueleto común (head, cabecera, migas, pie, barra móvil)
+  plantilla/*.html       Piezas reutilizables: cabecera, pie, barra, cta-final, antes-despues,
+                         expedientes, tablon, pasos y una tarjeta por trabajo (tarjeta-<caso>.html)
+  paginas/**.html        Una por página. Empiezan con <!--meta {JSON} --> (título, descripción, ruta,
+                         migas, servicios para el JSON-LD, módulos JS) y luego el contenido
+scripts/
+  construir.mjs          src/ -> public/ + sitemap.xml + robots.txt + llms.txt  (node scripts/construir.mjs)
+  comprobar.mjs          Enlaces, precios, y Playwright a 360/390/768/1280, reducido y sin JS
+  probar-momentos.mjs    Pruebas de las interacciones (antes/después, calculadora, chat...)
+  imagenes-og.mjs        Imágenes para compartir de cada página en public/og/
+  capturas-demos.mjs     Capturas de las demos para las tarjetas y los casos
+  dev-server.mjs         Servidor local en http://localhost:8787 con /api/chat simulado
+public/                  Lo que se despliega (HTML generado + assets)
+  assets/css/sitio.css   Todo el CSS (compartido)
+  assets/js/sitio.js     Menú, carga del chat, copiar teléfono, 404, botón flotante
+  assets/js/chat.js      El asistente (se descarga al abrirlo)
+  assets/js/<módulo>.js  Solo en la página que lo usa: antes-despues, calculadora, filtros, visor, simulaciones
+  assets/fuentes/        Bricolage Grotesque y Archivo en woff2, recortadas (licencia OFL al lado)
+  assets/img/trabajos/   Capturas de las demos en AVIF y WebP
+  og/                    Imagen para compartir de cada página
+  demos/                 Las 5 demos (no se tocan)
+worker.js, wrangler.jsonc   Sin cambios salvo el texto SYSTEM del asistente
 ```
 
-## Secciones de `index.html` hoy (de arriba abajo)
+Marcas que entiende el generador dentro de las páginas: `{{precio:clave}}`, `{{cuota:clave}}`, `{{plazo:clave}}`, `{{c:campo}}` (contacto), `{{tel}}`, `{{wa}}`, `{{wa:texto}}`, `{{url}}`, `{{dominio}}`, `{{dominioAnual}}`, `{{datos-precios}}` y `{{> pieza}}`. Si queda alguna sin sustituir, el generador se para con un error. Por eso no se escriben dobles llaves dentro de comentarios HTML.
 
-1. **Cabecera** con menú de anclas (resalta la sección activa con IntersectionObserver).
-2. **Portada**: "Hago webs para negocios, y arreglo las que ya existen". Desde Sevilla y en remoto; precio cerrado, dominio y alojamiento a tu nombre, sin cuota que te ate. Botones "Pedir presupuesto" y "Ver trabajos".
-   - Panel **"Lo que suelo encontrar"**: 4 hallazgos **reales** en webs de negocios de Sevilla, desplegables (carpintería con la web en dos direcciones; escuela de idiomas con "Your Content Goes Here" en portada; taller mecánico con la longitud sin signo menos y fuera de Sevilla en Google; tienda online vendiendo tallas agotadas). Es el contenido más persuasivo de la web: cuenta historias verdaderas y concretas. Conservar los textos y darles mucho más protagonismo.
-3. **Servicios y precios** (`#servicios`): lista de servicios + **estimador** "Calcula lo que costaría lo tuyo":
-   - Tipo (radio): Arreglo 150 · Revisar mi web 250 · Web de una página 500 (marcado) · Web completa 900 · Ya tengo web 0
-   - Extras (checkbox): Vender online 400 · Reservas de cita o de mesa 200 · Versión en inglés 150 · Mantenimiento 0 + 80/mes
-   - Automatizaciones con IA (checkbox): Asistente 350 + 45/mes · Respuestas de correo 300 + 40/mes · Atención de llamadas 600 + 90/mes y consumo
-   - Muestra "desde X €", "+ Y € al mes" y el desglose. Si no hay nada elegido: "Elige algo".
-4. **Automatizaciones con IA** (`#automatizaciones`): los tres servicios explicados.
-5. **Trabajos** (`#trabajos`):
-   - **Visor de pantallas**: un iframe de la demo elegida escalado con `transform`, con un deslizador de 320 a 1280 px y botones para cambiar de demo. (Aquí ocurrieron los errores de `clientWidth` y del iframe que atrapa el dedo.)
-   - Grupos de tarjetas:
-     - **Webs para negocios**: Bar Almanaque, Clínica Arenal, Estudio Malva, La Despensa.
-     - **Webs con asistente de IA**: 2 huecos "En mantenimiento" (demos por hacer).
-     - **Reservas y pedidos**: 4 huecos "En mantenimiento" (2 peluquerías, 2 restaurantes; se harán con Lovable).
-     - **Herramientas a medida**: Academia Compás.
-   - Aviso: "Son proyectos de demostración con negocios ficticios…".
-6. **Preguntas frecuentes** (`#preguntas`): 8 preguntas, también en JSON-LD `FAQPage`.
-7. **Cómo trabajo** (`#proceso`): 4 pasos.
-8. **Quién soy**.
-9. **Contacto** (`#contacto`): llamar, WhatsApp, correo.
-10. **Pie** con enlaces legales.
-11. **JSON-LD** `ProfessionalService` (con ofertas y cuotas mensuales) y `FAQPage`.
-12. **Widget del asistente de IA** (botón flotante "Pregunta a la IA" → panel a pantalla completa en móvil, 380×620 en escritorio).
+## Mapa
 
-## Las demos (qué hace cada una)
+| Ruta | Qué es |
+|---|---|
+| `/` | Portada: antes/después arrastrable, hallazgos reales, tablón de precios, tres trabajos, cómo trabajo |
+| `/servicios/` y `/servicios/{webs,arreglos,automatizaciones-ia,herramientas-a-medida}/` | Un servicio por página, con precio, qué incluye, ejemplos y preguntas |
+| `/trabajos/` | Trabajos por grupos con filtros; huecos «En obras» para las demos que faltan |
+| `/trabajos/{bar-almanaque,clinica-arenal,estudio-malva,la-despensa,academia-compas}/` | Una página por caso: problema, qué hace, por qué está hecha así, visor móvil/ordenador |
+| `/precios/` | Calculadora que escribe el presupuesto y lo manda por WhatsApp, tablas y preguntas de dinero |
+| `/como-trabajo/` | Pasos, condiciones, plazos y las preguntas frecuentes |
+| `/sobre-mi/`, `/contacto/`, `/revision-gratis/` | Quién es Dani, formas de contacto, la revisión gratis |
+| `/aviso-legal`, `/privacidad`, `404` | Legales (noindex) y página de error |
 
-- **Bar Almanaque** (hostelería): pizarra + amarillo tiza. Calcula si está abierto ahora con tramos reales y lo muestra en la cabecera. Pizarra del día, carta con tapa/ración por pestañas.
-- **Estudio Malva** (peluquería): la clienta marca servicios, ve precio y tiempo total, y un botón genera el WhatsApp de la cita ya escrito. Barra fija abajo en móvil con el total.
-- **Clínica Arenal** (dental): verde esmeralda. Simulador de financiación (3-24 meses, interés real desde el mes 13, TIN 7,9 %). Precios publicados.
-- **La Despensa de Triana** (ultramarinos): paleta oliva, Alfa Slab One. Cada producto es una etiqueta de conserva; cesta con filtros y panel lateral; pedido final por WhatsApp.
-- **Academia Compás** (herramienta interna): alumnos, asistencias, clases por recuperar, bonos y mensualidades pendientes, con filtros. Respalda "Herramientas a medida".
+Las direcciones viejas con ancla (`/#servicios`, `/#trabajos`, `/#preguntas`...) se redirigen a su página nueva desde `sitio.js`.
 
-Las fotos de las demos se cargan desde `images.unsplash.com` (licencia libre). Mejor autoalojarlas en `public/demos/img/` optimizadas (rendimiento y privacidad).
+## Sistema visual (dirección «Hoja de revisión»)
 
-## Asistente de IA
+```
+--hoja:#FCFCFD  --mesa:#E4E8ED  --tinta:#16191F  --gris:#5B6470  --gris-mesa:#535C68
+--boli:#1F3BD6  --boli-hondo:#152BA0  --marcador:#FFE24A  --verde:#1E6B3A  --rojo:#B42318
+--linea:#CDD3DB  --borde:#6B7381
+Títulos: Bricolage Grotesque 600-800 (precargada) · Texto: Archivo, con respaldo ajustado a sus medidas
+Curva: cubic-bezier(.23,1,.32,1) · Márgenes laterales 16/24/48 px · Ancho máximo 1180 px
+```
 
-- `worker.js` llama a la API de Anthropic (modelo `claude-haiku-4-5-20251001`) con un `SYSTEM` largo en español que describe a Dani, servicios, precios y demos. Marca `[DANIEL]` para pasar con Dani.
-- **Desajuste conocido**: el `SYSTEM` dice que vender online, reserva de cita y versión en inglés "no tienen precio publicado", pero la calculadora sí los publica (400/200/150 €). Hay que sincronizarlo.
-- Ahora mismo la cuenta de Anthropic de Dani está sin crédito, así que en producción el chat responde con el mensaje de "habla con Daniel". No es un fallo de código.
+Todas las parejas de color usadas están medidas (AA o mejor). El amarillo nunca es color de texto: solo marcador detrás de texto en tinta.
 
-## SEO ya hecho
+## El asistente
 
-Título y descripción revisados, Open Graph completo, `ProfessionalService` + `FAQPage`, `robots.txt` sin bloquear `/demos/` (las demos llevan `noindex,nofollow`), sitemap con la portada. Falta todo lo propio de una web de varias páginas.
-
-## Errores de diseño ya cometidos (ver CLAUDE.md §2)
-
-`padding: X 0` que borra márgenes · `clientWidth` con padding · iframe que atrapa el dedo · contraste naranja insuficiente · rasgos de diseño genérico.
+Igual que antes en su funcionamiento (contrato con el Worker, aviso de IA, pasar con Daniel, enlaces seguros, teclado móvil, Escape, foco). Ahora vive en `public/assets/js/chat.js`, está en todas las páginas y se abre con cualquier botón `[data-ia-open]`: en móvil desde la barra inferior, en escritorio desde el botón flotante (que aparece al bajar un poco).
