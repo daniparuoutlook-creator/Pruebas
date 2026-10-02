@@ -6,7 +6,7 @@ Dani: esto es lo que se ha hecho, cómo está comprobado, lo que falta y cómo p
 
 - La web pasa de una sola página a **20 páginas** (17 que Google puede indexar, más el 404 y las dos legales), con la dirección **B, «Hoja de revisión»**, y el **tablón de precios de la A** en la portada y en `/precios/`. Como me dijiste que la construyera sin esperar a elegir, fui con mi recomendación; si prefieres la A, se puede cambiar sobre esta base.
 - Todo lo que dice la web sobre precios, plazos y contacto sale de un solo archivo (`src/datos/negocio.json`, copia de `docs/NEGOCIO.md`), y el dominio de otro (`src/datos/sitio.json`). Así no hay precios distintos en sitios distintos y el cambio a `webpadilla.com` es una línea.
-- **Lighthouse móvil**: rendimiento 98-100, accesibilidad, buenas prácticas y SEO a 100 en las seis páginas medidas. Antes: 85 de rendimiento y LCP de 3,1 s en la portada.
+- **Lighthouse móvil**: rendimiento 97-100, accesibilidad, buenas prácticas y SEO a 100 en las seis páginas medidas. Antes: 85 de rendimiento y LCP de 3,1 s en la portada.
 - El chat funciona igual que antes, pero ahora está en todas las páginas. El de verdad (con la API) **no se puede probar aquí**: lo he probado contra el servidor local, que contesta con respuestas simuladas.
 - No he desplegado nada. Los pasos para que lo hagas tú, con vista previa antes, están abajo.
 
@@ -67,10 +67,10 @@ Todo esto se ha medido, no supuesto:
 |---|---|---|---|---|---|---|
 | `/` | 99 | 100 | 100 | 100 | 2,0 s | 0 |
 | `/precios/` | 98 | 100 | 100 | 100 | 2,1 s | 0 |
-| `/trabajos/` | 98 | 100 | 100 | 100 | 2,4 s | 0,001 |
-| `/trabajos/bar-almanaque/` | 98 | 100 | 100 | 100 | 2,3 s | 0,001 |
-| `/servicios/automatizaciones-ia/` | 98 | 100 | 100 | 100 | 2,1 s | 0,017 |
-| `/contacto/` | 100 | 100 | 100 | 100 | 1,7 s | 0,008 |
+| `/trabajos/` | 97 | 100 | 100 | 100 | 2,4 s | 0 |
+| `/trabajos/bar-almanaque/` | 99 | 100 | 100 | 100 | 2,1 s | 0 |
+| `/servicios/automatizaciones-ia/` | 98 | 100 | 100 | 100 | 2,1 s | 0 |
+| `/contacto/` | 100 | 100 | 100 | 100 | 1,7 s | 0,019 |
 
 Medido contra el servidor local, que no comprime: en Cloudflare (que sirve con Brotli) pesará menos todavía. Al principio `/precios/` daba un CLS de 0,17 (la página «saltaba» al llegar la fuente); se arregló con una fuente de respaldo ajustada a las medidas de Archivo, y ahora es 0.
 
@@ -124,6 +124,7 @@ Además, de la revisión salió una comprobación nueva en `scripts/comprobar.mj
 | 7 | **Dominio `webpadilla.com`** y correo `hola@webpadilla.com` | Aún no los tienes | `docs/CAMBIO-DE-DOMINIO.md` |
 | 8 | **Probar el chat de verdad** | Aquí no hay acceso a la API | Tras publicar (o en la vista previa), hazle dos o tres preguntas, una de ellas pidiendo presupuesto, y comprueba que te ofrece llamar o WhatsApp |
 | 9 | **Qué no incluye una herramienta a medida** | `NEGOCIO.md` no lo dice; la página dice que va por escrito en el presupuesto | Dímelo (alojamiento, cambios tras la entrega...) y lo pongo en lista, como en las otras páginas de servicio |
+| 10 | **Pull request** | El repositorio solo tiene la rama de este trabajo: no hay una `main` contra la que abrirlo, y crear otra rama no lo hago sin tu permiso | Dime que sí y creo `main` desde el primer commit (la web publicada hoy) y abro el pull request con todo el rediseño; o publica directamente con el zip de esta rama |
 
 ### Propuesta para la política de privacidad (no aplicada)
 
