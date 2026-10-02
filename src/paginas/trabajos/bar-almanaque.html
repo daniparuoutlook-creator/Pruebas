@@ -1,0 +1,121 @@
+<!--meta
+{
+  "titulo": "Caso: web para un bar de tapas · Daniel Padilla",
+  "descripcion": "Web de ejemplo para un bar de tapas ficticio de Sevilla: dice en vivo si está abierto, enseña la pizarra del día y la carta con precio de tapa y de ración.",
+  "ruta": "/trabajos/bar-almanaque/",
+  "migas": [
+    [
+      "Trabajos",
+      "/trabajos/"
+    ],
+    [
+      "Bar Almanaque",
+      "/trabajos/bar-almanaque/"
+    ]
+  ],
+  "js": [
+    "visor"
+  ],
+  "ogTitulo": "Bar Almanaque · caso de ejemplo"
+}
+-->
+<main id="contenido">
+
+<section class="cabeza-pagina">
+  <div class="env">
+    <h1>Bar Almanaque</h1>
+    <p class="nota">Negocio ficticio · Hostelería. Hecho para enseñar cómo trabajo.</p>
+    <p class="intro">Bar de tapas de barrio en la calle Feria. Una web que contesta lo que de verdad busca quien va a un bar: si está abierto ahora y qué hay hoy.</p>
+    <div class="acciones">
+      <a class="boton" href="/demos/hosteleria.html">Abrir la demo</a>
+      <a class="enlace" href="#decisiones">Por qué está hecha así</a>
+    </div>
+  </div>
+</section>
+
+<section class="seccion sin-arriba" aria-label="Capturas">
+  <div class="env">
+    <div class="visor" data-visor>
+      <div class="visor-controles solo-js-flex">
+        <div class="visor-botones" role="group" aria-label="Ver la captura en">
+          <button type="button" aria-pressed="false" data-ver="movil">Móvil</button>
+          <button type="button" aria-pressed="false" data-ver="escritorio">Ordenador</button>
+        </div>
+      </div>
+      <div class="visor-escena">
+        <figure class="visor-pantalla" data-pantalla="movil">
+          <div class="marco-disp marco-movil">
+          <picture>
+            <source type="image/avif" srcset="/assets/img/trabajos/bar-almanaque-movil-390.avif 390w, /assets/img/trabajos/bar-almanaque-movil-780.avif 780w" sizes="300px">
+            <img src="/assets/img/trabajos/bar-almanaque-movil-390.webp" srcset="/assets/img/trabajos/bar-almanaque-movil-390.webp 390w, /assets/img/trabajos/bar-almanaque-movil-780.webp 780w" sizes="300px" width="390" height="844" alt="Portada de la web de Bar Almanaque en un móvil" decoding="async">
+          </picture>
+          </div>
+          <figcaption>En un móvil (390 px de ancho)</figcaption>
+        </figure>
+        <figure class="visor-pantalla" data-pantalla="escritorio">
+          <div class="marco-disp marco-escritorio">
+          <picture>
+            <source type="image/avif" srcset="/assets/img/trabajos/bar-almanaque-escritorio-640.avif 640w, /assets/img/trabajos/bar-almanaque-escritorio-1280.avif 1280w" sizes="(min-width: 1180px) 1084px, 92vw">
+            <img src="/assets/img/trabajos/bar-almanaque-escritorio-640.webp" srcset="/assets/img/trabajos/bar-almanaque-escritorio-640.webp 640w, /assets/img/trabajos/bar-almanaque-escritorio-1280.webp 1280w" sizes="(min-width: 1180px) 1084px, 92vw" width="1280" height="800" alt="Portada de la web de Bar Almanaque en un ordenador" decoding="async" style="view-transition-name: caso-bar-almanaque">
+          </picture>
+          </div>
+          <figcaption>En un ordenador (1280 px de ancho)</figcaption>
+        </figure>
+      </div>
+      <!-- Capturas sin las fotos de las demos: el entorno donde se hicieron no podía cargar images.unsplash.com.
+           Para rehacerlas con fotos: node scripts/capturas-demos.mjs (con el servidor local arrancado). -->
+    </div>
+  </div>
+</section>
+
+<section class="seccion seccion-mesa" aria-labelledby="t-problema">
+  <div class="env">
+    <div class="columnas">
+      <div>
+        <h2 id="t-problema">El problema de siempre</h2>
+        <p class="intro">Quien busca un bar desde el móvil quiere saber dos cosas: si está abierto y qué se come hoy. Es frecuente encontrar la carta en un PDF que no se lee en el móvil y un horario que lleva años sin tocarse.</p>
+      </div>
+      <div>
+        <h2>Qué hace la web</h2>
+        <ul class="lista-check">
+          <li>Calcula si el bar está abierto en ese momento, con sus tramos de horario reales, y lo dice en la cabecera.</li>
+          <li>La pizarra del día, lo que hay fuera de carta, arriba del todo.</li>
+          <li>La carta por pestañas, con el precio de tapa y de ración uno al lado del otro.</li>
+          <li>Cómo llegar, botón para llamar y WhatsApp, y un aviso para grupos grandes.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="seccion" id="decisiones" aria-labelledby="t-decisiones">
+  <div class="env">
+    <div class="cabeza">
+      <h2 id="t-decisiones">Por qué está hecha así</h2>
+    </div>
+    <ul class="decisiones">
+        <li><b>La carta en texto, no en PDF</b><span>Se lee bien en el móvil, Google la entiende y cambiar un precio es cambiar una línea.</span></li>
+        <li><b>Un solo color de acento</b><span>El amarillo tiza solo para lo que importa: si está abierto y el botón de llamar. El resto, pizarra.</span></li>
+        <li><b>Tipografía de rótulo</b><span>Letras altas y estrechas, como las de una pizarra de bar, para los títulos; una letra muy legible para lo demás.</span></li>
+        <li><b>Tapa y ración alineadas</b><span>Las cifras en columna, con números del mismo ancho, para comparar de un vistazo.</span></li>
+    </ul>
+    <div class="acciones">
+      <a class="boton" href="/demos/hosteleria.html">Abrir la demo</a>
+      <a class="enlace" href="/servicios/webs/">Una web así, desde {{precio:web_una}}</a>
+    </div>
+  </div>
+</section>
+
+<nav class="seccion sin-arriba" aria-label="Otros trabajos">
+  <div class="env">
+    <div class="caso-nav">
+      <a href="/trabajos/academia-compas/"><small>Anterior</small><b>Academia Compás</b></a>
+      <a href="/trabajos/clinica-arenal/"><small>Siguiente</small><b>Clínica Arenal</b></a>
+    </div>
+    <p class="acciones"><a class="enlace" href="/trabajos/">Todos los trabajos</a></p>
+  </div>
+</nav>
+
+{{> cta-final}}
+
+</main>

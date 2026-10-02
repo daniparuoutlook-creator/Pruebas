@@ -61,7 +61,7 @@ while (cola.length) {
   if (!tipo.includes("text/html")) { recursos.add(ruta); continue; }
   if (ruta.startsWith("/demos/")) continue; // las demos no se rastrean por dentro
   paginas.add(ruta);
-  const html = await r.text();
+  const html = (await r.text()).replace(/<!--[\s\S]*?-->/g, "");
   for (const e of enlacesDe(html)) {
     if (/^(https?:|mailto:|tel:|data:|#|javascript:)/.test(e)) continue;
     const limpio = e.split("#")[0].split("?")[0];

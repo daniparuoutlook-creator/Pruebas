@@ -1,0 +1,148 @@
+<!--meta
+{
+  "titulo": "Webs para negocios en Sevilla, desde 500 € · Daniel Padilla",
+  "descripcion": "Web de una página desde 500 € y web completa desde 900 €. Precio cerrado por escrito, dominio y alojamiento a tu nombre, sin cuota obligatoria. Desde Sevilla y en remoto.",
+  "ruta": "/servicios/webs/",
+  "migas": [["Servicios", "/servicios/"], ["Webs para negocios", "/servicios/webs/"]],
+  "servicios": ["web_una", "web_completa", "mantenimiento"]
+}
+-->
+<main id="contenido">
+
+<section class="cabeza-pagina">
+  <div class="env">
+    <h1>Webs para negocios que se entienden desde el móvil</h1>
+    <p class="intro">Para el bar, la peluquería, la clínica o la tienda que no tiene web, o tiene una que no le trae a nadie. Precio cerrado antes de empezar, y la web a tu nombre.</p>
+    <div class="acciones">
+      <a class="boton" href="/precios/#calculadora">Calcula lo tuyo</a>
+      <a class="enlace" href="{{wa:Hola Daniel, quiero una web para mi negocio.}}">Cuéntamelo por WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<section class="seccion seccion-mesa" aria-labelledby="t-opciones">
+  <div class="env">
+    <div class="cabeza">
+      <h2 id="t-opciones">Dos tamaños, según lo que necesites</h2>
+      <p class="intro">La mayoría de negocios de barrio tienen suficiente con una página. Si necesitas carta, catálogo o varias secciones, una web completa.</p>
+    </div>
+    <div class="columnas">
+      <div class="opcion">
+        <h3>Web de una página <span class="tab">desde {{precio:web_una}}</span></h3>
+        <p>Tus servicios, tus fotos, dónde estás y un botón para que te llamen. Todo lo que busca quien te encuentra desde el móvil.</p>
+        <ul class="lista-check">
+          <li>Tus servicios y tus fotos</li>
+          <li>Dónde estás, con el mapa</li>
+          <li>Un botón para que te llamen</li>
+          <li>Dos rondas de cambios después de entregarla</li>
+        </ul>
+        <p class="dato-plazo">Plazo: {{plazo:web_una}}</p>
+      </div>
+      <div class="opcion">
+        <h3>Web completa <span class="tab">desde {{precio:web_completa}}</span></h3>
+        <p>Varias páginas, catálogo o carta, formularios y lo que necesite tu negocio. Con WordPress o Shopify si quieres gestionarla tú.</p>
+        <ul class="lista-check">
+          <li>Las páginas que tu negocio necesite</li>
+          <li>Carta o catálogo, y formularios</li>
+          <li>WordPress o Shopify si la vas a actualizar tú</li>
+          <li>Dos rondas de cambios después de entregarla</li>
+        </ul>
+        <p class="dato-plazo">Plazo: {{plazo:web_completa}}</p>
+      </div>
+    </div>
+    <p class="nota mt-20">El plazo cuenta desde que tengo tus textos y tus fotos. Lo que más retrasa un proyecto no es el desarrollo, es esperar al contenido.</p>
+  </div>
+</section>
+
+<section class="seccion" aria-labelledby="t-extras">
+  <div class="env">
+    <div class="cabeza">
+      <h2 id="t-extras">Lo que se le puede añadir</h2>
+      <p class="intro">Sobre cualquiera de las dos. Todo entra en el presupuesto cerrado, nada aparece después.</p>
+    </div>
+    <table class="tabla-precios">
+      <caption class="sr">Extras para una web</caption>
+      <thead><tr><th scope="col">Extra</th><th scope="col">Precio</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Vender online</th><td>+&nbsp;{{precio:tienda}}</td></tr>
+        <tr><th scope="row">Reservas de cita o de mesa</th><td>+&nbsp;{{precio:reservas}}</td></tr>
+        <tr><th scope="row">Versión en inglés</th><td>+&nbsp;{{precio:ingles}}</td></tr>
+        <tr><th scope="row">Mantenimiento mensual<small>Opcional: revisión cada mes, actualizaciones y cambios pequeños</small></th><td>{{cuota:mantenimiento}} al mes</td></tr>
+        <tr><th scope="row">Asistente de IA en tu web<small>Responde dudas de quien entra y te avisa</small></th><td>+&nbsp;{{precio:asistente}}<small>y {{cuota:asistente}} al mes</small></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="seccion seccion-mesa" aria-labelledby="t-incluye">
+  <div class="env">
+    <div class="columnas">
+      <div>
+        <h2 id="t-incluye">Qué incluye</h2>
+        <ul class="lista-check">
+          <li>El diseño y la construcción de la web, hecha a mano para tu negocio</li>
+          <li>Que se vea bien y cargue rápido en el móvil</li>
+          <li>Te la enseño a medias para corregir a tiempo</li>
+          <li>Dos rondas de cambios después de entregarla</li>
+          <li>La publicamos en tu alojamiento, a tu nombre</li>
+          <li>Ayuda con los textos si no los tienes</li>
+        </ul>
+      </div>
+      <div>
+        <h2>Qué no incluye</h2>
+        <ul class="lista-check lista-no">
+          <li>El dominio y el alojamiento: {{dominioAnual}}, que se contratan a tu nombre y con tu tarjeta. No me los pagas a mí, y te acompaño a contratarlos.</li>
+          <li>El mantenimiento mensual, que es opcional.</li>
+          <li>Las fotos y el logo, que los pones tú.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="seccion" aria-labelledby="t-ejemplos">
+  <div class="env">
+    <div class="cabeza">
+      <h2 id="t-ejemplos">Ejemplos</h2>
+      <p class="intro">Negocios ficticios, hechos para enseñar cómo trabajo.</p>
+    </div>
+    <ul class="rejilla-trabajos">
+      {{> tarjeta-bar-almanaque}}
+      {{> tarjeta-estudio-malva}}
+      {{> tarjeta-clinica-arenal}}
+      {{> tarjeta-la-despensa}}
+    </ul>
+  </div>
+</section>
+
+<section class="seccion seccion-mesa" aria-labelledby="t-preguntas">
+  <div class="env">
+    <h2 id="t-preguntas">Preguntas sobre las webs</h2>
+    <div class="preguntas mt-24">
+      <details class="pregunta">
+        <summary>¿El dominio y el alojamiento son míos?</summary>
+        <div class="respuesta"><p>Sí. Se contratan a tu nombre y con tu tarjeta, y cuestan {{dominioAnual}} que no me pagas a mí. Te acompaño a contratarlos si no lo has hecho nunca. La web es tuya y no dependes de mí para seguir teniéndola.</p></div>
+      </details>
+      <details class="pregunta">
+        <summary>¿Tengo que pagar una cuota mensual?</summary>
+        <div class="respuesta"><p>Por la web, no. Pagas la web una vez y es tuya. El mantenimiento es opcional, desde {{cuota:mantenimiento}} al mes, e incluye revisión, actualizaciones y cambios pequeños.</p></div>
+      </details>
+      <details class="pregunta">
+        <summary>¿Podré cambiar yo los textos o los precios?</summary>
+        <div class="respuesta"><p>Si quieres gestionarla tú, la web completa puede ir con WordPress o Shopify. Si prefieres no tocar nada, los cambios pequeños entran en el mantenimiento mensual, que es opcional.</p></div>
+      </details>
+      <details class="pregunta">
+        <summary>¿Qué necesitas de mí para empezar?</summary>
+        <div class="respuesta"><p>Los textos de tu negocio, las fotos que quieras que aparezcan y tu logo si tienes. Si no tienes textos, te ayudo a escribirlos.</p></div>
+      </details>
+      <details class="pregunta">
+        <summary>¿Y si no me gusta cómo queda?</summary>
+        <div class="respuesta"><p>Te enseño la web a medias, antes de terminarla, para que corrijas cuando aún es fácil cambiar las cosas. Después de entregarla incluyo dos rondas de cambios. Se paga el 50&nbsp;% al empezar y el 50&nbsp;% al entregar.</p></div>
+      </details>
+    </div>
+  </div>
+</section>
+
+{{> cta-final}}
+
+</main>

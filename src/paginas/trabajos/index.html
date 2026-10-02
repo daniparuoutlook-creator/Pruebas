@@ -1,0 +1,93 @@
+<!--meta
+{
+  "titulo": "Trabajos: webs, reservas y herramientas de ejemplo · Daniel Padilla",
+  "descripcion": "Webs de ejemplo para un bar, una peluquería, una clínica dental, una tienda de alimentación y una herramienta para una academia. Negocios ficticios para enseñar cómo trabajo.",
+  "ruta": "/trabajos/",
+  "migas": [["Trabajos", "/trabajos/"]],
+  "js": ["filtros"]
+}
+-->
+<main id="contenido">
+
+<section class="cabeza-pagina">
+  <div class="env">
+    <h1>Trabajos</h1>
+    <p class="intro">Ejemplos con negocios ficticios, ordenados por lo que resuelven. Cada uno tiene su página con el porqué de cada decisión, y la demo de verdad para trastear.</p>
+  </div>
+</section>
+
+<section class="seccion sin-arriba" aria-label="Trabajos de ejemplo">
+  <div class="env">
+    <div class="filtros solo-js-flex" role="group" aria-label="Filtrar trabajos" data-filtros>
+      <button class="filtro" type="button" aria-pressed="true" data-filtro="todos">Todos</button>
+      <button class="filtro" type="button" aria-pressed="false" data-filtro="webs">Webs</button>
+      <button class="filtro" type="button" aria-pressed="false" data-filtro="ia">Con asistente de IA</button>
+      <button class="filtro" type="button" aria-pressed="false" data-filtro="reservas">Reservas y pedidos</button>
+      <button class="filtro" type="button" aria-pressed="false" data-filtro="herramientas">Herramientas</button>
+    </div>
+    <p class="sr" aria-live="polite" data-filtro-estado></p>
+
+    <!-- WEBS PARA NEGOCIOS (sin asistente de IA) -->
+    <div class="grupo-trabajos" data-grupo="webs" id="webs">
+      <div class="grupo-cab">
+        <h2 class="h3">Webs para negocios</h2>
+        <p>Web de una página desde <strong>{{precio:web_una}}</strong> · web completa desde <strong>{{precio:web_completa}}</strong></p>
+      </div>
+      <ul class="rejilla-trabajos">
+        {{> tarjeta-bar-almanaque}}
+        {{> tarjeta-clinica-arenal}}
+        {{> tarjeta-estudio-malva}}
+        {{> tarjeta-la-despensa}}
+      </ul>
+    </div>
+
+    <!-- WEBS CON ASISTENTE DE IA: 2 demos pendientes.
+         Para sustituir un hueco por una demo real: crea src/plantilla/tarjeta-<caso>.html copiando
+         tarjeta-bar-almanaque.html (cambia ruta, imágenes, nombre, sector y texto, y pon data-grupo="ia"),
+         cambia aquí el <li class="hueco"> por la inclusión de esa tarjeta (igual que las de arriba) y crea su página en src/paginas/trabajos/<caso>.html.
+         Si la demo vive en otro dominio, en la tarjeta usa href="https://..." con target="_blank" rel="noopener". -->
+    <div class="grupo-trabajos" data-grupo="ia" id="con-ia">
+      <div class="grupo-cab">
+        <h2 class="h3">Webs con asistente de IA</h2>
+        <p>Web desde <strong>{{precio:web_una}}</strong> + asistente desde <strong>{{precio:asistente}}</strong> y {{cuota:asistente}} al mes</p>
+      </div>
+      <ul class="rejilla-trabajos rejilla-huecos">
+        <li class="hueco"><span class="hueco-estado">En obras</span><b>Web con asistente</b><span class="hueco-pronto">Próximamente</span></li>
+        <li class="hueco"><span class="hueco-estado">En obras</span><b>Web con asistente</b><span class="hueco-pronto">Próximamente</span></li>
+      </ul>
+    </div>
+
+    <!-- RESERVAS Y PEDIDOS: 4 demos pendientes (2 peluquerías y 2 restaurantes, hechas con Lovable).
+         Mismo sistema de sustitución que arriba (data-grupo="reservas"). Probablemente vivirán en otro dominio:
+         enlace externo con target="_blank" rel="noopener". -->
+    <div class="grupo-trabajos" data-grupo="reservas" id="reservas">
+      <div class="grupo-cab">
+        <h2 class="h3">Reservas y pedidos</h2>
+        <p>Citas para peluquerías y reservas de mesa para restaurantes · extra desde <strong>{{precio:reservas}}</strong></p>
+      </div>
+      <ul class="rejilla-trabajos rejilla-huecos cuatro">
+        <li class="hueco"><span class="hueco-estado">En obras</span><b>Peluquería</b><span>Citas online</span><span class="hueco-pronto">Próximamente</span></li>
+        <li class="hueco"><span class="hueco-estado">En obras</span><b>Peluquería</b><span>Citas online</span><span class="hueco-pronto">Próximamente</span></li>
+        <li class="hueco"><span class="hueco-estado">En obras</span><b>Restaurante</b><span>Reservas de mesa</span><span class="hueco-pronto">Próximamente</span></li>
+        <li class="hueco"><span class="hueco-estado">En obras</span><b>Restaurante</b><span>Reservas de mesa</span><span class="hueco-pronto">Próximamente</span></li>
+      </ul>
+    </div>
+
+    <!-- HERRAMIENTAS A MEDIDA -->
+    <div class="grupo-trabajos" data-grupo="herramientas" id="herramientas">
+      <div class="grupo-cab">
+        <h2 class="h3">Herramientas a medida</h2>
+        <p>Desde <strong>{{precio:herramienta}}</strong></p>
+      </div>
+      <ul class="rejilla-trabajos">
+        {{> tarjeta-academia-compas}}
+      </ul>
+    </div>
+
+    <p class="aviso-demos">Son proyectos de demostración con negocios ficticios, hechos para enseñar cómo trabajo. El trabajo que hago para clientes no lo publico sin su permiso.</p>
+  </div>
+</section>
+
+{{> cta-final}}
+
+</main>

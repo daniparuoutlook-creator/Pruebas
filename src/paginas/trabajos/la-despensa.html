@@ -1,0 +1,121 @@
+<!--meta
+{
+  "titulo": "Caso: web para una tienda de alimentación · Daniel Padilla",
+  "descripcion": "Web de ejemplo para un ultramarinos ficticio de Triana: catálogo con filtros, cesta y pedido final por WhatsApp, con recogida en tienda o envío en Sevilla.",
+  "ruta": "/trabajos/la-despensa/",
+  "migas": [
+    [
+      "Trabajos",
+      "/trabajos/"
+    ],
+    [
+      "La Despensa de Triana",
+      "/trabajos/la-despensa/"
+    ]
+  ],
+  "js": [
+    "visor"
+  ],
+  "ogTitulo": "La Despensa de Triana · caso de ejemplo"
+}
+-->
+<main id="contenido">
+
+<section class="cabeza-pagina">
+  <div class="env">
+    <h1>La Despensa de Triana</h1>
+    <p class="nota">Negocio ficticio · Comercio. Hecho para enseñar cómo trabajo.</p>
+    <p class="intro">Ultramarinos en Triana. Una web para vender sin montar una tienda online complicada: el cliente llena la cesta y el pedido llega por WhatsApp.</p>
+    <div class="acciones">
+      <a class="boton" href="/demos/tienda.html">Abrir la demo</a>
+      <a class="enlace" href="#decisiones">Por qué está hecha así</a>
+    </div>
+  </div>
+</section>
+
+<section class="seccion sin-arriba" aria-label="Capturas">
+  <div class="env">
+    <div class="visor" data-visor>
+      <div class="visor-controles solo-js-flex">
+        <div class="visor-botones" role="group" aria-label="Ver la captura en">
+          <button type="button" aria-pressed="false" data-ver="movil">Móvil</button>
+          <button type="button" aria-pressed="false" data-ver="escritorio">Ordenador</button>
+        </div>
+      </div>
+      <div class="visor-escena">
+        <figure class="visor-pantalla" data-pantalla="movil">
+          <div class="marco-disp marco-movil">
+          <picture>
+            <source type="image/avif" srcset="/assets/img/trabajos/la-despensa-movil-390.avif 390w, /assets/img/trabajos/la-despensa-movil-780.avif 780w" sizes="300px">
+            <img src="/assets/img/trabajos/la-despensa-movil-390.webp" srcset="/assets/img/trabajos/la-despensa-movil-390.webp 390w, /assets/img/trabajos/la-despensa-movil-780.webp 780w" sizes="300px" width="390" height="844" alt="Portada de la web de La Despensa de Triana en un móvil" decoding="async">
+          </picture>
+          </div>
+          <figcaption>En un móvil (390 px de ancho)</figcaption>
+        </figure>
+        <figure class="visor-pantalla" data-pantalla="escritorio">
+          <div class="marco-disp marco-escritorio">
+          <picture>
+            <source type="image/avif" srcset="/assets/img/trabajos/la-despensa-escritorio-640.avif 640w, /assets/img/trabajos/la-despensa-escritorio-1280.avif 1280w" sizes="(min-width: 1180px) 1084px, 92vw">
+            <img src="/assets/img/trabajos/la-despensa-escritorio-640.webp" srcset="/assets/img/trabajos/la-despensa-escritorio-640.webp 640w, /assets/img/trabajos/la-despensa-escritorio-1280.webp 1280w" sizes="(min-width: 1180px) 1084px, 92vw" width="1280" height="800" alt="Portada de la web de La Despensa de Triana en un ordenador" decoding="async" style="view-transition-name: caso-la-despensa">
+          </picture>
+          </div>
+          <figcaption>En un ordenador (1280 px de ancho)</figcaption>
+        </figure>
+      </div>
+      <!-- Capturas sin las fotos de las demos: el entorno donde se hicieron no podía cargar images.unsplash.com.
+           Para rehacerlas con fotos: node scripts/capturas-demos.mjs (con el servidor local arrancado). -->
+    </div>
+  </div>
+</section>
+
+<section class="seccion seccion-mesa" aria-labelledby="t-problema">
+  <div class="env">
+    <div class="columnas">
+      <div>
+        <h2 id="t-problema">El problema de siempre</h2>
+        <p class="intro">Una tienda pequeña no siempre necesita una pasarela de pago para vender por internet. Necesita que el cliente vea lo que hay, con su precio, y pueda hacer el pedido sin llamar.</p>
+      </div>
+      <div>
+        <h2>Qué hace la web</h2>
+        <ul class="lista-check">
+          <li>Cada producto es su propia etiqueta de conserva, con su precio.</li>
+          <li>Filtros por tipo: aceites, conservas, quesos, vinos y dulces.</li>
+          <li>Cesta en un panel lateral que suma el total, con recogida en tienda o envío en Sevilla.</li>
+          <li>El pedido termina en WhatsApp, y se paga al recoger o al recibir.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="seccion" id="decisiones" aria-labelledby="t-decisiones">
+  <div class="env">
+    <div class="cabeza">
+      <h2 id="t-decisiones">Por qué está hecha así</h2>
+    </div>
+    <ul class="decisiones">
+        <li><b>Pedido por WhatsApp</b><span>La tienda confirma la disponibilidad antes de cobrar, y se cobra como siempre.</span></li>
+        <li><b>Etiquetas de conserva</b><span>La identidad sale de lo que vende: cada producto parece una lata de la estantería.</span></li>
+        <li><b>El envío, claro desde el principio</b><span>Cuánto cuesta y a partir de qué importe es gratis, sin descubrirlo al final.</span></li>
+        <li><b>Oliva y letra de molde</b><span>Colores de tienda de toda la vida, y una tipografía gruesa de etiqueta para los títulos.</span></li>
+    </ul>
+    <div class="acciones">
+      <a class="boton" href="/demos/tienda.html">Abrir la demo</a>
+      <a class="enlace" href="/servicios/webs/">Una web así, desde {{precio:web_completa}}</a>
+    </div>
+  </div>
+</section>
+
+<nav class="seccion sin-arriba" aria-label="Otros trabajos">
+  <div class="env">
+    <div class="caso-nav">
+      <a href="/trabajos/estudio-malva/"><small>Anterior</small><b>Estudio Malva</b></a>
+      <a href="/trabajos/academia-compas/"><small>Siguiente</small><b>Academia Compás</b></a>
+    </div>
+    <p class="acciones"><a class="enlace" href="/trabajos/">Todos los trabajos</a></p>
+  </div>
+</nav>
+
+{{> cta-final}}
+
+</main>

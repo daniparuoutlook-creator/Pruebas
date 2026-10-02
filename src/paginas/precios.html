@@ -1,0 +1,144 @@
+<!--meta
+{
+  "titulo": "Precios y calculadora de presupuesto · Daniel Padilla",
+  "descripcion": "Todos los precios de partida a la vista y una calculadora que te escribe el presupuesto orientativo al momento. Web de una página desde 500 €, arreglos desde 150 €. Precio final cerrado por escrito.",
+  "ruta": "/precios/",
+  "migas": [["Precios", "/precios/"]],
+  "js": ["calculadora"],
+  "servicios": ["arreglo", "revision", "web_una", "web_completa", "mantenimiento", "herramienta", "asistente", "correo", "llamadas"]
+}
+-->
+<main id="contenido">
+
+<section class="cabeza-pagina">
+  <div class="env">
+    <h1>Precios a la vista</h1>
+    <p class="intro">Son precios de partida. Te paso el precio cerrado por escrito antes de empezar, y no se mueve. Marca lo que necesitas y el presupuesto se escribe solo.</p>
+  </div>
+</section>
+
+<section class="seccion sin-arriba" id="calculadora" aria-labelledby="t-calc">
+  <div class="env">
+    <h2 id="t-calc" class="sr">Calculadora de presupuesto</h2>
+    {{datos-precios}}
+    <div class="presupuesto solo-js" data-presupuesto>
+      <form class="presu-campos" aria-label="Elige lo que necesitas">
+        <fieldset class="presu-grupo">
+          <legend>¿Qué necesitas?</legend>
+          <div class="presu-opciones">
+            <label class="presu-op"><input type="radio" name="tipo" value="arreglo"><span>Un arreglo</span></label>
+            <label class="presu-op"><input type="radio" name="tipo" value="revision"><span>Revisar mi web</span></label>
+            <label class="presu-op"><input type="radio" name="tipo" value="web_una" checked><span>Web de una página</span></label>
+            <label class="presu-op"><input type="radio" name="tipo" value="web_completa"><span>Web completa</span></label>
+            <label class="presu-op"><input type="radio" name="tipo" value="herramienta"><span>Una herramienta a medida</span></label>
+            <label class="presu-op"><input type="radio" name="tipo" value=""><span>Ya tengo web</span></label>
+          </div>
+        </fieldset>
+        <fieldset class="presu-grupo">
+          <legend>¿Algo más?<small>Opcional</small></legend>
+          <div class="presu-opciones">
+            <label class="presu-op"><input type="checkbox" name="extra" value="tienda"><span>Vender online</span></label>
+            <label class="presu-op"><input type="checkbox" name="extra" value="reservas"><span>Reservas de cita o de mesa</span></label>
+            <label class="presu-op"><input type="checkbox" name="extra" value="ingles"><span>Versión en inglés</span></label>
+            <label class="presu-op"><input type="checkbox" name="extra" value="mantenimiento"><span>Mantenimiento</span></label>
+          </div>
+        </fieldset>
+        <fieldset class="presu-grupo">
+          <legend>Automatizaciones con IA<small>Opcional. Llevan alta y cuota mensual</small></legend>
+          <div class="presu-opciones">
+            <label class="presu-op"><input type="checkbox" name="extra" value="asistente"><span>Asistente en tu web</span></label>
+            <label class="presu-op"><input type="checkbox" name="extra" value="correo"><span>Respuestas de correo</span></label>
+            <label class="presu-op"><input type="checkbox" name="extra" value="llamadas"><span>Atención de llamadas</span></label>
+          </div>
+        </fieldset>
+        <div class="presu-flotante" data-flotante aria-hidden="true">
+          <div><b data-total-corto>desde 500 €</b><br><span data-mes-corto></span></div>
+          <a href="#hoja" tabindex="-1">Ver el presupuesto</a>
+        </div>
+      </form>
+
+      <div class="hoja-presu" id="hoja">
+        <div class="hoja-cab"><b>Presupuesto</b><span data-fecha>orientativo</span></div>
+        <ul class="hoja-lineas" data-lineas aria-live="polite"><li><span>Web de una página</span><i></i><b>{{precio:web_una}}</b></li></ul>
+        <div class="hoja-total"><span>Desde</span><b data-total>{{precio:web_una}}</b></div>
+        <p class="hoja-mes" data-mes></p>
+        <p class="hoja-nota nota">Orientativo. No incluye dominio ni alojamiento ({{dominioAnual}}, a tu nombre). El precio final te lo paso cerrado después de hablar contigo.</p>
+        <a class="boton" data-enviar href="{{wa:Hola Daniel, he hecho el cálculo en tu web.}}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20l1.3-4A8 8 0 1 1 8 18.7z"/></svg>Enviárselo a Daniel por WhatsApp</a>
+      </div>
+    </div>
+    <p class="sin-js-tabla-aviso nota">La calculadora necesita JavaScript. Aquí debajo tienes todos los precios.</p>
+  </div>
+</section>
+
+<section class="seccion seccion-mesa" id="tabla" aria-labelledby="t-tabla">
+  <div class="env">
+    <h2 id="t-tabla">Todos los precios</h2>
+    <div class="columnas mt-24">
+      <table class="tabla-precios">
+        <caption>Webs y arreglos</caption>
+        <thead><tr><th scope="col">Servicio</th><th scope="col">Desde</th></tr></thead>
+        <tbody>
+          <tr><th scope="row"><a href="/servicios/arreglos/">Arreglo puntual</a><small>Un fallo concreto: algo que no se ve bien, un formulario que no envía</small></th><td>{{precio:arreglo}}</td></tr>
+          <tr><th scope="row"><a href="/servicios/arreglos/">Revisión y puesta al día</a><small>Toda la web, con informe y todo corregido</small></th><td>{{precio:revision}}</td></tr>
+          <tr><th scope="row"><a href="/servicios/webs/">Web de una página</a><small>Plazo: {{plazo:web_una}}</small></th><td>{{precio:web_una}}</td></tr>
+          <tr><th scope="row"><a href="/servicios/webs/">Web completa</a><small>Plazo: {{plazo:web_completa}}</small></th><td>{{precio:web_completa}}</td></tr>
+          <tr><th scope="row"><a href="/servicios/herramientas-a-medida/">Herramienta a medida</a></th><td>{{precio:herramienta}}</td></tr>
+          <tr><th scope="row">Mantenimiento<small>Opcional</small></th><td>{{cuota:mantenimiento}} al mes</td></tr>
+        </tbody>
+      </table>
+      <div>
+        <table class="tabla-precios">
+          <caption>Extras sobre una web</caption>
+          <thead><tr><th scope="col">Extra</th><th scope="col">Precio</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Vender online</th><td>+&nbsp;{{precio:tienda}}</td></tr>
+            <tr><th scope="row">Reservas de cita o de mesa</th><td>+&nbsp;{{precio:reservas}}</td></tr>
+            <tr><th scope="row">Versión en inglés</th><td>+&nbsp;{{precio:ingles}}</td></tr>
+          </tbody>
+        </table>
+        <table class="tabla-precios mt-grande">
+          <caption>Automatizaciones con IA</caption>
+          <thead><tr><th scope="col">Servicio</th><th scope="col">Alta + cuota</th></tr></thead>
+          <tbody>
+            <tr><th scope="row"><a href="/servicios/automatizaciones-ia/">Asistente en tu web</a></th><td>{{precio:asistente}} + {{cuota:asistente}}/mes</td></tr>
+            <tr><th scope="row"><a href="/servicios/automatizaciones-ia/">Respuestas de correo</a></th><td>{{precio:correo}} + {{cuota:correo}}/mes</td></tr>
+            <tr><th scope="row"><a href="/servicios/automatizaciones-ia/">Atención de llamadas</a><small>Más el consumo</small></th><td>{{precio:llamadas}} + {{cuota:llamadas}}/mes</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <p class="nota mt-24">El dominio y el alojamiento se contratan a tu nombre y con tu tarjeta: {{dominioAnual}} que no me pagas a mí. Te acompaño a contratarlos si no lo has hecho nunca.</p>
+  </div>
+</section>
+
+<section class="seccion" aria-labelledby="t-dinero">
+  <div class="env">
+    <h2 id="t-dinero">Preguntas sobre el dinero</h2>
+    <div class="preguntas mt-24">
+      <details class="pregunta">
+        <summary>¿Cuánto cuesta hacer una página web?</summary>
+        <div class="respuesta"><p>Una web de una página cuesta desde {{precio:web_una}} y una web completa desde {{precio:web_completa}}. Un arreglo puntual sobre una web que ya existe empieza en {{precio:arreglo}}. El precio exacto te lo doy cerrado y por escrito antes de empezar, y no se mueve después.</p></div>
+      </details>
+      <details class="pregunta">
+        <summary>¿Cómo se paga?</summary>
+        <div class="respuesta"><p>El 50&nbsp;% al empezar y el 50&nbsp;% al entregar.</p></div>
+      </details>
+      <details class="pregunta">
+        <summary>¿Tengo que pagar una cuota mensual?</summary>
+        <div class="respuesta"><p>Por la web, no. Pagas la web una vez y es tuya. El mantenimiento mensual es opcional, desde {{cuota:mantenimiento}} al mes. Las automatizaciones con IA sí llevan cuota, porque tienen un coste de funcionamiento cada mes.</p></div>
+      </details>
+      <details class="pregunta">
+        <summary>¿El dominio y el alojamiento son míos?</summary>
+        <div class="respuesta"><p>Sí. Se contratan a tu nombre y con tu tarjeta, y cuestan {{dominioAnual}} que no me pagas a mí. La web es tuya y no dependes de mí para seguir teniéndola.</p></div>
+      </details>
+      <details class="pregunta">
+        <summary>¿Puede subir el precio a mitad del trabajo?</summary>
+        <div class="respuesta"><p>No. El presupuesto va cerrado y por escrito, con lo que incluye y lo que no, y no se mueve.</p></div>
+      </details>
+    </div>
+  </div>
+</section>
+
+{{> cta-final}}
+
+</main>

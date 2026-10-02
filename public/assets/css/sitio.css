@@ -69,6 +69,11 @@ strong,b{font-weight:700}
 .sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
 .tab{font-variant-numeric:tabular-nums}
 .nw{white-space:nowrap}
+.h3{font-size:clamp(20px,4.8vw,24px);font-weight:650;line-height:1.15;letter-spacing:-.015em}
+.mt-20{margin-top:20px}
+.mt-24{margin-top:24px}
+.mt-grande{margin-top:clamp(36px,6vw,56px)}
+.sin-margen{margin-top:0}
 
 .saltar{position:fixed;left:12px;top:-80px;z-index:100;background:var(--tinta);color:#fff;padding:12px 18px;border-radius:var(--radio-peq);
         font-weight:700;text-decoration:none;transition:transform .2s var(--ease-out)}
@@ -77,6 +82,7 @@ strong,b{font-weight:700}
 /* Contenedor de márgenes laterales. OJO (CLAUDE.md §2.1): nunca "padding: X 0" en un elemento con .env */
 .env{width:100%;max-width:var(--ancho);margin-left:auto;margin-right:auto;padding-left:max(var(--margen),env(safe-area-inset-left));padding-right:max(var(--margen),env(safe-area-inset-right))}
 .seccion{padding-top:var(--ritmo);padding-bottom:var(--ritmo)}
+.seccion.sin-arriba{padding-top:0}
 .seccion-mesa{background:var(--mesa)}
 .seccion-mesa .gris,.seccion-mesa .intro{color:var(--gris-mesa)}
 .estrecho{max-width:760px}
@@ -127,7 +133,7 @@ strong,b{font-weight:700}
 .menu{position:fixed;inset:0;z-index:90;background:var(--hoja);overflow-y:auto;overscroll-behavior:contain;
       padding-top:env(safe-area-inset-top);padding-bottom:calc(24px + env(safe-area-inset-bottom))}
 .menu-in{display:flex;flex-direction:column;min-height:100%}
-.menu-cab{display:flex;align-items:center;justify-content:space-between;min-height:var(--cab);border-bottom:1px solid var(--linea)}
+.menu-cab{display:flex;align-items:center;justify-content:space-between;min-height:var(--cab);padding-top:8px;padding-bottom:8px;border-bottom:1px solid var(--linea)}
 .menu-titulo{font:700 21px var(--display);letter-spacing:-.02em}
 .menu-cerrar{min-height:44px;padding:0 14px;border:1.5px solid var(--tinta);border-radius:6px;background:transparent;font:700 16px var(--texto);color:var(--tinta);cursor:pointer}
 .menu-lista{list-style:none;margin-top:12px}
@@ -156,7 +162,8 @@ strong,b{font-weight:700}
 .migas ol{list-style:none;display:flex;flex-wrap:wrap;gap:0 6px;font-size:15px;color:var(--gris)}
 .migas li{display:flex;align-items:center;gap:6px}
 .migas li+li::before{content:"/";color:var(--linea)}
-.migas a{display:inline-flex;align-items:center;min-height:44px;color:var(--gris)}
+.migas a{display:inline-flex;align-items:center;min-height:44px;min-width:44px;color:var(--gris)}
+.migas li:first-child a{justify-content:center;margin-left:-4px;margin-right:-4px}
 .migas [aria-current]{display:inline-flex;align-items:center;min-height:44px}
 
 /* ---------- 7. Portada y cabezas de página ---------- */
@@ -310,12 +317,14 @@ strong,b{font-weight:700}
 
 /* ---------- 11. Lista de servicios ---------- */
 .servicios{list-style:none;border-top:1.5px solid var(--tinta)}
+.servicios .servicio:last-child{border-bottom:0}
 .servicio{display:grid;gap:10px 32px;padding-top:24px;padding-bottom:24px;border-bottom:1px solid var(--linea)}
 .servicio h3 a{text-decoration:none}
 .servicio h3 a:hover{text-decoration:underline;text-decoration-color:var(--boli);text-decoration-thickness:2px}
 .servicio p{color:var(--gris);max-width:60ch}
 .servicio .para{font-style:italic;color:var(--boli);font-weight:600}
 .servicio-precio{font:700 clamp(24px,5vw,30px)/1.1 var(--display);letter-spacing:-.02em;font-variant-numeric:tabular-nums;white-space:nowrap}
+.servicio .servicio-precio{color:var(--tinta);max-width:none}
 .servicio-precio small{display:block;font:400 15px/1.4 var(--texto);letter-spacing:0;color:var(--gris);white-space:normal}
 @media (min-width:760px){.servicio{grid-template-columns:minmax(0,1fr) auto;align-items:start}.servicio-precio{text-align:right}}
 
@@ -331,6 +340,7 @@ strong,b{font-weight:700}
 .lista-check li::before{content:"";position:absolute;left:2px;top:.38em;width:16px;height:9px;border-left:2.4px solid var(--verde);border-bottom:2.4px solid var(--verde);transform:rotate(-45deg)}
 .lista-no li::before{width:14px;height:14px;top:.32em;left:3px;border:0;transform:none;
                      background:linear-gradient(var(--rojo),var(--rojo)) center/100% 2.4px no-repeat,linear-gradient(var(--rojo),var(--rojo)) center/2.4px 100% no-repeat;rotate:45deg}
+.lista-hallazgos li::before{width:12px;height:12px;top:.42em;left:3px;border:2px solid var(--boli);border-radius:50%;transform:none}
 .dato-plazo{display:inline-flex;gap:6px;margin-top:12px;font-weight:700}
 
 /* ---------- 12. Pasos (el proceso como un trazo) ---------- */
@@ -361,6 +371,7 @@ strong,b{font-weight:700}
 
 .garantias{list-style:none;display:grid;gap:12px}
 @media (min-width:700px){.garantias{grid-template-columns:1fr 1fr}}
+@media (min-width:860px){.garantias.tres{grid-template-columns:repeat(3,1fr)}}
 .garantias li{background:var(--blanco);border:1.5px solid var(--tinta);border-radius:var(--radio);padding:18px}
 .garantias b{display:block;font:650 20px/1.2 var(--display);letter-spacing:-.015em;margin-bottom:6px}
 .garantias span{color:var(--gris)}
@@ -382,7 +393,7 @@ strong,b{font-weight:700}
 @media (min-width:960px){.presupuesto{grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:40px;align-items:start}}
 .presu-grupo{border:0;margin:0;padding:0}
 .presu-grupo + .presu-grupo{margin-top:24px}
-.presu-grupo legend{padding:0;margin-bottom:10px;font:650 19px/1.25 var(--display);letter-spacing:-.01em}
+.presu-grupo legend{padding:0;margin-bottom:10px;font:650 19px/1.3 var(--display);letter-spacing:-.01em}
 .presu-grupo legend small{display:block;font:400 15px var(--texto);color:var(--gris);letter-spacing:0}
 .presu-opciones{display:flex;flex-wrap:wrap;gap:8px}
 .presu-op{position:relative}
@@ -413,6 +424,10 @@ strong,b{font-weight:700}
 .hoja-nota{margin-top:14px;font-size:15px;line-height:1.45}
 .hoja-presu .boton{width:100%;margin-top:16px}
 .presu-flotante{display:none}
+@media (prefers-reduced-motion:no-preference){
+  .hoja-lineas li.nueva{animation:escribe .32s var(--ease-out) both}
+  @keyframes escribe{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0 0 0)}}
+}
 @media (max-width:959px){
   .js .presu-flotante{position:sticky;bottom:calc(var(--barra) + env(safe-area-inset-bottom) + 8px);z-index:20;display:flex;align-items:center;justify-content:space-between;gap:12px;
     margin-top:20px;padding:10px 12px 10px 16px;border-radius:var(--radio);background:var(--tinta);color:#fff;font-variant-numeric:tabular-nums}
@@ -426,7 +441,8 @@ strong,b{font-weight:700}
 .js .sin-js{display:none}
 .sin-js-tabla{display:block}
 .js .sin-js-tabla-aviso{display:none}
-.solo-js{display:none}
+.solo-js,.solo-js-flex{display:none}
+.js .solo-js-flex{display:flex}
 .js .solo-js{display:block}
 .js .solo-js.presupuesto{display:grid}
 
@@ -437,6 +453,8 @@ strong,b{font-weight:700}
 .tabla-precios thead th{font-size:14px;color:var(--gris);font-weight:700;border-bottom:1.5px solid var(--tinta)}
 .tabla-precios td:last-child,.tabla-precios th:last-child{text-align:right;padding-right:0;white-space:nowrap}
 .tabla-precios tbody th{font-weight:700}
+.tabla-precios tbody th a{display:inline-flex;align-items:center;min-height:44px;margin:-10px 0 -4px}
+.tabla-precios td small{display:block;font-size:15px;color:var(--gris)}
 .tabla-precios tbody th small{display:block;font-weight:400;color:var(--gris);font-size:15px}
 
 /* ---------- 15. Trabajos ---------- */
@@ -464,10 +482,11 @@ strong,b{font-weight:700}
 .trabajo-link:hover h3{text-decoration:underline;text-decoration-color:var(--boli);text-decoration-thickness:2px;text-underline-offset:4px}
 .rejilla-huecos{grid-template-columns:1fr 1fr}
 @media (min-width:860px){.rejilla-huecos.cuatro{grid-template-columns:repeat(4,1fr)}}
-.hueco{display:flex;flex-direction:column;gap:4px;min-height:132px;padding:16px;border:1.5px dashed var(--borde);border-radius:var(--radio);background:var(--hoja)}
+.hueco{display:flex;flex-direction:column;gap:2px;min-height:120px;padding:14px 14px 16px;border:1.5px dashed var(--borde);border-radius:var(--radio);background:var(--hoja)}
 .hueco-estado{align-self:flex-start;font:italic 700 14px var(--texto);color:var(--tinta);background-image:var(--trazo);background-repeat:no-repeat;background-size:100% 70%;background-position:0 80%;padding:0 4px}
-.hueco b{font:650 19px/1.2 var(--display);letter-spacing:-.01em;margin-top:6px}
+.hueco b{font:650 18px/1.2 var(--display);letter-spacing:-.01em;margin-top:6px;overflow-wrap:anywhere}
 .hueco span{color:var(--gris);font-size:15px}
+.hueco .hueco-pronto{margin-top:auto;padding-top:8px;font-size:14px;font-weight:700;color:var(--gris)}
 .aviso-demos{margin-top:28px;color:var(--gris);max-width:64ch}
 
 /* ---------- 16. Visor de capturas ---------- */
@@ -484,10 +503,16 @@ strong,b{font-weight:700}
 .marco-movil{max-width:300px;border-radius:22px;border-width:6px;border-color:var(--tinta)}
 .marco-escritorio{border-top-width:18px}
 .marco-disp img{width:100%;height:auto}
+/* Con JavaScript se ve una captura cada vez: móvil en pantallas pequeñas y ordenador en grandes, hasta que se elija */
 .js .visor-escena{display:block}
 .js .visor-pantalla{display:none}
-.js .visor-pantalla.activa{display:block}
-.js .visor-pantalla.activa .marco-movil{margin:0 auto}
+.js .visor-pantalla .marco-movil{margin:0 auto}
+.js .visor-pantalla figcaption{text-align:center}
+.js .visor:not([data-elegido]) [data-pantalla="movil"],.js .visor[data-elegido="movil"] [data-pantalla="movil"],.js .visor[data-elegido="escritorio"] [data-pantalla="escritorio"]{display:block}
+@media (min-width:760px){
+  .js .visor:not([data-elegido]) [data-pantalla="movil"]{display:none}
+  .js .visor:not([data-elegido]) [data-pantalla="escritorio"]{display:block}
+}
 
 /* ---------- 17. Simulaciones ---------- */
 .simulaciones{display:grid;gap:clamp(28px,5vw,48px)}
@@ -523,6 +548,7 @@ strong,b{font-weight:700}
 .via b{font:650 20px var(--display)}
 .via .grande{font:700 clamp(26px,7vw,32px)/1.1 var(--display);letter-spacing:-.02em;font-variant-numeric:tabular-nums;text-decoration:none;min-height:44px;display:inline-flex;align-items:center}
 .via p{color:var(--gris)}
+.via .correo-grande{font-size:clamp(18px,5.2vw,22px);overflow-wrap:anywhere}
 .via .boton{margin-top:auto}
 .copiar{min-height:44px;padding:0 14px;border:1.5px solid var(--borde);border-radius:6px;background:var(--blanco);font:700 15px var(--texto);color:var(--tinta);cursor:pointer;align-self:flex-start}
 .mensajes{list-style:none;display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
@@ -548,6 +574,11 @@ strong,b{font-weight:700}
 .pasos-cortos li{position:relative;padding-left:52px;counter-increment:pc;min-height:40px}
 .pasos-cortos li::before{content:counter(pc);position:absolute;left:0;top:-2px;display:grid;place-items:center;width:38px;height:38px;border-radius:50%;border:2px solid var(--tinta);font:700 18px var(--display)}
 
+.decisiones{list-style:none;display:grid;gap:4px 40px}
+@media (min-width:700px){.decisiones{grid-template-columns:1fr 1fr}}
+.decisiones li{display:flex;flex-direction:column;gap:4px;padding:16px 0 18px;border-top:1.5px solid var(--tinta)}
+.decisiones b{font:650 19px/1.25 var(--display);letter-spacing:-.01em}
+.decisiones span{color:var(--gris);max-width:46ch}
 .caso-nav{display:grid;gap:12px;margin-top:24px}
 @media (min-width:700px){.caso-nav{grid-template-columns:1fr 1fr}}
 .caso-nav a{display:flex;flex-direction:column;justify-content:center;min-height:72px;padding:14px 16px;border:1.5px solid var(--tinta);border-radius:var(--radio);text-decoration:none;background:var(--blanco)}
@@ -557,6 +588,8 @@ strong,b{font-weight:700}
 
 /* ---------- 19. Bloque final de contacto ---------- */
 .cta-final{background:var(--mesa)}
+.seccion-mesa + .cta-final{padding-top:0}
+.seccion-mesa + .cta-final > .env::before{content:"";display:block;height:1.5px;margin-bottom:var(--ritmo);background:var(--tinta)}
 .cta-final h2{max-width:20ch}
 .cta-texto{margin-top:14px;max-width:52ch;color:var(--gris-mesa)}
 .cta-vias{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
@@ -574,10 +607,10 @@ strong,b{font-weight:700}
 .pie-contacto{display:flex;flex-wrap:wrap;gap:0 18px}
 .pie-contacto a{display:inline-flex;align-items:center;min-height:44px;font-weight:700;color:var(--tinta);overflow-wrap:anywhere}
 .pie-horario{font-size:15px}
-.pie-nav{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.pie-nav{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:24px 28px}
 .pie-grupo{font:700 15px var(--texto);color:var(--gris);margin-bottom:4px}
 .pie-nav ul{list-style:none}
-.pie-nav a{display:inline-flex;align-items:center;min-height:44px;min-width:44px;text-decoration:none;font-weight:600}
+.pie-nav a{display:inline-flex;align-items:center;min-height:44px;min-width:44px;padding:10px 0;line-height:1.25;text-decoration:none;font-weight:600}
 .pie-nav a:hover{text-decoration:underline;text-decoration-color:var(--boli);text-decoration-thickness:2px}
 .pie-legal{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:8px 24px;margin-top:32px;padding-top:12px;border-top:1px solid var(--linea);font-size:15px;color:var(--gris)}
 .pie-legal p:last-child{display:flex;gap:0 20px}
@@ -597,10 +630,12 @@ strong,b{font-weight:700}
   .barra{display:none}
   .ia-flotante{position:fixed;right:max(24px,env(safe-area-inset-right));bottom:max(24px,env(safe-area-inset-bottom));z-index:50;display:inline-flex;align-items:center;gap:8px;
     min-height:50px;padding:0 20px 0 16px;border:1.5px solid var(--tinta);border-radius:999px;background:var(--hoja);color:var(--tinta);font:700 16px var(--texto);cursor:pointer;
-    transition:transform .16s var(--ease-out),background-color .15s var(--ease-out)}
+    transition:transform .2s var(--ease-out),opacity .2s var(--ease-out),background-color .15s var(--ease-out)}
   .ia-flotante:hover{background:var(--blanco)}
   .ia-flotante:active{transform:scale(.97)}
+  .ia-flotante.oculto:not(:focus-visible){opacity:0;transform:translateY(12px);pointer-events:none}
 }
+@media (min-width:960px) and (prefers-reduced-motion:reduce){.ia-flotante.oculto:not(:focus-visible){transform:none}}
 .ia-abierto .ia-flotante{display:none}
 
 /* ---------- 22. Asistente de IA (el panel lo crea /assets/js/chat.js) ---------- */

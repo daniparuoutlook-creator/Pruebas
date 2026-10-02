@@ -1,0 +1,111 @@
+<!--meta
+{
+  "titulo": "Cómo trabajo: precio cerrado, plazos y garantías · Daniel Padilla",
+  "descripcion": "Cuatro pasos, precio cerrado por escrito, dos rondas de cambios, pago 50/50 y todo a tu nombre. Plazos: web de una página en 1 a 2 semanas, web completa en 3 a 4.",
+  "ruta": "/como-trabajo/",
+  "migas": [["Cómo trabajo", "/como-trabajo/"]]
+}
+-->
+<main id="contenido">
+
+<section class="cabeza-pagina">
+  <div class="env">
+    <h1>Cómo trabajo</h1>
+    <p class="intro">Sin sorpresas ni letra pequeña. Esto es lo que pasa desde que me llamas hasta que tu web está publicada a tu nombre.</p>
+  </div>
+</section>
+
+<section class="seccion sin-arriba" id="proceso" aria-labelledby="t-pasos">
+  <div class="env">
+    <h2 id="t-pasos" class="sr">Los cuatro pasos</h2>
+    {{> pasos}}
+  </div>
+</section>
+
+<section class="seccion seccion-mesa" aria-labelledby="t-garantias">
+  <div class="env">
+    <div class="cabeza">
+      <h2 id="t-garantias">Las condiciones, claras desde el principio</h2>
+    </div>
+    <ul class="garantias">
+      <li><b>Precio cerrado</b><span>Te paso el presupuesto por escrito antes de empezar, con lo que incluye, lo que no y el plazo. Y no se mueve.</span></li>
+      <li><b>Dos rondas de cambios</b><span>Después de entregarla. Y antes, te la enseño a medias para que corrijas cuando aún es fácil.</span></li>
+      <li><b>50&nbsp;% al empezar, 50&nbsp;% al entregar</b><span>Pagas la mitad cuando empezamos y la otra mitad con la web terminada.</span></li>
+      <li><b>Todo a tu nombre</b><span>El dominio y el alojamiento se contratan a tu nombre y con tu tarjeta. La web es tuya y no depende de mí.</span></li>
+    </ul>
+  </div>
+</section>
+
+<section class="seccion" aria-labelledby="t-plazos">
+  <div class="env">
+    <div class="columnas">
+      <div>
+        <h2 id="t-plazos">Plazos</h2>
+        <table class="tabla-precios mt-24">
+          <caption class="sr">Plazos habituales</caption>
+          <thead><tr><th scope="col">Trabajo</th><th scope="col">Plazo</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Web de una página</th><td>{{plazo:web_una}}</td></tr>
+            <tr><th scope="row">Web completa</th><td>{{plazo:web_completa}}</td></tr>
+            <tr><th scope="row">Arreglos, revisiones, herramientas y automatizaciones<small>Depende de cada caso</small></th><td>En el presupuesto</td></tr>
+          </tbody>
+        </table>
+        <p class="nota mt-20">El plazo cuenta desde que tengo tus textos y tus fotos. Lo que más retrasa un proyecto no es el desarrollo, es esperar al contenido.</p>
+      </div>
+      <div>
+        <h2>Qué necesito para empezar</h2>
+        <ul class="lista-check mt-24">
+          <li>Los textos de tu negocio. Si no los tienes, te ayudo a escribirlos.</li>
+          <li>Las fotos que quieras que aparezcan.</li>
+          <li>Tu logo, si tienes.</li>
+        </ul>
+        <p class="gris mt-20">Sin contenido no se puede empezar, así que es lo primero que te voy a pedir.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="seccion seccion-mesa" id="preguntas" aria-labelledby="t-preguntas">
+  <div class="env">
+    <h2 id="t-preguntas">Preguntas frecuentes</h2>
+    <p class="intro">Lo que me preguntan siempre antes de decidirse.</p>
+    <div class="preguntas mt-24">
+      <details class="pregunta">
+        <summary>¿Cuánto cuesta hacer una página web?</summary>
+        <div class="respuesta"><p>Una web de una página cuesta desde {{precio:web_una}} y una web completa desde {{precio:web_completa}}. Un arreglo puntual sobre una web que ya existe empieza en {{precio:arreglo}}. El precio exacto te lo doy cerrado y por escrito antes de empezar, y no se mueve después.</p></div>
+      </details>
+      <details class="pregunta">
+        <summary>¿El dominio y el alojamiento son míos?</summary>
+        <div class="respuesta"><p>Sí. Se contratan a tu nombre y con tu tarjeta, y cuestan {{dominioAnual}} que no me pagas a mí. Te acompaño a contratarlos si no lo has hecho nunca. La web es tuya y no dependes de mí para seguir teniéndola.</p></div>
+      </details>
+      <details class="pregunta">
+        <summary>¿Tengo que pagar una cuota mensual?</summary>
+        <div class="respuesta"><p>Por la web, no. Pagas la web una vez y es tuya. El mantenimiento mensual es opcional, cuesta desde {{cuota:mantenimiento}} al mes e incluye revisión, actualizaciones y cambios pequeños. Las automatizaciones con IA sí llevan cuota mensual, porque tienen un coste de funcionamiento cada mes.</p></div>
+      </details>
+      <details class="pregunta">
+        <summary>¿Cuánto se tarda en tener la web lista?</summary>
+        <div class="respuesta"><p>Una web de una página suele estar en {{plazo:web_una}} desde que me pasas los textos y las fotos. Una web completa, en {{plazo:web_completa}}. Lo que más retrasa un proyecto no es el desarrollo, es esperar al contenido.</p></div>
+      </details>
+      <details class="pregunta">
+        <summary>¿Trabajas fuera de Sevilla?</summary>
+        <div class="respuesta"><p>Sí. Vivo en Sevilla y puedo ir en persona si estás cerca, pero trabajo en remoto con negocios de cualquier país. La web se construye, se revisa y se entrega igual.</p></div>
+      </details>
+      <details class="pregunta">
+        <summary>¿Puedes arreglar mi web actual sin rehacerla entera?</summary>
+        <div class="respuesta"><p>Sí, y muchas veces es lo que recomiendo. Si tu web está bien construida y solo tiene fallos, sale más barato corregirlos que empezar de cero. Te lo digo claramente después de mirarla, aunque signifique cobrar menos.</p></div>
+      </details>
+      <details class="pregunta">
+        <summary>¿Qué necesitas de mí para empezar?</summary>
+        <div class="respuesta"><p>Los textos de tu negocio, las fotos que quieras que aparezcan y tu logo si tienes. Si no tienes textos, te ayudo a escribirlos. Sin contenido no se puede empezar, así que es lo primero que te voy a pedir.</p></div>
+      </details>
+      <details class="pregunta">
+        <summary>¿Y si no me gusta cómo queda?</summary>
+        <div class="respuesta"><p>Te enseño la web a medias, antes de terminarla, para que corrijas cuando aún es fácil cambiar las cosas. Después de entregarla incluyo dos rondas de cambios. Se paga el 50&nbsp;% al empezar y el 50&nbsp;% al entregar.</p></div>
+      </details>
+    </div>
+  </div>
+</section>
+
+{{> cta-final}}
+
+</main>

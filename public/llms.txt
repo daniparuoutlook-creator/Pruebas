@@ -6,7 +6,7 @@
 
 - Teléfono y WhatsApp: +34 628 129 468 (https://wa.me/34628129468)
 - Correo: daniparu@outlook.es
-- Horario: De lunes a viernes, de 9:00 a 19:00 (hora peninsular española), y los fines de semana si es urgente. Suelo contestar el mismo día.
+- Horario: De lunes a viernes, de 9:00 a 19:00 (hora peninsular española), y los fines de semana si es urgente. Suele contestar el mismo día.
 - Zona: base en Sevilla (presencial si el cliente está cerca) y en remoto para cualquier país.
 
 ## Servicios y precios (precios de partida; el precio final se da cerrado y por escrito)
@@ -36,7 +36,23 @@
 
 ## Páginas
 
+- [Cómo trabajo: precio cerrado, plazos y garantías · Daniel Padilla](https://web.daniparuoutlook.workers.dev/como-trabajo/): Cuatro pasos, precio cerrado por escrito, dos rondas de cambios, pago 50/50 y todo a tu nombre. Plazos: web de una página en 1 a 2 semanas, web completa en 3 a 4.
+- [Contacto: teléfono, WhatsApp y correo · Daniel Padilla](https://web.daniparuoutlook.workers.dev/contacto/): Llámame al 628 129 468 o escríbeme por WhatsApp o correo. De lunes a viernes de 9:00 a 19:00, y los fines de semana si es urgente. Suelo contestar el mismo día.
 - [Webs para negocios y arreglos de webs en Sevilla · Daniel Padilla](https://web.daniparuoutlook.workers.dev/): Hago webs para negocios y arreglo las que ya existen. Desde Sevilla y en remoto. Precio cerrado por escrito, dominio a tu nombre y te miro la web gratis.
+- [Precios y calculadora de presupuesto · Daniel Padilla](https://web.daniparuoutlook.workers.dev/precios/): Todos los precios de partida a la vista y una calculadora que te escribe el presupuesto orientativo al momento. Web de una página desde 500 €, arreglos desde 150 €. Precio final cerrado por escrito.
+- [Te miro la web gratis y sin compromiso · Daniel Padilla](https://web.daniparuoutlook.workers.dev/revision-gratis/): Mándame la dirección de tu web por WhatsApp y te digo qué le veo: lo que no se ve bien en el móvil, textos viejos, enlaces rotos o datos que no coinciden con Google. Sin coste y sin compromiso.
+- [Arreglo y revisión de webs, sin rehacerlas · Daniel Padilla](https://web.daniparuoutlook.workers.dev/servicios/arreglos/): Arreglo puntual desde 150 € y revisión y puesta al día desde 250 €: lo que no se ve bien en el móvil, formularios que no envían, textos viejos y datos que no coinciden con Google.
+- [Automatizaciones con IA para negocios · Daniel Padilla](https://web.daniparuoutlook.workers.dev/servicios/automatizaciones-ia/): Asistente en tu web desde 350 € + 45 €/mes, respuestas de correo desde 300 € + 40 €/mes y atención de llamadas desde 600 € + 90 €/mes. Siempre avisando de que es una IA.
+- [Herramientas de gestión a medida, desde 200 € · Daniel Padilla](https://web.daniparuoutlook.workers.dev/servicios/herramientas-a-medida/): Lo que hoy llevas en una libreta o en un Excel, en una herramienta sencilla para el móvil o el ordenador: alumnos y asistencias, bonos, citas, pedidos o presupuestos. Desde 200 €.
+- [Servicios: webs, arreglos, IA y herramientas · Daniel Padilla](https://web.daniparuoutlook.workers.dev/servicios/): Webs para negocios desde 500 €, arreglos desde 150 €, automatizaciones con IA y herramientas a medida desde 200 €. Precio cerrado por escrito, desde Sevilla y en remoto.
+- [Webs para negocios en Sevilla, desde 500 € · Daniel Padilla](https://web.daniparuoutlook.workers.dev/servicios/webs/): Web de una página desde 500 € y web completa desde 900 €. Precio cerrado por escrito, dominio y alojamiento a tu nombre, sin cuota obligatoria. Desde Sevilla y en remoto.
+- [Sobre mí: Daniel Padilla, desarrollador web en Sevilla](https://web.daniparuoutlook.workers.dev/sobre-mi/): Soy Daniel Padilla, hago y arreglo webs para negocios desde Sevilla y en remoto. Grado Medio SMR, cursando el Grado Superior DAW. Código limpio y webs que cargan rápido en el móvil.
+- [Caso: herramienta de gestión para una academia · Daniel Padilla](https://web.daniparuoutlook.workers.dev/trabajos/academia-compas/): Herramienta de ejemplo para una academia de baile ficticia: asistencias, clases por recuperar, bonos y mensualidades pendientes de cada alumno, en una pantalla y con filtros.
+- [Caso: web para un bar de tapas · Daniel Padilla](https://web.daniparuoutlook.workers.dev/trabajos/bar-almanaque/): Web de ejemplo para un bar de tapas ficticio de Sevilla: dice en vivo si está abierto, enseña la pizarra del día y la carta con precio de tapa y de ración.
+- [Caso: web para una clínica dental · Daniel Padilla](https://web.daniparuoutlook.workers.dev/trabajos/clinica-arenal/): Web de ejemplo para una clínica dental ficticia de Sevilla: precios publicados, simulador de cuotas con interés real y la primera visita explicada paso a paso.
+- [Caso: web para una peluquería · Daniel Padilla](https://web.daniparuoutlook.workers.dev/trabajos/estudio-malva/): Web de ejemplo para una peluquería ficticia de Sevilla: la clienta elige sus servicios, ve el precio y el tiempo total y pide la cita por WhatsApp con el mensaje ya escrito.
+- [Trabajos: webs, reservas y herramientas de ejemplo · Daniel Padilla](https://web.daniparuoutlook.workers.dev/trabajos/): Webs de ejemplo para un bar, una peluquería, una clínica dental, una tienda de alimentación y una herramienta para una academia. Negocios ficticios para enseñar cómo trabajo.
+- [Caso: web para una tienda de alimentación · Daniel Padilla](https://web.daniparuoutlook.workers.dev/trabajos/la-despensa/): Web de ejemplo para un ultramarinos ficticio de Triana: catálogo con filtros, cesta y pedido final por WhatsApp, con recogida en tienda o envío en Sevilla.
 
 ## Trabajos de ejemplo
 

@@ -1,0 +1,70 @@
+<!--meta
+{
+  "titulo": "Contacto: teléfono, WhatsApp y correo · Daniel Padilla",
+  "descripcion": "Llámame al 628 129 468 o escríbeme por WhatsApp o correo. De lunes a viernes de 9:00 a 19:00, y los fines de semana si es urgente. Suelo contestar el mismo día.",
+  "ruta": "/contacto/",
+  "migas": [["Contacto", "/contacto/"]]
+}
+-->
+<main id="contenido">
+
+<section class="cabeza-pagina">
+  <div class="env">
+    <h1>Cuéntame qué necesitas</h1>
+    <p class="intro">Llámame o escríbeme por WhatsApp. Si ya tienes web, dime la dirección y le echo un vistazo antes de hablar, para no hacerte perder el tiempo.</p>
+  </div>
+</section>
+
+<section class="seccion sin-arriba" aria-label="Formas de contacto">
+  <div class="env">
+    <div class="vias">
+      <div class="via">
+        <b>Teléfono</b>
+        <a class="grande" href="{{tel}}">{{c:telefono}}</a>
+        <p>Desde fuera de España: {{c:telefonoVisibleIntl}}</p>
+        <button class="copiar" type="button" data-copiar="{{c:telefonoVisibleIntl}}" hidden>Copiar el número</button>
+      </div>
+      <div class="via">
+        <b>WhatsApp</b>
+        <p>Al mismo número. Si me mandas la dirección de tu web, la miro antes de contestarte.</p>
+        <a class="boton" href="{{wa:Hola Daniel, te escribo desde tu web.}}">Escribir por WhatsApp</a>
+      </div>
+      <div class="via">
+        <b>Correo</b>
+        <a class="grande correo-grande" href="mailto:{{c:correo}}">{{c:correo}}</a>
+        <p>Para mandarme textos, fotos o documentos.</p>
+      </div>
+    </div>
+
+    <div class="mt-grande">
+      <h2 class="h3">¿Qué buscas? El mensaje ya va escrito</h2>
+      <ul class="mensajes">
+        <li><a href="{{wa:Hola Daniel, quiero una web para mi negocio. Es un/a: }}">Quiero una web</a></li>
+        <li><a href="{{wa:Hola Daniel, ¿me miras la web? Es: }}">¿Me miras la web?</a></li>
+        <li><a href="{{wa:Hola Daniel, tengo un fallo en mi web: }}">Tengo un fallo en mi web</a></li>
+        <li><a href="{{wa:Hola Daniel, me interesa una automatización con IA para: }}">Automatizaciones con IA</a></li>
+        <li><a href="{{wa:Hola Daniel, quiero una herramienta para llevar: }}">Una herramienta a medida</a></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="seccion seccion-mesa" aria-labelledby="t-horario">
+  <div class="env">
+    <div class="columnas">
+      <div>
+        <h2 id="t-horario">Cuándo contesto</h2>
+        <p class="intro">{{c:horario}}. {{c:respuesta}}.</p>
+        <p class="gris mt-20">Si escribes desde fuera de España, dime tu franja horaria y buscamos hueco.</p>
+      </div>
+      <div>
+        <h2>Dónde estoy</h2>
+        <p class="intro">En Sevilla. Si tu negocio está cerca, puedo ir en persona; si no, trabajamos en remoto, igual de bien.</p>
+        <p class="gris mt-20">¿Prefieres preguntar algo rápido antes? El asistente de IA de esta web te contesta dudas sobre servicios y precios.</p>
+        <button class="boton boton-sec mt-20" type="button" data-ia-open aria-haspopup="dialog">Pregunta a la IA</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>

@@ -1,0 +1,152 @@
+<!--meta
+{
+  "titulo": "Automatizaciones con IA para negocios · Daniel Padilla",
+  "descripcion": "Asistente en tu web desde 350 € + 45 €/mes, respuestas de correo desde 300 € + 40 €/mes y atención de llamadas desde 600 € + 90 €/mes. Siempre avisando de que es una IA.",
+  "ruta": "/servicios/automatizaciones-ia/",
+  "migas": [["Servicios", "/servicios/"], ["Automatizaciones con IA", "/servicios/automatizaciones-ia/"]],
+  "servicios": ["asistente", "correo", "llamadas"],
+  "js": ["simulaciones"]
+}
+-->
+<main id="contenido">
+
+<section class="cabeza-pagina">
+  <div class="env">
+    <h1>Que el teléfono y los correos de siempre no te coman el día</h1>
+    <p class="intro">Para el trabajo repetitivo: contestar lo mismo veinte veces, coger el teléfono mientras atiendes a un cliente, responder correos fuera de horario. Siempre avisando de que es una inteligencia artificial.</p>
+    <div class="acciones">
+      <button class="boton" type="button" data-ia-open aria-haspopup="dialog">Pruébalo: este chat es uno</button>
+      <a class="enlace" href="#simulaciones">Ver cómo funcionan</a>
+    </div>
+  </div>
+</section>
+
+<section class="seccion seccion-mesa" aria-labelledby="t-tres">
+  <div class="env">
+    <div class="cabeza">
+      <h2 id="t-tres">Tres automatizaciones</h2>
+      <p class="intro">Todas llevan una alta y una cuota mensual. Te explico abajo por qué.</p>
+    </div>
+    <ul class="servicios">
+      <li class="servicio">
+        <div>
+          <h3>Asistente en tu web</h3>
+          <p>Responde las dudas de quien entra en tu web: precios, horarios, si trabajáis en su zona, cómo pedir cita. Aprende de tu web y de lo que tú le digas, y te avisa cuando alguien quiere hablar contigo de verdad.</p>
+        </div>
+        <p class="servicio-precio">desde {{precio:asistente}}<small>+ {{cuota:asistente}} al mes</small></p>
+      </li>
+      <li class="servicio">
+        <div>
+          <h3>Respuestas automáticas de correo</h3>
+          <p>Clasifica los correos que entran y responde los de siempre: peticiones de presupuesto, dudas sobre horarios, solicitudes de información. Los que no encajan te los deja marcados para que los veas tú.</p>
+        </div>
+        <p class="servicio-precio">desde {{precio:correo}}<small>+ {{cuota:correo}} al mes</small></p>
+      </li>
+      <li class="servicio">
+        <div>
+          <h3>Atención de llamadas</h3>
+          <p>Coge el teléfono cuando tú no puedes: fuera de horario, cuando estás con un cliente o cuando entran dos llamadas a la vez. Informa, toma el recado con los datos y te lo pasa por escrito.</p>
+        </div>
+        <p class="servicio-precio">desde {{precio:llamadas}}<small>+ {{cuota:llamadas}} al mes y consumo</small></p>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section class="seccion" id="simulaciones" aria-labelledby="t-sim">
+  <div class="env">
+    <div class="cabeza">
+      <h2 id="t-sim">Así funcionan</h2>
+      <p class="intro">Dos simulaciones con negocios inventados. No son grabaciones reales: están escritas para que veas qué hace cada una.</p>
+    </div>
+    <div class="simulaciones">
+      <article class="sim" data-sim data-estado="espera" aria-labelledby="t-sim-correo">
+        <div class="sim-cab"><b id="t-sim-correo">Bandeja de correo de una peluquería</b><span class="sim-rotulo">Simulación</span></div>
+        <div class="sim-cuerpo">
+          <ul class="correo">
+            <li data-paso><span class="de">Lucía</span><span class="asunto">¿Tenéis hueco el sábado por la mañana?</span><span class="accion">Respondido</span></li>
+            <li data-paso><span class="de">Carlos</span><span class="asunto">¿Cuánto cuesta un corte de caballero?</span><span class="accion">Respondido</span></li>
+            <li data-paso><span class="de">Marta</span><span class="asunto">Tengo que cambiar mi cita del jueves, es urgente</span><span class="accion marcar">Para ti</span></li>
+            <li data-paso><span class="de">Proveedor</span><span class="asunto">Factura del mes</span><span class="accion marcar">Para ti</span></li>
+          </ul>
+          <p class="sim-nota" data-paso>Las dudas de siempre se contestan solas con la información del negocio. Lo que necesita una persona se queda marcado para la dueña.</p>
+        </div>
+        <button class="boton boton-sec sim-play solo-js" type="button" data-sim-play>Ver la simulación</button>
+      </article>
+
+      <article class="sim" data-sim data-estado="espera" aria-labelledby="t-sim-llamada">
+        <div class="sim-cab"><b id="t-sim-llamada">Llamada a un bar fuera de hora</b><span class="sim-rotulo">Simulación</span></div>
+        <div class="sim-cuerpo">
+          <ol class="llamada">
+            <li class="ia" data-paso><span class="quien">Asistente</span>Hola, has llamado a Bodeguita Zarzamora. Soy un asistente de inteligencia artificial: puedo darte información y tomar un recado para el dueño. ¿En qué te ayudo?</li>
+            <li class="cliente" data-paso><span class="quien">Cliente</span>Quería reservar para ocho personas el domingo a mediodía.</li>
+            <li class="ia" data-paso><span class="quien">Asistente</span>Para grupos de más de seis, el dueño prefiere confirmarlo él. Te tomo el recado: ¿a qué nombre y en qué teléfono te llama?</li>
+            <li class="cliente" data-paso><span class="quien">Cliente</span>A nombre de Pilar, al 600 000 000.</li>
+            <li class="ia" data-paso><span class="quien">Asistente</span>Hecho, Pilar. Se lo paso ahora mismo por escrito y te llamará para confirmar.</li>
+            <li class="recado" data-paso><span class="quien">Recado enviado al dueño</span><b>Reserva domingo mediodía, 8 personas.</b> Pilar, 600 000 000. Quiere que la llames para confirmar.</li>
+          </ol>
+        </div>
+        <button class="boton boton-sec sim-play solo-js" type="button" data-sim-play>Ver la simulación</button>
+      </article>
+    </div>
+    <div class="acciones">
+      <button class="boton" type="button" data-ia-open aria-haspopup="dialog">Pruébalo tú: este chat es uno de ellos</button>
+    </div>
+  </div>
+</section>
+
+<section class="seccion seccion-mesa" aria-labelledby="t-cuota">
+  <div class="env">
+    <div class="columnas">
+      <div>
+        <h2 id="t-cuota">Por qué llevan cuota</h2>
+        <p class="intro">Porque cuestan dinero cada mes que funcionan. La cuota cubre el mantenimiento y el consumo de un negocio normal. Si tu volumen se dispara, te lo digo antes de que llegue la factura, no después.</p>
+      </div>
+      <div>
+        <h2>Siempre avisa de que es una IA</h2>
+        <p class="intro">Todo lo que monto avisa de que es una inteligencia artificial en cuanto empieza a hablar, como exige el Reglamento europeo de IA. No imita a una persona ni lo aparenta, y si quien llama o escribe quiere hablar contigo, te lo pasa.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="seccion" aria-labelledby="t-demos-ia">
+  <div class="env">
+    <div class="cabeza">
+      <h2 id="t-demos-ia">Webs con asistente de IA</h2>
+      <p class="intro">Estoy preparando dos demos de webs de negocio con su propio asistente. Mientras tanto, el chat de esta web es el ejemplo real.</p>
+    </div>
+    <ul class="rejilla-trabajos rejilla-huecos">
+      <li class="hueco"><span class="hueco-estado">En obras</span><b>Web con asistente</b><span>Próximamente</span></li>
+      <li class="hueco"><span class="hueco-estado">En obras</span><b>Web con asistente</b><span>Próximamente</span></li>
+    </ul>
+  </div>
+</section>
+
+<section class="seccion seccion-mesa" aria-labelledby="t-preguntas">
+  <div class="env">
+    <h2 id="t-preguntas">Preguntas sobre las automatizaciones</h2>
+    <div class="preguntas mt-24">
+      <details class="pregunta">
+        <summary>¿Por qué no es un pago único, como la web?</summary>
+        <div class="respuesta"><p>Porque tienen un coste de funcionamiento cada mes. La cuota cubre el mantenimiento y el consumo aproximado de un negocio normal.</p></div>
+      </details>
+      <details class="pregunta">
+        <summary>¿Y si un mes tengo muchísimas llamadas o mensajes?</summary>
+        <div class="respuesta"><p>Si tu volumen se dispara, te lo digo antes de que llegue la factura, no después. En la atención de llamadas, además de la cuota, se paga el consumo.</p></div>
+      </details>
+      <details class="pregunta">
+        <summary>¿Se hará pasar por mí o por un empleado?</summary>
+        <div class="respuesta"><p>No. Avisa de que es una inteligencia artificial desde el principio, como exige el Reglamento europeo de IA, y si alguien quiere hablar contigo, te lo pasa.</p></div>
+      </details>
+      <details class="pregunta">
+        <summary>¿Qué sabe el asistente de mi negocio?</summary>
+        <div class="respuesta"><p>Lo que hay en tu web y lo que tú le digas: precios, horarios, zona, cómo pedir cita. Lo dejo configurado para que no se invente lo que no sabe y te lo pase a ti. Aun así es una IA, puede equivocarse, y así lo avisa.</p></div>
+      </details>
+    </div>
+  </div>
+</section>
+
+{{> cta-final}}
+
+</main>

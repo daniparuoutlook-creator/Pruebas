@@ -1,0 +1,121 @@
+<!--meta
+{
+  "titulo": "Caso: herramienta de gestión para una academia · Daniel Padilla",
+  "descripcion": "Herramienta de ejemplo para una academia de baile ficticia: asistencias, clases por recuperar, bonos y mensualidades pendientes de cada alumno, en una pantalla y con filtros.",
+  "ruta": "/trabajos/academia-compas/",
+  "migas": [
+    [
+      "Trabajos",
+      "/trabajos/"
+    ],
+    [
+      "Academia Compás",
+      "/trabajos/academia-compas/"
+    ]
+  ],
+  "js": [
+    "visor"
+  ],
+  "ogTitulo": "Academia Compás · caso de ejemplo"
+}
+-->
+<main id="contenido">
+
+<section class="cabeza-pagina">
+  <div class="env">
+    <h1>Academia Compás</h1>
+    <p class="nota">Negocio ficticio · Herramienta a medida. Hecho para enseñar cómo trabajo.</p>
+    <p class="intro">Una academia de baile. No es una web para clientes: es la herramienta interna que sustituye a la libreta de asistencias.</p>
+    <div class="acciones">
+      <a class="boton" href="/demos/academia.html">Abrir la demo</a>
+      <a class="enlace" href="#decisiones">Por qué está hecha así</a>
+    </div>
+  </div>
+</section>
+
+<section class="seccion sin-arriba" aria-label="Capturas">
+  <div class="env">
+    <div class="visor" data-visor>
+      <div class="visor-controles solo-js-flex">
+        <div class="visor-botones" role="group" aria-label="Ver la captura en">
+          <button type="button" aria-pressed="false" data-ver="movil">Móvil</button>
+          <button type="button" aria-pressed="false" data-ver="escritorio">Ordenador</button>
+        </div>
+      </div>
+      <div class="visor-escena">
+        <figure class="visor-pantalla" data-pantalla="movil">
+          <div class="marco-disp marco-movil">
+          <picture>
+            <source type="image/avif" srcset="/assets/img/trabajos/academia-compas-movil-390.avif 390w, /assets/img/trabajos/academia-compas-movil-780.avif 780w" sizes="300px">
+            <img src="/assets/img/trabajos/academia-compas-movil-390.webp" srcset="/assets/img/trabajos/academia-compas-movil-390.webp 390w, /assets/img/trabajos/academia-compas-movil-780.webp 780w" sizes="300px" width="390" height="844" alt="Portada de la web de Academia Compás en un móvil" decoding="async">
+          </picture>
+          </div>
+          <figcaption>En un móvil (390 px de ancho)</figcaption>
+        </figure>
+        <figure class="visor-pantalla" data-pantalla="escritorio">
+          <div class="marco-disp marco-escritorio">
+          <picture>
+            <source type="image/avif" srcset="/assets/img/trabajos/academia-compas-escritorio-640.avif 640w, /assets/img/trabajos/academia-compas-escritorio-1280.avif 1280w" sizes="(min-width: 1180px) 1084px, 92vw">
+            <img src="/assets/img/trabajos/academia-compas-escritorio-640.webp" srcset="/assets/img/trabajos/academia-compas-escritorio-640.webp 640w, /assets/img/trabajos/academia-compas-escritorio-1280.webp 1280w" sizes="(min-width: 1180px) 1084px, 92vw" width="1280" height="800" alt="Portada de la web de Academia Compás en un ordenador" decoding="async" style="view-transition-name: caso-academia-compas">
+          </picture>
+          </div>
+          <figcaption>En un ordenador (1280 px de ancho)</figcaption>
+        </figure>
+      </div>
+      <!-- Capturas sin las fotos de las demos: el entorno donde se hicieron no podía cargar images.unsplash.com.
+           Para rehacerlas con fotos: node scripts/capturas-demos.mjs (con el servidor local arrancado). -->
+    </div>
+  </div>
+</section>
+
+<section class="seccion seccion-mesa" aria-labelledby="t-problema">
+  <div class="env">
+    <div class="columnas">
+      <div>
+        <h2 id="t-problema">El problema de siempre</h2>
+        <p class="intro">En una academia, la libreta de asistencias acaba siendo la fuente de todos los líos: quién debe el mes, a quién le quedan clases del bono, quién tiene una falta por recuperar.</p>
+      </div>
+      <div>
+        <h2>Qué hace la web</h2>
+        <ul class="lista-check">
+          <li>Un resumen arriba: alumnos activos, clases dadas, clases por recuperar y mensualidades pendientes.</li>
+          <li>Filtros por lo que hay que hacer: quién debe la mensualidad, quién tiene clases por recuperar, quién tiene el bono casi agotado.</li>
+          <li>Por cada alumno, un botón para cada cosa: ha venido, ha faltado, recupera clase, marcar pagado.</li>
+          <li>El bono de cada uno con lo que le queda, de un vistazo.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="seccion" id="decisiones" aria-labelledby="t-decisiones">
+  <div class="env">
+    <div class="cabeza">
+      <h2 id="t-decisiones">Por qué está hecha así</h2>
+    </div>
+    <ul class="decisiones">
+        <li><b>Un botón por acción</b><span>Apuntar una asistencia es un toque, en el móvil y en mitad de la clase.</span></li>
+        <li><b>Lo urgente, arriba</b><span>Las cifras que piden hacer algo hoy, antes que la lista.</span></li>
+        <li><b>Colores con significado</b><span>Rojo para lo que se debe, naranja para lo que hay que recuperar. Nada de color por decorar.</span></li>
+        <li><b>Demo sin datos reales</b><span>Los alumnos son inventados y los cambios no se guardan: al recargar, vuelve al principio.</span></li>
+    </ul>
+    <div class="acciones">
+      <a class="boton" href="/demos/academia.html">Abrir la demo</a>
+      <a class="enlace" href="/servicios/herramientas-a-medida/">Una herramienta así, desde {{precio:herramienta}}</a>
+    </div>
+  </div>
+</section>
+
+<nav class="seccion sin-arriba" aria-label="Otros trabajos">
+  <div class="env">
+    <div class="caso-nav">
+      <a href="/trabajos/la-despensa/"><small>Anterior</small><b>La Despensa de Triana</b></a>
+      <a href="/trabajos/bar-almanaque/"><small>Siguiente</small><b>Bar Almanaque</b></a>
+    </div>
+    <p class="acciones"><a class="enlace" href="/trabajos/">Todos los trabajos</a></p>
+  </div>
+</nav>
+
+{{> cta-final}}
+
+</main>

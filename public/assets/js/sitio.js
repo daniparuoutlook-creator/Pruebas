@@ -114,4 +114,20 @@
     url.textContent = ruta;
     url.parentElement.hidden = false;
   }
+
+  /* ---------- 6. Botón flotante del asistente (escritorio) ----------
+     Aparece al bajar un poco: así no tapa la portada ni la hoja de presupuesto al cargar.
+     Si la página casi no tiene desplazamiento, se ve siempre. */
+  var flotante = doc.querySelector(".ia-flotante");
+  if (flotante) {
+    var pendiente = false;
+    var revisar = function () {
+      pendiente = false;
+      var corta = doc.documentElement.scrollHeight - window.innerHeight < 400;
+      flotante.classList.toggle("oculto", !corta && window.scrollY < 200);
+    };
+    revisar();
+    window.addEventListener("scroll", function () { if (!pendiente) { pendiente = true; requestAnimationFrame(revisar); } }, { passive: true });
+    window.addEventListener("resize", revisar, { passive: true });
+  }
 })();

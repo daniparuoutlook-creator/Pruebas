@@ -1,0 +1,121 @@
+<!--meta
+{
+  "titulo": "Caso: web para una peluquería · Daniel Padilla",
+  "descripcion": "Web de ejemplo para una peluquería ficticia de Sevilla: la clienta elige sus servicios, ve el precio y el tiempo total y pide la cita por WhatsApp con el mensaje ya escrito.",
+  "ruta": "/trabajos/estudio-malva/",
+  "migas": [
+    [
+      "Trabajos",
+      "/trabajos/"
+    ],
+    [
+      "Estudio Malva",
+      "/trabajos/estudio-malva/"
+    ]
+  ],
+  "js": [
+    "visor"
+  ],
+  "ogTitulo": "Estudio Malva · caso de ejemplo"
+}
+-->
+<main id="contenido">
+
+<section class="cabeza-pagina">
+  <div class="env">
+    <h1>Estudio Malva</h1>
+    <p class="nota">Negocio ficticio · Belleza. Hecho para enseñar cómo trabajo.</p>
+    <p class="intro">Peluquería y estética en Nervión. Una web donde la clienta arma su cita, ve cuánto cuesta y cuánto tarda, y la pide por WhatsApp sin escribir nada.</p>
+    <div class="acciones">
+      <a class="boton" href="/demos/belleza.html">Abrir la demo</a>
+      <a class="enlace" href="#decisiones">Por qué está hecha así</a>
+    </div>
+  </div>
+</section>
+
+<section class="seccion sin-arriba" aria-label="Capturas">
+  <div class="env">
+    <div class="visor" data-visor>
+      <div class="visor-controles solo-js-flex">
+        <div class="visor-botones" role="group" aria-label="Ver la captura en">
+          <button type="button" aria-pressed="false" data-ver="movil">Móvil</button>
+          <button type="button" aria-pressed="false" data-ver="escritorio">Ordenador</button>
+        </div>
+      </div>
+      <div class="visor-escena">
+        <figure class="visor-pantalla" data-pantalla="movil">
+          <div class="marco-disp marco-movil">
+          <picture>
+            <source type="image/avif" srcset="/assets/img/trabajos/estudio-malva-movil-390.avif 390w, /assets/img/trabajos/estudio-malva-movil-780.avif 780w" sizes="300px">
+            <img src="/assets/img/trabajos/estudio-malva-movil-390.webp" srcset="/assets/img/trabajos/estudio-malva-movil-390.webp 390w, /assets/img/trabajos/estudio-malva-movil-780.webp 780w" sizes="300px" width="390" height="844" alt="Portada de la web de Estudio Malva en un móvil" decoding="async">
+          </picture>
+          </div>
+          <figcaption>En un móvil (390 px de ancho)</figcaption>
+        </figure>
+        <figure class="visor-pantalla" data-pantalla="escritorio">
+          <div class="marco-disp marco-escritorio">
+          <picture>
+            <source type="image/avif" srcset="/assets/img/trabajos/estudio-malva-escritorio-640.avif 640w, /assets/img/trabajos/estudio-malva-escritorio-1280.avif 1280w" sizes="(min-width: 1180px) 1084px, 92vw">
+            <img src="/assets/img/trabajos/estudio-malva-escritorio-640.webp" srcset="/assets/img/trabajos/estudio-malva-escritorio-640.webp 640w, /assets/img/trabajos/estudio-malva-escritorio-1280.webp 1280w" sizes="(min-width: 1180px) 1084px, 92vw" width="1280" height="800" alt="Portada de la web de Estudio Malva en un ordenador" decoding="async" style="view-transition-name: caso-estudio-malva">
+          </picture>
+          </div>
+          <figcaption>En un ordenador (1280 px de ancho)</figcaption>
+        </figure>
+      </div>
+      <!-- Capturas sin las fotos de las demos: el entorno donde se hicieron no podía cargar images.unsplash.com.
+           Para rehacerlas con fotos: node scripts/capturas-demos.mjs (con el servidor local arrancado). -->
+    </div>
+  </div>
+</section>
+
+<section class="seccion seccion-mesa" aria-labelledby="t-problema">
+  <div class="env">
+    <div class="columnas">
+      <div>
+        <h2 id="t-problema">El problema de siempre</h2>
+        <p class="intro">Pedir cita en una peluquería suele ser una conversación de diez mensajes: qué te quieres hacer, cuánto cuesta, cuánto se tarda, qué hueco hay. Cada mensaje es una interrupción mientras se atiende a otra clienta.</p>
+      </div>
+      <div>
+        <h2>Qué hace la web</h2>
+        <ul class="lista-check">
+          <li>La clienta marca los servicios que quiere y ve al momento el precio y el tiempo total.</li>
+          <li>Un botón abre WhatsApp con la cita ya escrita: servicios, precio y tiempo.</li>
+          <li>En el móvil, una barra fija abajo con el total mientras elige.</li>
+          <li>El equipo, el horario y cómo llegar.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="seccion" id="decisiones" aria-labelledby="t-decisiones">
+  <div class="env">
+    <div class="cabeza">
+      <h2 id="t-decisiones">Por qué está hecha así</h2>
+    </div>
+    <ul class="decisiones">
+        <li><b>Precio y tiempo antes de pedir</b><span>Sin sorpresas: la clienta sabe lo que va a pagar y cuánto va a estar.</span></li>
+        <li><b>El mensaje se escribe solo</b><span>Llega completo y ordenado, así que la respuesta es un sí o un hueco, no diez mensajes.</span></li>
+        <li><b>La confirmación, en persona</b><span>La web no reserva sola: el salón confirma el hueco y el precio final antes de la cita.</span></li>
+        <li><b>Malva como único color</b><span>Reconocible y tranquilo, con una letra de mucho carácter para los títulos.</span></li>
+    </ul>
+    <div class="acciones">
+      <a class="boton" href="/demos/belleza.html">Abrir la demo</a>
+      <a class="enlace" href="/servicios/webs/">Una web así, desde {{precio:web_una}}</a>
+    </div>
+  </div>
+</section>
+
+<nav class="seccion sin-arriba" aria-label="Otros trabajos">
+  <div class="env">
+    <div class="caso-nav">
+      <a href="/trabajos/clinica-arenal/"><small>Anterior</small><b>Clínica Arenal</b></a>
+      <a href="/trabajos/la-despensa/"><small>Siguiente</small><b>La Despensa de Triana</b></a>
+    </div>
+    <p class="acciones"><a class="enlace" href="/trabajos/">Todos los trabajos</a></p>
+  </div>
+</nav>
+
+{{> cta-final}}
+
+</main>

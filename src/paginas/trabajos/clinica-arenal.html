@@ -1,0 +1,121 @@
+<!--meta
+{
+  "titulo": "Caso: web para una clínica dental · Daniel Padilla",
+  "descripcion": "Web de ejemplo para una clínica dental ficticia de Sevilla: precios publicados, simulador de cuotas con interés real y la primera visita explicada paso a paso.",
+  "ruta": "/trabajos/clinica-arenal/",
+  "migas": [
+    [
+      "Trabajos",
+      "/trabajos/"
+    ],
+    [
+      "Clínica Arenal",
+      "/trabajos/clinica-arenal/"
+    ]
+  ],
+  "js": [
+    "visor"
+  ],
+  "ogTitulo": "Clínica Arenal · caso de ejemplo"
+}
+-->
+<main id="contenido">
+
+<section class="cabeza-pagina">
+  <div class="env">
+    <h1>Clínica Arenal</h1>
+    <p class="nota">Negocio ficticio · Salud. Hecho para enseñar cómo trabajo.</p>
+    <p class="intro">Clínica dental en el Arenal. Una web que quita el miedo principal antes de pedir cita: no saber cuánto va a costar ni si se podrá pagar.</p>
+    <div class="acciones">
+      <a class="boton" href="/demos/clinica.html">Abrir la demo</a>
+      <a class="enlace" href="#decisiones">Por qué está hecha así</a>
+    </div>
+  </div>
+</section>
+
+<section class="seccion sin-arriba" aria-label="Capturas">
+  <div class="env">
+    <div class="visor" data-visor>
+      <div class="visor-controles solo-js-flex">
+        <div class="visor-botones" role="group" aria-label="Ver la captura en">
+          <button type="button" aria-pressed="false" data-ver="movil">Móvil</button>
+          <button type="button" aria-pressed="false" data-ver="escritorio">Ordenador</button>
+        </div>
+      </div>
+      <div class="visor-escena">
+        <figure class="visor-pantalla" data-pantalla="movil">
+          <div class="marco-disp marco-movil">
+          <picture>
+            <source type="image/avif" srcset="/assets/img/trabajos/clinica-arenal-movil-390.avif 390w, /assets/img/trabajos/clinica-arenal-movil-780.avif 780w" sizes="300px">
+            <img src="/assets/img/trabajos/clinica-arenal-movil-390.webp" srcset="/assets/img/trabajos/clinica-arenal-movil-390.webp 390w, /assets/img/trabajos/clinica-arenal-movil-780.webp 780w" sizes="300px" width="390" height="844" alt="Portada de la web de Clínica Arenal en un móvil" decoding="async">
+          </picture>
+          </div>
+          <figcaption>En un móvil (390 px de ancho)</figcaption>
+        </figure>
+        <figure class="visor-pantalla" data-pantalla="escritorio">
+          <div class="marco-disp marco-escritorio">
+          <picture>
+            <source type="image/avif" srcset="/assets/img/trabajos/clinica-arenal-escritorio-640.avif 640w, /assets/img/trabajos/clinica-arenal-escritorio-1280.avif 1280w" sizes="(min-width: 1180px) 1084px, 92vw">
+            <img src="/assets/img/trabajos/clinica-arenal-escritorio-640.webp" srcset="/assets/img/trabajos/clinica-arenal-escritorio-640.webp 640w, /assets/img/trabajos/clinica-arenal-escritorio-1280.webp 1280w" sizes="(min-width: 1180px) 1084px, 92vw" width="1280" height="800" alt="Portada de la web de Clínica Arenal en un ordenador" decoding="async" style="view-transition-name: caso-clinica-arenal">
+          </picture>
+          </div>
+          <figcaption>En un ordenador (1280 px de ancho)</figcaption>
+        </figure>
+      </div>
+      <!-- Capturas sin las fotos de las demos: el entorno donde se hicieron no podía cargar images.unsplash.com.
+           Para rehacerlas con fotos: node scripts/capturas-demos.mjs (con el servidor local arrancado). -->
+    </div>
+  </div>
+</section>
+
+<section class="seccion seccion-mesa" aria-labelledby="t-problema">
+  <div class="env">
+    <div class="columnas">
+      <div>
+        <h2 id="t-problema">El problema de siempre</h2>
+        <p class="intro">En una clínica dental, lo que frena a mucha gente no es el sillón, es la factura: no saber cuánto costará ni si podrá pagarlo a plazos. Si la web no lo cuenta, la duda se queda sin resolver o acaba en una llamada.</p>
+      </div>
+      <div>
+        <h2>Qué hace la web</h2>
+        <ul class="lista-check">
+          <li>Precios publicados por tratamiento: prevención, restauración y estética.</li>
+          <li>Un simulador de cuotas: eliges tratamiento y plazo (de 3 a 24 meses) y ves la cuota, los intereses y el total.</li>
+          <li>Sin intereses hasta 12 meses; desde el mes 13 aplica un TIN del 7,9 %, y el simulador lo calcula de verdad.</li>
+          <li>La primera visita en tres pasos: revisión, presupuesto por escrito y tú decides.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="seccion" id="decisiones" aria-labelledby="t-decisiones">
+  <div class="env">
+    <div class="cabeza">
+      <h2 id="t-decisiones">Por qué está hecha así</h2>
+    </div>
+    <ul class="decisiones">
+        <li><b>Precios a la vista</b><span>Lo que más se pregunta, contestado antes de que haga falta llamar.</span></li>
+        <li><b>El simulador cuenta el interés</b><span>Nada de cuotas trampa: a partir del mes 13 se ve el interés y el total a pagar.</span></li>
+        <li><b>Verde sobrio y mucho aire</b><span>Para una clínica, la sensación tiene que ser de calma y limpieza, no de oferta.</span></li>
+        <li><b>Preguntas reales</b><span>Urgencias, mutuas, si el presupuesto compromete: las dudas de siempre, contestadas.</span></li>
+    </ul>
+    <div class="acciones">
+      <a class="boton" href="/demos/clinica.html">Abrir la demo</a>
+      <a class="enlace" href="/servicios/webs/">Una web así, desde {{precio:web_completa}}</a>
+    </div>
+  </div>
+</section>
+
+<nav class="seccion sin-arriba" aria-label="Otros trabajos">
+  <div class="env">
+    <div class="caso-nav">
+      <a href="/trabajos/bar-almanaque/"><small>Anterior</small><b>Bar Almanaque</b></a>
+      <a href="/trabajos/estudio-malva/"><small>Siguiente</small><b>Estudio Malva</b></a>
+    </div>
+    <p class="acciones"><a class="enlace" href="/trabajos/">Todos los trabajos</a></p>
+  </div>
+</nav>
+
+{{> cta-final}}
+
+</main>

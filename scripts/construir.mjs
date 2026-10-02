@@ -16,6 +16,7 @@
 //   {{wa}}            -> https://wa.me/34...
 //   {{wa:Texto del mensaje}} -> enlace de WhatsApp con el mensaje ya escrito
 //   {{url}}           -> URL base (https://...)
+//   {{dominio}}       -> solo el dominio (web.ejemplo.com)
 //   {{> parcial}}     -> contenido de src/plantilla/parcial.html
 //
 // Lo que genera: public/**/index.html (y aviso-legal.html, privacidad.html, 404.html),
@@ -69,6 +70,7 @@ async function sustituir(texto, ctx = {}) {
     .replace(/\{\{wa:([^}]+)\}\}/g, (_, t) => escAttr(wa(t)))
     .replace(/\{\{wa\}\}/g, wa())
     .replace(/\{\{url\}\}/g, URL_BASE)
+    .replace(/\{\{dominio\}\}/g, new URL(URL_BASE).host)
     .replace(/\{\{dominioAnual\}\}/g, negocio.dominioAnual.replace(/ €/g, "&nbsp;€"))
     .replace(/\{\{datos-precios\}\}/g, () => `<script type="application/json" id="datos-precios">${jsonSeguro({ servicios: negocio.servicios, extras: negocio.extras, whatsapp: C.whatsapp })}</script>`)
     .replace(/\{\{(\w+)\}\}/g, (m, k) => (k in ctx ? ctx[k] : m));
@@ -251,7 +253,7 @@ const llms = `# ${sitio.nombre}
 
 - Teléfono y WhatsApp: ${C.telefonoVisibleIntl} (${wa()})
 - Correo: ${C.correo}
-- Horario: ${C.horario}. ${C.respuesta}.
+- Horario: ${C.horario}. Suele contestar el mismo día.
 - Zona: base en Sevilla (presencial si el cliente está cerca) y en remoto para cualquier país.
 
 ## Servicios y precios (precios de partida; el precio final se da cerrado y por escrito)

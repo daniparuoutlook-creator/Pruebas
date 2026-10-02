@@ -1,102 +1,92 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+<!-- Generado por scripts/construir.mjs desde src/paginas/aviso-legal.html. No edites este archivo: edita el de src/ y vuelve a construir. -->
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Aviso legal · Daniel Padilla</title>
-<meta name="description" content="Aviso legal e información general del titular de web.daniparuoutlook.workers.dev, conforme a la Ley 34/2002 de Servicios de la Sociedad de la Información.">
+<meta name="description" content="Aviso legal e información general del titular de esta web, conforme a la Ley 34/2002 de Servicios de la Sociedad de la Información.">
+<link rel="canonical" href="https://web.daniparuoutlook.workers.dev/aviso-legal">
 <meta name="robots" content="noindex,follow">
-<meta name="theme-color" content="#16191F">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%2316191F'/%3E%3Ctext x='32' y='44' font-family='Arial,sans-serif' font-size='34' font-weight='bold' fill='%23FFE24A' text-anchor='middle'%3EdP%3C/text%3E%3C/svg%3E">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Archivo:wght@400;500&display=swap" rel="stylesheet">
-<style>
-:root{
-  --papel:#EDEFF2; --carta:#FFFFFF; --tinta:#16191F; --azul:#1F3BD6;
-  --gris:#5B6470; --linea:#D5DAE1;
-  --display:"Bricolage Grotesque",Archivo,sans-serif;
-  --texto:Archivo,system-ui,sans-serif;
-}
-*{box-sizing:border-box;min-width:0}
-html,body{overflow-x:hidden;max-width:100%}
-body{margin:0;background:var(--papel);color:var(--tinta);
-     font:400 17px/1.68 var(--texto);-webkit-font-smoothing:antialiased}
-h1,h2{font-family:var(--display);margin:0;line-height:1.1;letter-spacing:-.02em}
-h1{font-weight:700;font-size:clamp(32px,5vw,46px)}
-h2{font-weight:700;font-size:22px;margin-top:44px}
-p{margin:14px 0 0}
-a{color:var(--azul)}
-.env{max-width:760px;margin:0 auto;padding:0 24px}
+<meta name="author" content="Daniel Padilla">
+<meta name="theme-color" content="#FCFCFD">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_ES">
+<meta property="og:site_name" content="Daniel Padilla · Desarrollo web">
+<meta property="og:title" content="Aviso legal · Daniel Padilla">
+<meta property="og:description" content="Aviso legal e información general del titular de esta web, conforme a la Ley 34/2002 de Servicios de la Sociedad de la Información.">
+<meta property="og:url" content="https://web.daniparuoutlook.workers.dev/aviso-legal">
+<meta property="og:image" content="https://web.daniparuoutlook.workers.dev/og/inicio.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Aviso legal · Daniel Padilla">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preload" href="/assets/fuentes/bricolage.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/sitio.css?v=b6b85c55">
+<script>document.documentElement.classList.add("js")</script>
+<script src="/assets/js/sitio.js?v=15ad03a9" defer></script>
 
-.cab{background:var(--carta);border-bottom:1px solid var(--linea)}
-.cab-in{display:flex;align-items:center;justify-content:space-between;gap:16px;
-        max-width:760px;margin:0 auto;padding:14px 24px}
-.logo{display:inline-flex;align-items:center;gap:.3em;min-height:44px;font-family:var(--display);font-weight:700;font-size:18px;text-decoration:none;
-      color:var(--tinta);letter-spacing:-.02em}
-.logo span{font-weight:500;color:var(--gris)}
-.volver{display:inline-flex;align-items:center;min-height:44px;font-size:15px;text-decoration:none;color:var(--gris)}
-.volver:hover{color:var(--tinta)}
 
-main{padding:clamp(40px,6vw,68px) 0 72px}
-.fecha{margin-top:10px;font-size:15px;color:var(--gris)}
-.datos{margin-top:26px;background:var(--carta);border:1px solid var(--linea);
-       border-radius:8px;padding:8px 22px}
-.datos div{display:flex;justify-content:space-between;gap:18px;padding:13px 0;
-           border-bottom:1px solid var(--linea);font-size:16px}
-.datos div:last-child{border-bottom:none}
-.datos span:first-child{color:var(--gris);flex:none}
-.datos span:last-child{text-align:right}
-ul{margin:14px 0 0;padding-left:22px;color:inherit}
-li{margin-bottom:8px}
-
-footer{border-top:1px solid var(--linea);padding:26px 0;font-size:14.5px;color:var(--gris)}
-.pie{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
-.pie a{color:var(--gris);display:inline-block;padding:12px 2px}
-:focus-visible{outline:3px solid var(--azul);outline-offset:3px}
-@media(max-width:700px){
-  .env{padding:0 16px}
-  .cab-in{padding:11px 16px}
-  .logo span{display:none}
-  main{padding:32px 0 52px}
-  h2{margin-top:34px;font-size:20px}
-  .datos,.tabla{padding:4px 18px}
-  .destacado{padding:18px 18px}
-  .pie{flex-direction:column;gap:8px}
-  ul{padding-left:20px}
-}
-@media(max-width:560px){
-  .datos div{flex-direction:column;gap:4px}
-  .datos span:last-child{text-align:left}
-}
-</style>
 </head>
-<body>
-
+<body class="">
+<a class="saltar" href="#contenido">Saltar al contenido</a>
 <header class="cab">
-  <div class="cab-in">
-    <a class="logo" href="index.html">Daniel Padilla <span>&middot; Desarrollo Web</span></a>
-    <a class="volver" href="index.html">&larr; Volver a la web</a>
+  <div class="cab-in env">
+    <a class="logo" href="/" aria-label="Daniel Padilla, ir al inicio">Daniel Padilla</a>
+    <nav class="nav" aria-label="Principal">
+      <a href="/servicios/">Servicios</a>
+      <a href="/trabajos/">Trabajos</a>
+      <a href="/precios/">Precios</a>
+      <a href="/como-trabajo/">Cómo trabajo</a>
+      <a class="boton boton-cab" href="/contacto/">Contacto</a>
+    </nav>
+    <!-- Sin JavaScript, "Menú" lleva al índice del pie; con JavaScript abre el menú a pantalla completa -->
+    <a class="menu-boton" href="#indice" id="menu-boton" aria-controls="menu" aria-expanded="false"><span class="menu-icono" aria-hidden="true"></span>Menú</a>
   </div>
 </header>
+<div class="menu" id="menu" role="dialog" aria-modal="true" aria-labelledby="menu-titulo" hidden>
+  <div class="menu-in env">
+    <div class="menu-cab">
+      <p class="menu-titulo" id="menu-titulo">Menú</p>
+      <button class="menu-cerrar" type="button" id="menu-cerrar">Cerrar</button>
+    </div>
+    <nav aria-label="Menú principal">
+      <ul class="menu-lista">
+        <li><a href="/">Inicio</a></li>
+        <li><a href="/servicios/">Servicios</a></li>
+        <li><a href="/trabajos/">Trabajos</a></li>
+        <li><a href="/precios/">Precios</a></li>
+        <li><a href="/como-trabajo/">Cómo trabajo</a></li>
+        <li><a href="/sobre-mi/">Sobre mí</a></li>
+        <li><a href="/contacto/">Contacto</a></li>
+      </ul>
+    </nav>
+    <a class="menu-gratis" href="/revision-gratis/">Te miro la web gratis</a>
+    <p class="menu-pie"><a href="tel:+34628129468">628 129 468</a> · <a href="https://wa.me/34628129468">WhatsApp</a></p>
+  </div>
+</div>
 
-<main>
-  <div class="env">
+
+<main id="contenido" class="legal">
+  <div class="env estrecho cabeza-pagina">
     <h1>Aviso legal</h1>
-    <p class="fecha">Última actualización: septiembre de 2026</p>
+    <p class="legal-fecha">Última actualización: septiembre de 2026</p>
 
     <h2>1. Titular del sitio web</h2>
     <p>En cumplimiento del artículo 10 de la Ley 34/2002, de Servicios de la Sociedad de la Información y de Comercio Electrónico (LSSI-CE), se facilitan los siguientes datos:</p>
 
-    <div class="datos">
-      <div><span>Titular</span><span>Daniel Padilla Ruiz</span></div>
-      <div><span>NIF</span><span>55377670H</span></div>
-      <div><span>Domicilio</span><span>Calle Diego de los Reyes, 66<br>41950 Castilleja de la Cuesta (Sevilla), España</span></div>
-      <div><span>Correo electrónico</span><span>daniparu@outlook.es</span></div>
-      <div><span>Teléfono</span><span>+34 628 129 468</span></div>
-      <div><span>Actividad</span><span>Diseño, desarrollo y mantenimiento de páginas web</span></div>
-      <div><span>Sitio web</span><span>web.daniparuoutlook.workers.dev</span></div>
-    </div>
+    <dl class="legal-datos">
+      <div><dt>Titular</dt><dd>Daniel Padilla Ruiz</dd></div>
+      <div><dt>NIF</dt><dd>55377670H</dd></div>
+      <div><dt>Domicilio</dt><dd>Calle Diego de los Reyes, 66<br>41950 Castilleja de la Cuesta (Sevilla), España</dd></div>
+      <div><dt>Correo electrónico</dt><dd>daniparu@outlook.es</dd></div>
+      <div><dt>Teléfono</dt><dd>+34 628 129 468</dd></div>
+      <div><dt>Actividad</dt><dd>Diseño, desarrollo y mantenimiento de páginas web</dd></div>
+      <div><dt>Sitio web</dt><dd>web.daniparuoutlook.workers.dev</dd></div>
+    </dl>
 
     <h2>2. Objeto</h2>
     <p>Este sitio web tiene carácter informativo y comercial. A través de él se da a conocer la actividad profesional del titular y se facilita el contacto con posibles clientes. No se realizan contrataciones ni pagos en línea a través de este sitio.</p>
@@ -119,19 +109,62 @@ footer{border-top:1px solid var(--linea);padding:26px 0;font-size:14.5px;color:v
     <p>La herramienta de estimación de presupuesto incluida en este sitio ofrece una aproximación automática basada en las opciones seleccionadas por el usuario y no tiene carácter contractual.</p>
 
     <h2>7. Protección de datos</h2>
-    <p>El tratamiento de los datos personales facilitados a través de este sitio se rige por lo dispuesto en la <a href="privacidad.html">política de privacidad</a>.</p>
+    <p>El tratamiento de los datos personales facilitados a través de este sitio se rige por lo dispuesto en la <a href="/privacidad">política de privacidad</a>.</p>
 
     <h2>8. Legislación aplicable</h2>
     <p>Este aviso legal se rige por la legislación española. Para la resolución de cualquier controversia, las partes se someten a los juzgados y tribunales del domicilio del usuario cuando este tenga la condición de consumidor, y a los de Sevilla en el resto de los casos, salvo que la normativa aplicable disponga otra cosa.</p>
+  
   </div>
 </main>
 
-<footer>
-  <div class="env pie">
-    <span>Daniel Padilla &middot; Desarrollo web &middot; Sevilla y en remoto</span>
-    <span><a href="index.html">Inicio</a> &middot; <a href="privacidad.html">Privacidad</a></span>
+<footer class="pie" id="indice">
+  <div class="env pie-in">
+    <div class="pie-marca">
+      <p class="pie-logo">Daniel Padilla</p>
+      <p>Webs para negocios, arreglos y automatizaciones. Desde Sevilla y en remoto para cualquier país.</p>
+      <p class="pie-contacto">
+        <a href="tel:+34628129468">628 129 468</a>
+        <a href="https://wa.me/34628129468">WhatsApp</a>
+        <a href="mailto:daniparu@outlook.es">daniparu@outlook.es</a>
+      </p>
+      <p class="pie-horario">De lunes a viernes, de 9:00 a 19:00 (hora peninsular española), y los fines de semana si es urgente.</p>
+    </div>
+    <nav class="pie-nav" aria-label="Todas las páginas">
+      <div>
+        <p class="pie-grupo">Servicios</p>
+        <ul>
+          <li><a href="/servicios/webs/">Webs para negocios</a></li>
+          <li><a href="/servicios/arreglos/">Arreglos y revisión</a></li>
+          <li><a href="/servicios/automatizaciones-ia/">Automatizaciones con IA</a></li>
+          <li><a href="/servicios/herramientas-a-medida/">Herramientas a medida</a></li>
+          <li><a href="/revision-gratis/">Te miro la web gratis</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="pie-grupo">La web</p>
+        <ul>
+          <li><a href="/">Inicio</a></li>
+          <li><a href="/trabajos/">Trabajos</a></li>
+          <li><a href="/precios/">Precios</a></li>
+          <li><a href="/como-trabajo/">Cómo trabajo</a></li>
+          <li><a href="/sobre-mi/">Sobre mí</a></li>
+          <li><a href="/contacto/">Contacto</a></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+  <div class="env pie-legal">
+    <p>Los trabajos de esta web son demostraciones con negocios ficticios.</p>
+    <p><a href="/aviso-legal">Aviso legal</a> <a href="/privacidad">Privacidad</a></p>
   </div>
 </footer>
+
+<nav class="barra" aria-label="Contacto rápido">
+  <a href="tel:+34628129468"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>Llamar</a>
+  <a href="https://wa.me/34628129468"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20l1.3-4A8 8 0 1 1 8 18.7z"/><path d="M9 9.5c.3 2.4 2.2 4.4 4.6 4.9l1-1.2 1.9.8"/></svg>WhatsApp</a>
+  <button type="button" class="barra-ia" data-ia-open aria-haspopup="dialog"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/><path d="M9 10.5h6"/></svg><span>Pregunta a la IA</span></button>
+</nav>
+<button type="button" class="ia-flotante" data-ia-open aria-haspopup="dialog"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/><path d="M9 10.5h6"/></svg>Pregunta a la IA</button>
 
 </body>
 </html>
