@@ -1,0 +1,35 @@
+<header class="cab">
+  <div class="cab-in env">
+    <a class="logo" href="/" aria-label="Daniel Padilla, ir al inicio">Daniel Padilla</a>
+    <nav class="nav" aria-label="Principal">
+      <a href="/servicios/" data-nav>Servicios</a>
+      <a href="/trabajos/" data-nav>Trabajos</a>
+      <a href="/precios/" data-nav>Precios</a>
+      <a href="/como-trabajo/" data-nav>Cómo trabajo</a>
+      <a class="boton boton-cab" href="/contacto/" data-nav>Contacto</a>
+    </nav>
+    <!-- Sin JavaScript, "Menú" lleva al índice del pie; con JavaScript abre el menú a pantalla completa -->
+    <a class="menu-boton" href="#indice" id="menu-boton" aria-controls="menu" aria-expanded="false"><span class="menu-icono" aria-hidden="true"></span>Menú</a>
+  </div>
+</header>
+<div class="menu" id="menu" role="dialog" aria-modal="true" aria-labelledby="menu-titulo" hidden>
+  <div class="menu-in env">
+    <div class="menu-cab">
+      <p class="menu-titulo" id="menu-titulo">Menú</p>
+      <button class="menu-cerrar" type="button" id="menu-cerrar">Cerrar</button>
+    </div>
+    <nav aria-label="Menú principal">
+      <ul class="menu-lista">
+        <li><a href="/" data-nav>Inicio</a></li>
+        <li><a href="/servicios/" data-nav>Servicios</a></li>
+        <li><a href="/trabajos/" data-nav>Trabajos</a></li>
+        <li><a href="/precios/" data-nav>Precios</a></li>
+        <li><a href="/como-trabajo/" data-nav>Cómo trabajo</a></li>
+        <li><a href="/sobre-mi/" data-nav>Sobre mí</a></li>
+        <li><a href="/contacto/" data-nav>Contacto</a></li>
+      </ul>
+    </nav>
+    <a class="menu-gratis" href="/revision-gratis/">Te miro la web gratis</a>
+    <p class="menu-pie"><a href="{{tel}}">{{c:telefono}}</a> · <a href="{{wa}}">WhatsApp</a></p>
+  </div>
+</div>

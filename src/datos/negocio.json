@@ -1,0 +1,33 @@
+{
+  "_nota": "Fuente única de precios y datos de contacto de la web. Debe coincidir con docs/NEGOCIO.md (scripts/comprobar.mjs lo verifica). Si cambias un precio aquí, cámbialo también en docs/NEGOCIO.md y en el texto SYSTEM de worker.js, y ejecuta node scripts/construir.mjs.",
+  "contacto": {
+    "nombre": "Daniel Padilla",
+    "nombreCompleto": "Daniel Padilla Ruiz",
+    "telefono": "628 129 468",
+    "telefonoIntl": "+34628129468",
+    "telefonoVisibleIntl": "+34 628 129 468",
+    "whatsapp": "34628129468",
+    "correo": "daniparu@outlook.es",
+    "horario": "De lunes a viernes, de 9:00 a 19:00 (hora peninsular española), y los fines de semana si es urgente",
+    "respuesta": "Suelo contestar el mismo día",
+    "base": "Sevilla",
+    "localidad": "Castilleja de la Cuesta"
+  },
+  "servicios": {
+    "arreglo":       { "nombre": "Arreglo puntual",                   "precio": 150, "ruta": "/servicios/arreglos/" },
+    "revision":      { "nombre": "Revisión y puesta al día",          "precio": 250, "ruta": "/servicios/arreglos/" },
+    "web_una":       { "nombre": "Web de una página",                 "precio": 500, "ruta": "/servicios/webs/", "plazo": "1 a 2 semanas" },
+    "web_completa":  { "nombre": "Web completa",                      "precio": 900, "ruta": "/servicios/webs/", "plazo": "3 a 4 semanas" },
+    "herramienta":   { "nombre": "Herramientas a medida",             "precio": 200, "ruta": "/servicios/herramientas-a-medida/" },
+    "mantenimiento": { "nombre": "Mantenimiento",                     "cuota": 80,   "ruta": "/servicios/webs/" },
+    "asistente":     { "nombre": "Asistente en tu web",               "precio": 350, "cuota": 45, "ruta": "/servicios/automatizaciones-ia/", "nombreEnNegocioMd": "Asistente en la web" },
+    "correo":        { "nombre": "Respuestas automáticas de correo",  "precio": 300, "cuota": 40, "ruta": "/servicios/automatizaciones-ia/" },
+    "llamadas":      { "nombre": "Atención de llamadas",              "precio": 600, "cuota": 90, "consumo": true, "ruta": "/servicios/automatizaciones-ia/" }
+  },
+  "extras": {
+    "tienda":   { "nombre": "Vender online",              "precio": 400 },
+    "reservas": { "nombre": "Reservas de cita o de mesa", "precio": 200 },
+    "ingles":   { "nombre": "Versión en inglés",          "precio": 150 }
+  },
+  "dominioAnual": "entre 60 y 120 € al año"
+}

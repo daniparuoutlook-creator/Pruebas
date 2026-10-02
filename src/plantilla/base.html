@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<!-- Generado por scripts/construir.mjs desde {{origen}}. No edites este archivo: edita el de src/ y vuelve a construir. -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>{{titulo}}</title>
+<meta name="description" content="{{descripcion}}">
+<link rel="canonical" href="{{canonical}}">
+{{robots}}
+<meta name="author" content="Daniel Padilla">
+<meta name="theme-color" content="#FCFCFD">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_ES">
+<meta property="og:site_name" content="Daniel Padilla · Desarrollo web">
+<meta property="og:title" content="{{ogTitulo}}">
+<meta property="og:description" content="{{ogDescripcion}}">
+<meta property="og:url" content="{{canonical}}">
+<meta property="og:image" content="{{ogImagen}}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="{{ogAlt}}">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preload" href="/assets/fuentes/bricolage.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="{{cssSitio}}">
+<script>document.documentElement.classList.add("js")</script>
+<script src="{{jsSitio}}" defer></script>
+{{scripts}}
+{{jsonld}}
+</head>
+<body class="{{clase}}">
+<a class="saltar" href="#contenido">Saltar al contenido</a>
+{{> cabecera}}
+{{migas}}
+{{contenido}}
+{{> pie}}
+{{> barra}}
+</body>
+</html>

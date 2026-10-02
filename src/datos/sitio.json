@@ -1,0 +1,6 @@
+{
+  "_nota": "La URL base de toda la web sale de aquí (canonical, Open Graph, sitemap, robots, JSON-LD, llms.txt). Para cambiar de dominio, cambia 'url' y sigue docs/CAMBIO-DE-DOMINIO.md.",
+  "url": "https://web.daniparuoutlook.workers.dev",
+  "nombre": "Daniel Padilla · Desarrollo web",
+  "fechaActualizacion": "2026-10-02"
+}

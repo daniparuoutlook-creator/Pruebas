@@ -1,0 +1,88 @@
+<!--meta
+{
+  "titulo": "Webs para negocios y arreglos de webs en Sevilla · Daniel Padilla",
+  "descripcion": "Hago webs para negocios y arreglo las que ya existen. Desde Sevilla y en remoto. Precio cerrado por escrito, dominio a tu nombre y te miro la web gratis.",
+  "ruta": "/",
+  "ogTitulo": "Daniel Padilla · Webs para negocios y arreglos",
+  "js": ["antes-despues"],
+  "clase": "pagina-inicio"
+}
+-->
+<main id="contenido">
+
+<section class="portada">
+  <div class="env portada-rejilla">
+    <div>
+      <h1>Hago webs para negocios, y <span class="marcado">arreglo las que ya existen</span></h1>
+      <p class="bajada">Desde Sevilla y en remoto. Precio cerrado antes de empezar, y el dominio y el alojamiento a tu nombre.</p>
+      <div class="acciones">
+        <a class="boton" href="/revision-gratis/">Te miro la web gratis</a>
+        <a class="enlace" href="/precios/">Ver precios</a>
+      </div>
+    </div>
+
+    {{> antes-despues}}
+  </div>
+</section>
+
+<section class="seccion seccion-mesa" id="hallazgos" aria-labelledby="t-hallazgos">
+  <div class="env">
+    <div class="cabeza">
+      <h2 id="t-hallazgos">Lo que suelo encontrar en webs de Sevilla</h2>
+      <p class="intro">Cuatro casos reales. Ninguno de estos dueños lo sabía. Toca cualquiera para ver qué le costaba y cómo se arregló.</p>
+    </div>
+    {{> expedientes}}
+    <div class="acciones">
+      <a class="boton" href="/revision-gratis/">¿Miro la tuya?</a>
+      <a class="enlace" href="/servicios/arreglos/">Cómo trabajo los arreglos</a>
+    </div>
+  </div>
+</section>
+
+<section class="seccion" id="servicios" aria-labelledby="t-precios">
+  <div class="env">
+    <div class="cabeza">
+      <h2 id="t-precios">Precios a la vista</h2>
+      <p class="intro">Son precios de partida. El precio final te lo paso cerrado y por escrito antes de empezar, y no se mueve.</p>
+    </div>
+    {{> tablon}}
+    <div class="acciones">
+      <a class="boton" href="/precios/#calculadora">Calcula lo tuyo</a>
+      <a class="enlace" href="/servicios/">Ver todos los servicios</a>
+    </div>
+  </div>
+</section>
+
+<section class="seccion seccion-mesa" id="trabajos" aria-labelledby="t-trabajos">
+  <div class="env">
+    <div class="cabeza">
+      <h2 id="t-trabajos">Trabajos de ejemplo</h2>
+      <p class="intro">Negocios ficticios, hechos para enseñar cómo trabajo. Cada uno resuelve algo que de verdad le preguntan a ese tipo de negocio.</p>
+    </div>
+    <ul class="rejilla-trabajos rejilla-tres">
+      {{> tarjeta-bar-almanaque}}
+      {{> tarjeta-clinica-arenal}}
+      {{> tarjeta-academia-compas}}
+    </ul>
+    <div class="acciones">
+      <a class="enlace" href="/trabajos/">Ver todos los trabajos</a>
+    </div>
+  </div>
+</section>
+
+<section class="seccion" id="proceso" aria-labelledby="t-proceso">
+  <div class="env">
+    <div class="cabeza">
+      <h2 id="t-proceso">Cómo trabajo</h2>
+      <p class="intro">Sin sorpresas ni letra pequeña. Precio cerrado por escrito, dos rondas de cambios, 50&nbsp;% al empezar y 50&nbsp;% al entregar, y todo a tu nombre.</p>
+    </div>
+    {{> pasos}}
+    <div class="acciones">
+      <a class="enlace" href="/como-trabajo/">Plazos, garantías y preguntas frecuentes</a>
+    </div>
+  </div>
+</section>
+
+{{> cta-final}}
+
+</main>
