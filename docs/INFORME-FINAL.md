@@ -38,6 +38,18 @@ Cada fase es un commit en la rama `claude/happy-pascal-x1kksy`:
 
 Las direcciones viejas con ancla (`/#servicios`, `/#trabajos`, `/#preguntas`...) llevan a su página nueva, así que los enlaces que tengas compartidos siguen funcionando.
 
+## Capturas clave
+
+Están en `docs/capturas/final/` (móvil a 390 px salvo las de 1280). Las fotos de las demos salen como bloques de color: ver pendientes.
+
+| Portada (móvil) | Precios: la hoja se escribe sola | Un caso, con el visor |
+|---|---|---|
+| ![Portada en móvil](capturas/final/inicio-390.png) | ![Calculadora de precios en móvil](capturas/final/precios-390.png) | ![Página de caso en móvil](capturas/final/caso-390.png) |
+| **Un hallazgo abierto** | **Menú** | **Asistente (respuesta simulada)** |
+| ![Hallazgo del taller abierto](capturas/final/arreglos-hallazgo-390.png) | ![Menú abierto](capturas/final/menu-390.png) | ![Chat abierto](capturas/final/chat-390.png) |
+
+En escritorio: [portada](capturas/final/inicio-1280.png) · [precios](capturas/final/precios-1280.png). La portada entera en móvil: [inicio-390-completa.png](capturas/final/inicio-390-completa.png). Trabajos: [trabajos-390.png](capturas/final/trabajos-390.png).
+
 ## Cómo está comprobado
 
 Todo esto se ha medido, no supuesto:
@@ -62,7 +74,31 @@ Todo esto se ha medido, no supuesto:
 
 Medido contra el servidor local, que no comprime: en Cloudflare (que sirve con Brotli) pesará menos todavía. Al principio `/precios/` daba un CLS de 0,17 (la página «saltaba» al llegar la fuente); se arregló con una fuente de respaldo ajustada a las medidas de Archivo, y ahora es 0.
 
-> Revisión independiente: en curso. Sus hallazgos y lo que se ha corregido se añadirán aquí.
+### Revisión independiente
+
+Como pide el brief, un revisor que no había construido nada repasó las 20 páginas a 360, 390, 768 y 1280 px, sin JavaScript, con movimiento reducido, con teclado, con el menú y el chat abiertos, y comparó cada cifra con `NEGOCIO.md`. Confirmó que los precios coinciden en toda la web, en los datos estructurados, en `llms.txt` y en el asistente, y encontró esto (todo corregido salvo lo indicado):
+
+| Gravedad | Hallazgo | Qué se ha hecho |
+|---|---|---|
+| Grave | La política de privacidad decía que la web no conecta con terceros, pero 4 de las 5 demos cargan Google Fonts y fotos de Unsplash | Corregido el párrafo de terceros: ahora lo dice |
+| Grave | En la hoja de presupuesto, «300 € + 40 €/mes» se salía de la tarjeta a 360 y a 1280 px | El alta y la cuota van en dos líneas; la cifra no se corta en ningún ancho |
+| Medio | La etiqueta «Simulación» se cortaba a 320-390 px | Corregido |
+| Medio | En escritorio, al saltar a un ancla, la cabecera fija tapaba el principio | Margen de desplazamiento bajo la cabecera |
+| Medio | Al tabular en móvil, el foco quedaba debajo de la barra inferior (y del total flotante en Precios) | Margen de desplazamiento sobre la barra |
+| Medio | Sin JavaScript se veían botones que no hacen nada (filtros, Móvil/Ordenador, «Pregunta a la IA») | Ocultos sin JavaScript; la barra se queda en Llamar y WhatsApp |
+| Medio | Arreglos, herramientas y automatizaciones no tenían «qué no incluye» (y automatizaciones, plazo), que pide el brief | Añadidos con lo que dice `NEGOCIO.md`. En herramientas no hay datos para una lista: dice que va por escrito en el presupuesto y queda `[PENDIENTE]` |
+| Medio | La barra del total en Precios medía 131 px y partía el texto | Una sola línea de 60 px con botón |
+| Menor | Textos: «una alta», «Pruébalo: este chat es uno», «Qué hace la web» en una herramienta, «y cómo se arregló» en hallazgos que no lo cuentan, «vivo en Sevilla» (vives en Castilleja), mantenimiento sin «desde», «reservas» en el título de Trabajos, «Es un/a» en un WhatsApp, «hace siete años» que caducaría en 2027 | Todos corregidos |
+| Menor | En el chat, «WhatsApp» quedaba solo en otra línea | Llamar y WhatsApp van siempre juntos |
+| Menor | El «Añadir a la cesta» de la recreación de la tienda no parecía un botón | Ahora sí |
+| Menor | Las descripciones para buscadores de 14 páginas eran demasiado largas (hasta 198 caracteres); el 404 llevaba `canonical` | Todas por debajo de 160; el 404 ya no lo lleva |
+| Menor | La imagen para compartir de Precios no tenía precios, la de automatizaciones no decía «IA» y la de Academia cortaba la captura | Corregidas |
+| Menor | Cada caso descargaba las dos capturas aunque solo se ve una | Ahora solo se descarga la que se ve |
+| Opinión | La cursiva de Archivo (31 KB) se carga casi en todas las páginas | **Se queda**: es la letra de las anotaciones a boli, que son la idea de la dirección B, y se descarga una vez (luego sale de la caché) |
+| Opinión | Las notas en cursiva azul se pueden confundir con enlaces | **Se queda**: son las anotaciones «a boli»; los enlaces van siempre subrayados y las notas nunca |
+| Opinión | Los hallazgos de la portada y de Arreglos son los mismos | **Se queda**: son los cuatro casos reales, lo más convincente que tienes; la introducción de cada página es distinta |
+
+Además, de la revisión salió una comprobación nueva en `scripts/comprobar.mjs`: cualquier cifra en euros escrita a mano en una página, en su descripción o en `llms.txt` que no exista en `negocio.json` da error.
 
 ## Decisiones que conviene que conozcas
 
@@ -87,6 +123,7 @@ Medido contra el servidor local, que no comprime: en Cloudflare (que sirve con B
 | 6 | **Las 6 demos que faltan** (2 webs con asistente, 4 de reservas) | Las haces tú | El comentario de `src/paginas/trabajos/index.html` explica cómo cambiar un hueco por una demo |
 | 7 | **Dominio `webpadilla.com`** y correo `hola@webpadilla.com` | Aún no los tienes | `docs/CAMBIO-DE-DOMINIO.md` |
 | 8 | **Probar el chat de verdad** | Aquí no hay acceso a la API | Tras publicar (o en la vista previa), hazle dos o tres preguntas, una de ellas pidiendo presupuesto, y comprueba que te ofrece llamar o WhatsApp |
+| 9 | **Qué no incluye una herramienta a medida** | `NEGOCIO.md` no lo dice; la página dice que va por escrito en el presupuesto | Dímelo (alojamiento, cambios tras la entrega...) y lo pongo en lista, como en las otras páginas de servicio |
 
 ### Propuesta para la política de privacidad (no aplicada)
 
@@ -103,7 +140,7 @@ Propuesta: añadir al apartado 2 un punto «Si usas el asistente de IA: el texto
 
 Igual que la última vez, pero con un paso de **vista previa** antes de que lo vea nadie.
 
-1. **Consigue los archivos.** En GitHub, cuando hayas revisado el pull request y pulsado **Merge**, entra en la carpeta `entrega`, abre `web-deploy.zip` y pulsa el botón de descarga.
+1. **Consigue los archivos.** En GitHub, en el repositorio `Pruebas`, elige la rama `claude/happy-pascal-x1kksy` (o `main`, si ya has fusionado el pull request), entra en la carpeta `entrega`, abre `web-deploy.zip` y pulsa el botón de descarga.
 2. **Descomprímelo en una carpeta nueva**, por ejemplo `C:\web-nueva` (clic derecho → Extraer todo). Dentro tienen que quedar `worker.js`, `wrangler.jsonc` y la carpeta `public`. No lo descomprimas encima de la carpeta vieja.
 3. **Abre CMD en esa carpeta:**
    ```

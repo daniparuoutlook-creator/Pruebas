@@ -1,8 +1,9 @@
 <!--meta
 {
   "titulo": "Precios y calculadora de presupuesto · Daniel Padilla",
-  "descripcion": "Todos los precios de partida a la vista y una calculadora que te escribe el presupuesto orientativo al momento. Web de una página desde 500 €, arreglos desde 150 €. Precio final cerrado por escrito.",
+  "descripcion": "Todos los precios de partida a la vista y una calculadora que te escribe el presupuesto al momento. Web desde 500 €, arreglos desde 150 €.",
   "ruta": "/precios/",
+  "ogTexto": "Precios a la vista: webs desde {{precio:web_una}}, arreglos desde {{precio:arreglo}}",
   "migas": [["Precios", "/precios/"]],
   "js": ["calculadora"],
   "servicios": ["arreglo", "revision", "web_una", "web_completa", "mantenimiento", "herramienta", "asistente", "correo", "llamadas"]
@@ -52,8 +53,8 @@
           </div>
         </fieldset>
         <div class="presu-flotante" data-flotante aria-hidden="true">
-          <div><b data-total-corto>desde 500 €</b><br><span data-mes-corto></span></div>
-          <a href="#hoja" tabindex="-1">Ver el presupuesto</a>
+          <div class="presu-flotante-total"><b data-total-corto>Desde {{precio:web_una}}</b><span data-mes-corto></span></div>
+          <a href="#hoja" tabindex="-1">Ver presupuesto</a>
         </div>
       </form>
 
@@ -83,7 +84,7 @@
           <tr><th scope="row"><a href="/servicios/webs/">Web de una página</a><small>Plazo: {{plazo:web_una}}</small></th><td>{{precio:web_una}}</td></tr>
           <tr><th scope="row"><a href="/servicios/webs/">Web completa</a><small>Plazo: {{plazo:web_completa}}</small></th><td>{{precio:web_completa}}</td></tr>
           <tr><th scope="row"><a href="/servicios/herramientas-a-medida/">Herramienta a medida</a></th><td>{{precio:herramienta}}</td></tr>
-          <tr><th scope="row">Mantenimiento<small>Opcional</small></th><td>{{cuota:mantenimiento}} al mes</td></tr>
+          <tr><th scope="row">Mantenimiento<small>Opcional</small></th><td>desde {{cuota:mantenimiento}} al mes</td></tr>
         </tbody>
       </table>
       <div>

@@ -49,7 +49,7 @@ function calcular() {
     if (s.consumo) consumo = true;
     const precio = s.precio != null ? euros(s.precio) : `${euros(s.cuota)}/mes`;
     const extra = s.precio != null && s.cuota != null ? ` + ${euros(s.cuota)}/mes` : "";
-    return { nombre: s.nombre, precio: precio + extra, clave };
+    return { nombre: s.nombre, precio: precio + extra, alta: precio, cuota: extra.trim(), clave };
   });
 
   // Líneas de la hoja: las nuevas aparecen escritas, las que sobran se quitan
@@ -66,7 +66,9 @@ function calcular() {
     li.dataset.clave = f.clave;
     li.innerHTML = "<span></span><i></i><b></b>";
     li.children[0].textContent = f.nombre;
-    li.children[2].textContent = f.precio;
+    // Alta y cuota en dos líneas: así la cifra nunca se corta en un móvil estrecho
+    li.children[2].textContent = f.alta;
+    if (f.cuota) { const c = document.createElement("small"); c.textContent = f.cuota; li.children[2].append(c); }
     if (!antes.has(f.clave) && !reducido) li.classList.add("nueva");
     lineas.append(li);
   }

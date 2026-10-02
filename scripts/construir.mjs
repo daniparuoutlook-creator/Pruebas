@@ -193,7 +193,9 @@ for (const archivo of await listar(join(SRC, "paginas"))) {
   let html = await sustituir(base, {
     titulo: meta.titulo,
     descripcion: escAttr(meta.descripcion),
-    canonical: url,
+    // El 404 no tiene dirección propia: sin canonical ni og:url
+    enlaceCanonical: ruta === "/404" ? "" : `<link rel="canonical" href="${url}">`,
+    ogUrl: ruta === "/404" ? "" : `<meta property="og:url" content="${url}">`,
     robots: indexable ? '<meta name="robots" content="index,follow,max-image-preview:large">' : '<meta name="robots" content="noindex,follow">',
     ogTitulo: escAttr(meta.ogTitulo || meta.titulo),
     ogDescripcion: escAttr(meta.ogDescripcion || meta.descripcion),

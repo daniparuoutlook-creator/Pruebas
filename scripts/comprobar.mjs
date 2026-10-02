@@ -94,6 +94,19 @@ for (const [clave, s] of Object.entries({ ...negocio.servicios, ...negocio.extra
 }
 if (/no tienen precio publicado|extras que no tienen precio publicado/i.test(system)) aviso('El SYSTEM de worker.js dice que hay extras sin precio publicado (desajuste conocido)');
 
+// Cifras en euros escritas a mano (títulos, descripciones y texto de cada página, y llms.txt): todas deben existir en negocio.json
+const validas = new Set(Object.values({ ...negocio.servicios, ...negocio.extras }).flatMap((x) => [x.precio, x.cuota]).filter((x) => x != null).map(String));
+for (const n of (negocio.dominioAnual.match(/\d+/g) || [])) validas.add(n);
+for (const ruta of [...paginas, "/llms.txt"]) {
+  const crudo = await (await fetch(BASE + ruta)).text();
+  const metas = [...crudo.matchAll(/<meta[^>]+content="([^"]*)"/g)].map((m) => m[1]).join(" ");
+  const texto = (crudo.replace(/<script[\s\S]*?<\/script>/g, "").replace(/<[^>]+>/g, " ") + " " + metas).replace(/&nbsp;|\u00a0/g, " ");
+  for (const m of texto.matchAll(/(\d[\d.]*)\s*€/g)) {
+    const cifra = m[1].replace(/\./g, "");
+    if (!validas.has(cifra)) error(`Cifra en euros que no está en negocio.json en ${ruta}: «${m[0]}»`);
+  }
+}
+
 // ---------- 3 y 4. Playwright ----------
 function cargar(nombre) {
   const req = createRequire(import.meta.url);

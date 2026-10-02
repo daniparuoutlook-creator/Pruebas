@@ -24,7 +24,7 @@ const plantilla = `
     <div><b id="ia-title">Asistente de IA</b><small>Soy una inteligencia artificial, no Daniel</small></div>
     <button class="ia-x" id="ia-close" type="button" aria-label="Cerrar el chat"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
   </header>
-  <div class="ia-contact"><span>¿Prefieres hablar con Daniel?</span><a href="${TEL_HREF}">Llamar</a><a href="${WA}" target="_blank" rel="noopener">WhatsApp</a></div>
+  <div class="ia-contact"><span>¿Prefieres hablar con Daniel?</span><div class="ia-contact-vias"><a href="${TEL_HREF}">Llamar</a><a href="${WA}" target="_blank" rel="noopener">WhatsApp</a></div></div>
   <div class="ia-log" id="ia-log" role="log" aria-live="polite" tabindex="-1">
     <div class="ia-m ia-bot">Hola. Soy el asistente de la web de Daniel Padilla y soy una inteligencia artificial, no una persona, así que puedo equivocarme. Te resuelvo dudas sobre servicios, precios y cómo trabaja Daniel. Para un presupuesto cerrado o algo concreto de tu negocio, mejor hablarlo con él.</div>
   </div>

@@ -1,7 +1,7 @@
 <!--meta
 {
   "titulo": "Contacto: teléfono, WhatsApp y correo · Daniel Padilla",
-  "descripcion": "Llámame al 628 129 468 o escríbeme por WhatsApp o correo. De lunes a viernes de 9:00 a 19:00, y los fines de semana si es urgente. Suelo contestar el mismo día.",
+  "descripcion": "Llámame al 628 129 468 o escríbeme por WhatsApp o correo. De lunes a viernes de 9:00 a 19:00, y el fin de semana si es urgente. Suelo contestar el mismo día.",
   "ruta": "/contacto/",
   "migas": [["Contacto", "/contacto/"]]
 }
@@ -21,7 +21,7 @@
       <div class="via">
         <b>Teléfono</b>
         <a class="grande" href="{{tel}}">{{c:telefono}}</a>
-        <p>Desde fuera de España: {{c:telefonoVisibleIntl}}</p>
+        <p>Desde fuera de España: <span class="nw">{{c:telefonoVisibleIntl}}</span></p>
         <button class="copiar" type="button" data-copiar="{{c:telefonoVisibleIntl}}" hidden>Copiar el número</button>
       </div>
       <div class="via">
@@ -39,7 +39,7 @@
     <div class="mt-grande">
       <h2 class="h3">¿Qué buscas? El mensaje ya va escrito</h2>
       <ul class="mensajes">
-        <li><a href="{{wa:Hola Daniel, quiero una web para mi negocio. Es un/a: }}">Quiero una web</a></li>
+        <li><a href="{{wa:Hola Daniel, quiero una web para mi negocio. Mi negocio es: }}">Quiero una web</a></li>
         <li><a href="{{wa:Hola Daniel, ¿me miras la web? Es: }}">¿Me miras la web?</a></li>
         <li><a href="{{wa:Hola Daniel, tengo un fallo en mi web: }}">Tengo un fallo en mi web</a></li>
         <li><a href="{{wa:Hola Daniel, me interesa una automatización con IA para: }}">Automatizaciones con IA</a></li>
@@ -60,7 +60,7 @@
       <div>
         <h2>Dónde estoy</h2>
         <p class="intro">En Sevilla. Si tu negocio está cerca, puedo ir en persona; si no, trabajamos en remoto, igual de bien.</p>
-        <p class="gris mt-20">¿Prefieres preguntar algo rápido antes? El asistente de IA de esta web te contesta dudas sobre servicios y precios.</p>
+        <p class="gris mt-20 solo-js">¿Prefieres preguntar algo rápido antes? El asistente de IA de esta web te contesta dudas sobre servicios y precios.</p>
         <button class="boton boton-sec mt-20" type="button" data-ia-open aria-haspopup="dialog">Pregunta a la IA</button>
       </div>
     </div>

@@ -43,8 +43,12 @@ for (const archivo of await paginas(join(RAIZ, "src/paginas"))) {
   const caso = ruta.startsWith("/trabajos/") && ruta !== "/trabajos/" ? ruta.split("/")[2] : null;
   // Texto grande: el titular (h1) si dice algo por sí solo; si es muy corto ("Trabajos"), el título de la página.
   const h1 = (texto.match(/<h1[^>]*>([\s\S]*?)<\/h1>/) || [, ""])[1].replace(/<[^>]+>/g, "").replace(/\s+/g, " ").trim();
-  const titulo = caso || h1.split(" ").length >= 4 ? h1 : (meta.ogTitulo || meta.titulo).split(" · ")[0];
-  const seccion = meta.migas ? meta.migas[0][0] : "Desarrollo web";
+  // "ogTexto" en la meta manda sobre todo lo demás (admite {{precio:clave}})
+  const precio = (k) => `${(negocio.servicios[k] || negocio.extras[k]).precio} €`;
+  const titulo = meta.ogTexto ? meta.ogTexto.replace(/\{\{precio:(\w+)\}\}/g, (_, k) => precio(k)) : caso || h1.split(" ").length >= 4 ? h1 : (meta.ogTitulo || meta.titulo).split(" · ")[0];
+  // Rótulo: el nombre de la página en las migas (p. ej. "Automatizaciones con IA"), salvo que repita el titular
+  const ultima = meta.migas ? meta.migas[meta.migas.length - 1][0] : "Desarrollo web";
+  const seccion = titulo.toLowerCase().startsWith(ultima.toLowerCase()) ? (meta.migas ? meta.migas[0][0] : "Desarrollo web") : ultima;
   fichas.push({ nombre, titulo, seccion: caso ? "Trabajo de ejemplo · negocio ficticio" : seccion, caso, archivo: relative(RAIZ, archivo) });
 }
 
@@ -55,12 +59,12 @@ const plantilla = (f) => `<!doctype html><html lang="es"><head><meta charset="ut
 body{width:1200px;height:630px;background:#E4E8ED;font-family:"Archivo",sans-serif;color:#16191F;padding:36px}
 .hoja{position:relative;height:100%;background:#FCFCFD;border:2px solid #16191F;border-radius:10px;padding:52px 56px;display:flex;flex-direction:column;overflow:hidden}
 .seccion{font:italic 700 26px "Archivo";color:#1F3BD6}
-h1{margin-top:18px;font:800 ${f.caso ? 64 : f.titulo.length > 34 ? 66 : 78}px/1.04 "Bricolage";letter-spacing:-.025em;max-width:${f.caso ? "520px" : "960px"};text-wrap:balance}
+h1{margin-top:18px;font:800 ${f.caso ? 64 : f.titulo.length > 34 ? 66 : 78}px/1.04 "Bricolage";letter-spacing:-.025em;max-width:${f.caso ? "460px" : "960px"};text-wrap:balance}
 .pie{margin-top:auto;display:flex;align-items:center;justify-content:space-between;gap:24px;padding-top:22px;border-top:2px solid #16191F}
 .marca{font:700 32px "Bricolage";letter-spacing:-.02em}
 .marca span{background:linear-gradient(transparent 58%,#FFE24A 58%,#FFE24A 92%,transparent 92%);padding:0 4px}
 .datos{font:600 24px "Archivo";color:#5B6470;text-align:right}
-.captura{position:absolute;right:-40px;top:52px;width:560px;border:2px solid #16191F;border-radius:10px;overflow:hidden;box-shadow:0 0 0 10px #E4E8ED}
+.captura{position:absolute;right:56px;top:52px;width:500px;border:2px solid #16191F;border-radius:10px;overflow:hidden;box-shadow:0 0 0 10px #E4E8ED}
 .captura img{display:block;width:100%}
 </style></head><body><div class="hoja">
 <p class="seccion">${esc(f.seccion)}</p>
